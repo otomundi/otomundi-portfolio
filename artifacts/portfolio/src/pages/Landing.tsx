@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { SiInstagram, SiX, SiVimeo, SiSoundcloud } from "react-icons/si";
 import { PlanetNav, PlanetNavMobile } from "@/components/PlanetNav";
+
+const socialLinks = [
+  { icon: SiInstagram, href: "#", label: "Instagram" },
+  { icon: SiX, href: "#", label: "X" },
+  { icon: SiVimeo, href: "#", label: "Vimeo" },
+  { icon: SiSoundcloud, href: "#", label: "SoundCloud" },
+];
 
 export default function Landing() {
   const [isMobile, setIsMobile] = useState(false);
@@ -35,6 +43,7 @@ export default function Landing() {
             </h1>
             <p className="mt-4 text-[10px] tracking-[0.35em] uppercase text-white/20">Sound · Vision · Space</p>
           </motion.div>
+
           <motion.div
             className="w-full max-w-sm"
             initial={{ opacity: 0 }}
@@ -43,6 +52,27 @@ export default function Landing() {
           >
             <p className="text-[9px] tracking-[0.35em] uppercase text-white/20 mb-5 text-center">Works</p>
             <PlanetNavMobile />
+          </motion.div>
+
+          <motion.div
+            className="flex items-center gap-8 mt-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+          >
+            {socialLinks.map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="text-white/25 hover:text-white/60 transition-colors duration-300 cursor-crosshair"
+                data-testid={`link-social-landing-${label.toLowerCase()}`}
+              >
+                <Icon size={16} />
+              </a>
+            ))}
           </motion.div>
         </div>
       ) : (
@@ -90,14 +120,31 @@ export default function Landing() {
             <PlanetNav />
           </motion.div>
 
-          <motion.p
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[9px] tracking-[0.4em] uppercase text-white/18 whitespace-nowrap"
+          <motion.div
+            className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.8, duration: 1 }}
+            transition={{ delay: 1.6, duration: 1 }}
           >
-            Hover planets to explore · Click to enter
-          </motion.p>
+            <div className="flex items-center gap-8">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="text-white/22 hover:text-white/60 transition-colors duration-300 cursor-crosshair"
+                  data-testid={`link-social-landing-${label.toLowerCase()}`}
+                >
+                  <Icon size={14} />
+                </a>
+              ))}
+            </div>
+            <p className="text-[9px] tracking-[0.4em] uppercase text-white/15">
+              Hover planets to explore · Click to enter
+            </p>
+          </motion.div>
         </div>
       )}
     </main>

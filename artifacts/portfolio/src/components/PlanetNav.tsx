@@ -23,7 +23,7 @@ function Planet({ work, scale, onClick }: PlanetProps) {
         marginTop: -r,
         marginLeft: -r,
         borderRadius: "50%",
-        border: "1px solid rgba(255,255,255,0.04)",
+        border: "1px solid rgba(139,26,46,0.12)",
         pointerEvents: "none",
       }}
       animate={{ rotate: 360 }}
@@ -44,11 +44,11 @@ function Planet({ work, scale, onClick }: PlanetProps) {
           marginLeft: -size / 2,
           marginTop: -size / 2,
           borderRadius: "50%",
-          background: `radial-gradient(circle at 35% 35%, ${work.planetColor}cc, ${work.planetColor}44)`,
-          boxShadow: `0 0 ${size * 0.8}px ${work.glowColor}, 0 0 ${size * 0.3}px ${work.planetColor}66`,
+          background: `radial-gradient(circle at 35% 35%, ${work.planetColor}ff, ${work.planetColor}88)`,
+          boxShadow: `0 0 ${size * 1.2}px ${work.planetGlowColor}, 0 0 ${size * 0.4}px ${work.planetColor}99`,
           pointerEvents: "auto",
         }}
-        whileHover={{ scale: 1.3 }}
+        whileHover={{ scale: 1.35 }}
         whileTap={{ scale: 0.9 }}
         onClick={onClick}
         data-testid={`planet-${work.id}`}
@@ -61,12 +61,12 @@ function Planet({ work, scale, onClick }: PlanetProps) {
           whileHover={{ opacity: 1, y: 0 }}
         >
           <span
-            className="block whitespace-nowrap tracking-[0.2em] uppercase px-3 py-1 rounded"
+            className="block whitespace-nowrap tracking-[0.18em] uppercase px-3 py-1 rounded"
             style={{
               fontSize: Math.max(9, 10 * scale),
-              color: work.planetColor,
-              background: "rgba(0,0,0,0.85)",
-              border: `1px solid ${work.planetColor}33`,
+              color: "#e8a0a8",
+              background: "rgba(0,0,0,0.9)",
+              border: `1px solid ${work.planetColor}55`,
             }}
           >
             {work.title}
@@ -77,13 +77,76 @@ function Planet({ work, scale, onClick }: PlanetProps) {
   );
 }
 
-export function PlanetNav() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
+function SunCenter({ scale }: { scale: number }) {
+  const coreSize = 20 * scale;
+  const numRays = 12;
 
+  return (
+    <div
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      style={{ zIndex: 10, width: coreSize * 6, height: coreSize * 6, marginLeft: -(coreSize * 3), marginTop: -(coreSize * 3) }}
+      data-testid="star-center"
+    >
+      {Array.from({ length: numRays }).map((_, i) => {
+        const angle = (i / numRays) * 360;
+        const rayLength = (i % 3 === 0 ? 42 : i % 3 === 1 ? 30 : 22) * scale;
+        const rayWidth = (i % 2 === 0 ? 1.5 : 1) * scale;
+        return (
+          <motion.div
+            key={i}
+            className="absolute"
+            style={{
+              width: rayWidth,
+              height: rayLength,
+              background: `linear-gradient(to top, rgba(255,200,100,0.7), rgba(255,220,140,0))`,
+              top: "50%",
+              left: "50%",
+              marginLeft: -rayWidth / 2,
+              marginTop: -(coreSize / 2),
+              transformOrigin: `${rayWidth / 2}px 0px`,
+              transform: `rotate(${angle}deg) translateY(-${coreSize / 2 + 1}px)`,
+            }}
+            animate={{ opacity: [0.5, 1, 0.5], scaleY: [1, 1.08, 1] }}
+            transition={{
+              duration: 3 + (i % 4) * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: (i / numRays) * 2,
+            }}
+          />
+        );
+      })}
+
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          width: coreSize * 2,
+          height: coreSize * 2,
+          background: "radial-gradient(circle, #fffde7 0%, #ffd54f 30%, #ff8f00 60%, rgba(180,50,0,0.3) 80%, transparent 100%)",
+          boxShadow: `0 0 ${coreSize * 3}px rgba(255,200,80,0.6), 0 0 ${coreSize * 6}px rgba(255,140,0,0.2)`,
+        }}
+        animate={{ scale: [1, 1.05, 1] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          width: coreSize * 5,
+          height: coreSize * 5,
+          background: "radial-gradient(circle, rgba(255,200,80,0.08) 0%, transparent 70%)",
+        }}
+        animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      />
+    </div>
+  );
+}
+
+export function PlanetNav() {
+  const [scale, setScale] = useState(1);
   const maxOrbit = Math.max(...works.map((w) => w.orbitRadius));
-  const naturalRadius = maxOrbit + 40;
-  const naturalSize = naturalRadius * 2;
+  const naturalSize = (maxOrbit + 40) * 2;
 
   useEffect(() => {
     function computeScale() {
@@ -105,14 +168,13 @@ export function PlanetNav() {
 
   return (
     <div
-      ref={containerRef}
       className="relative"
       style={{ width: displaySize, height: displaySize }}
       data-testid="planet-nav-desktop"
     >
       <div
         className="absolute inset-0 rounded-full"
-        style={{ background: "radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(ellipse at center, rgba(139,26,46,0.05) 0%, transparent 70%)" }}
       />
 
       {works.map((work) => (
@@ -124,24 +186,7 @@ export function PlanetNav() {
         />
       ))}
 
-      <motion.button
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-crosshair"
-        style={{ zIndex: 10 }}
-        animate={{ scale: [1, 1.08, 1] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        onClick={() => navigateTo("/")}
-        data-testid="star-center"
-      >
-        <div
-          className="rounded-full"
-          style={{
-            width: 16 * scale,
-            height: 16 * scale,
-            background: "radial-gradient(circle, #ffffff 0%, #ffffffcc 40%, transparent 70%)",
-            boxShadow: `0 0 ${30 * scale}px rgba(255,255,255,0.6), 0 0 ${60 * scale}px rgba(255,255,255,0.15)`,
-          }}
-        />
-      </motion.button>
+      <SunCenter scale={scale} />
     </div>
   );
 }
@@ -166,7 +211,7 @@ export function PlanetNavMobile() {
                 width: 10,
                 height: 10,
                 background: work.planetColor,
-                boxShadow: `0 0 8px ${work.glowColor}`,
+                boxShadow: `0 0 8px ${work.planetGlowColor}`,
               }}
             />
             <div className="flex-1 min-w-0">
