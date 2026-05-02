@@ -427,8 +427,15 @@ export default function WorkDetail() {
           >
             <Link href="/works" data-testid="link-back-to-gallery">
               <span
-                className="text-[9px] tracking-[0.4em] uppercase transition-colors inline-flex items-center gap-2 mb-8 block cursor-crosshair"
-                style={{ color: "rgba(245,244,242,0.25)" }}
+                className="inline-flex items-center gap-2 mb-8 block cursor-crosshair transition-colors duration-300"
+                style={{
+                  fontFamily: "'Cinzel', Georgia, serif",
+                  fontSize: "8px",
+                  letterSpacing: "0.45em",
+                  textTransform: "uppercase",
+                  color: "rgba(245,244,242,0.22)",
+                  fontWeight: 400,
+                }}
               >
                 ← Gallery
               </span>
@@ -436,23 +443,44 @@ export default function WorkDetail() {
 
             <div className="w-6 h-px mb-6" style={{ background: "#730623" }} />
             <h1
-              className="text-4xl md:text-6xl font-extralight tracking-[0.06em] uppercase mb-4"
-              style={{ color: "#f5f4f2" }}
+              className="mb-4"
+              style={{
+                fontFamily: "'Cinzel', Georgia, serif",
+                fontSize: "clamp(2.2rem, 6vw, 5.5rem)",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: "#a81a2e",
+                fontWeight: 400,
+                lineHeight: 0.92,
+              }}
               data-testid="text-work-detail-title"
             >
               {work.title}
             </h1>
             <p
-              className="text-[10px] tracking-[0.3em] uppercase mb-10"
-              style={{ color: "rgba(245,244,242,0.30)" }}
+              className="mb-10"
+              style={{
+                fontFamily: "'Cinzel', Georgia, serif",
+                fontSize: "8px",
+                letterSpacing: "0.35em",
+                textTransform: "uppercase",
+                color: "rgba(245,244,242,0.25)",
+                fontWeight: 400,
+              }}
             >
               {work.medium} — {work.year}
             </p>
 
             <div className="max-w-2xl">
               <p
-                className="text-base leading-relaxed font-light"
-                style={{ color: "rgba(245,244,242,0.55)" }}
+                className="italic"
+                style={{
+                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+                  lineHeight: 1.78,
+                  fontWeight: 300,
+                  color: "rgba(245,244,242,0.52)",
+                }}
                 data-testid="text-work-detail-description"
               >
                 {work.longDescription}
@@ -476,14 +504,27 @@ export default function WorkDetail() {
                   <Link href={`/works/${prevWork.id}`} data-testid="link-prev-work">
                     <span className="group block cursor-crosshair">
                       <span
-                        className="text-[9px] tracking-[0.35em] uppercase block mb-2"
-                        style={{ color: "rgba(245,244,242,0.20)" }}
+                        className="block mb-2"
+                        style={{
+                          fontFamily: "'Cinzel', Georgia, serif",
+                          fontSize: "7px",
+                          letterSpacing: "0.4em",
+                          textTransform: "uppercase",
+                          color: "rgba(245,244,242,0.18)",
+                          fontWeight: 400,
+                        }}
                       >
                         Previous
                       </span>
                       <span
-                        className="text-sm tracking-[0.1em] uppercase transition-colors"
-                        style={{ color: "rgba(245,244,242,0.50)" }}
+                        style={{
+                          fontFamily: "'Cinzel', Georgia, serif",
+                          fontSize: "clamp(0.75rem, 1.2vw, 0.95rem)",
+                          letterSpacing: "0.12em",
+                          textTransform: "uppercase",
+                          color: "rgba(245,244,242,0.42)",
+                          fontWeight: 400,
+                        }}
                       >
                         ← {prevWork.title}
                       </span>
@@ -496,14 +537,27 @@ export default function WorkDetail() {
                   <Link href={`/works/${nextWork.id}`} data-testid="link-next-work">
                     <span className="group block cursor-crosshair">
                       <span
-                        className="text-[9px] tracking-[0.35em] uppercase block mb-2"
-                        style={{ color: "rgba(245,244,242,0.20)" }}
+                        className="block mb-2"
+                        style={{
+                          fontFamily: "'Cinzel', Georgia, serif",
+                          fontSize: "7px",
+                          letterSpacing: "0.4em",
+                          textTransform: "uppercase",
+                          color: "rgba(245,244,242,0.18)",
+                          fontWeight: 400,
+                        }}
                       >
                         Next
                       </span>
                       <span
-                        className="text-sm tracking-[0.1em] uppercase transition-colors"
-                        style={{ color: "rgba(245,244,242,0.50)" }}
+                        style={{
+                          fontFamily: "'Cinzel', Georgia, serif",
+                          fontSize: "clamp(0.75rem, 1.2vw, 0.95rem)",
+                          letterSpacing: "0.12em",
+                          textTransform: "uppercase",
+                          color: "rgba(245,244,242,0.42)",
+                          fontWeight: 400,
+                        }}
                       >
                         {nextWork.title} →
                       </span>

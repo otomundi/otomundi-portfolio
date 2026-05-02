@@ -3,7 +3,9 @@ import { useRef } from "react";
 import bioPortrait from "@/assets/images/bio-portrait.png";
 import artwork3 from "@/assets/images/artwork-3.png";
 
-const W = "#f5f4f2";
+const GOTHIC = "'Cinzel', Georgia, serif";
+const CORMORANT = "'Cormorant Garamond', Georgia, serif";
+const CRIMSON = "#a81a2e";
 const dim = (a: number) => `rgba(245,244,242,${a})`;
 
 export default function Bio() {
@@ -22,8 +24,15 @@ export default function Bio() {
       <div className="relative z-10 pt-28 pb-32 px-6 md:px-10">
 
         <motion.p
-          className="text-[9px] tracking-[0.5em] uppercase mb-8"
-          style={{ color: dim(0.22) }}
+          style={{
+            fontFamily: GOTHIC,
+            fontSize: "8px",
+            letterSpacing: "0.55em",
+            textTransform: "uppercase",
+            color: dim(0.20),
+            fontWeight: 400,
+            marginBottom: "2rem",
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -33,16 +42,18 @@ export default function Bio() {
 
         <div className="relative">
           <motion.h1
-            className="font-extralight lowercase leading-none"
             style={{
-              fontSize: "clamp(3.5rem, 10vw, 10rem)",
-              letterSpacing: "-0.01em",
+              fontFamily: GOTHIC,
+              fontSize: "clamp(3.2rem, 10vw, 10rem)",
+              letterSpacing: "0.06em",
               lineHeight: 0.88,
-              color: W,
+              color: CRIMSON,
+              fontWeight: 400,
+              textTransform: "lowercase",
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1.1, ease: "easeOut" }}
             data-testid="text-bio-name"
           >
             ótomundi
@@ -65,7 +76,7 @@ export default function Bio() {
                 src={bioPortrait}
                 alt="óto portrait"
                 className="w-full h-full object-cover"
-                style={{ filter: "brightness(0.65) contrast(1.1)" }}
+                style={{ filter: "brightness(0.55) contrast(1.2) saturate(0.5)" }}
                 data-testid="img-bio-portrait-1"
               />
               <div
@@ -85,11 +96,12 @@ export default function Bio() {
           transition={{ delay: 0.15, duration: 0.9 }}
         >
           <p
-            className="font-extralight leading-relaxed"
             style={{
-              fontSize: "clamp(1.05rem, 2vw, 1.8rem)",
+              fontFamily: CORMORANT,
+              fontSize: "clamp(1.1rem, 2.1vw, 1.9rem)",
               lineHeight: 1.55,
               color: dim(0.55),
+              fontWeight: 300,
             }}
             data-testid="text-bio-paragraph-1"
           >
@@ -104,11 +116,13 @@ export default function Bio() {
           transition={{ delay: 0.25, duration: 0.9 }}
         >
           <p
-            className="font-extralight leading-relaxed"
+            className="italic"
             style={{
-              fontSize: "clamp(0.9rem, 1.5vw, 1.3rem)",
-              lineHeight: 1.7,
-              color: dim(0.40),
+              fontFamily: CORMORANT,
+              fontSize: "clamp(0.95rem, 1.5vw, 1.3rem)",
+              lineHeight: 1.75,
+              color: dim(0.38),
+              fontWeight: 300,
             }}
             data-testid="text-bio-paragraph-2"
           >
@@ -129,7 +143,7 @@ export default function Bio() {
                 src={artwork3}
                 alt="SKY — ótomundi, 2025"
                 className="w-full h-full object-cover"
-                style={{ filter: "brightness(0.6) contrast(1.1) saturate(0.55)" }}
+                style={{ filter: "brightness(0.5) contrast(1.2) saturate(0.4)" }}
                 data-testid="img-bio-portrait-2"
               />
               <div
@@ -139,8 +153,15 @@ export default function Bio() {
                 }}
               />
               <p
-                className="absolute bottom-4 left-4 text-[8px] tracking-[0.35em] uppercase"
-                style={{ color: dim(0.28) }}
+                className="absolute bottom-4 left-4"
+                style={{
+                  fontFamily: GOTHIC,
+                  fontSize: "7px",
+                  letterSpacing: "0.35em",
+                  textTransform: "uppercase",
+                  color: dim(0.25),
+                  fontWeight: 400,
+                }}
               >
                 SKY — 2025
               </p>
@@ -148,28 +169,31 @@ export default function Bio() {
           </motion.div>
 
           <motion.div
-            className="md:w-7/12 md:pl-12 flex flex-col gap-8"
+            className="md:w-7/12 flex flex-col gap-8 md:pl-12 md:py-2"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.9 }}
           >
             <p
-              className="font-extralight leading-relaxed"
               style={{
-                fontSize: "clamp(0.9rem, 1.4vw, 1.2rem)",
-                lineHeight: 1.75,
+                fontFamily: CORMORANT,
+                fontSize: "clamp(0.95rem, 1.45vw, 1.25rem)",
+                lineHeight: 1.78,
                 color: dim(0.38),
+                fontWeight: 300,
               }}
               data-testid="text-bio-paragraph-3"
             >
               ótomundi's practice focuses on dissolving the boundaries between human material cultures — transcending and giving voice to the essence of the spiritual nature. He has adopted the audiovisual practice as a language to generate expressions that immerse the visual and sonic human senses in holistic voyages of perception, instinct, and presence.
             </p>
             <p
-              className="font-extralight leading-relaxed"
+              className="italic"
               style={{
-                fontSize: "clamp(0.85rem, 1.3vw, 1.1rem)",
-                lineHeight: 1.75,
-                color: dim(0.28),
+                fontFamily: CORMORANT,
+                fontSize: "clamp(0.9rem, 1.3vw, 1.1rem)",
+                lineHeight: 1.78,
+                color: dim(0.26),
+                fontWeight: 300,
               }}
             >
               His works pursue the timelessness of spiritual art — one created in determined devotion to the magic and unobstructed flow of intelligence, and moved by the existential impulses of our astral consciousness.
@@ -184,11 +208,12 @@ export default function Bio() {
           transition={{ delay: 0.5, duration: 0.9 }}
         >
           <p
-            className="font-extralight leading-relaxed"
             style={{
-              fontSize: "clamp(0.9rem, 1.5vw, 1.3rem)",
-              lineHeight: 1.75,
+              fontFamily: CORMORANT,
+              fontSize: "clamp(0.95rem, 1.5vw, 1.3rem)",
+              lineHeight: 1.78,
               color: dim(0.38),
+              fontWeight: 300,
             }}
           >
             ótomundi's artistic identity developed from an early and sustained relationship with the sonic, literary, and plastic arts — charged with spiritual symbolism and nostalgia for a time of greater harmony between people and the Earth. From textile paintings to music videos, ótomundi creates from the understanding that artistic expression is a form of spiritual projection: meant to expand and contribute towards collective peace, heritage, and evolution.
@@ -202,12 +227,14 @@ export default function Bio() {
           transition={{ delay: 0.6, duration: 1 }}
         >
           <p
-            className="font-extralight leading-tight"
+            className="italic"
             style={{
-              fontSize: "clamp(1.8rem, 5.5vw, 5.5rem)",
-              lineHeight: 1.0,
-              letterSpacing: "-0.02em",
-              color: dim(0.14),
+              fontFamily: CORMORANT,
+              fontSize: "clamp(1.6rem, 5vw, 5rem)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.01em",
+              color: dim(0.11),
+              fontWeight: 300,
             }}
           >
             Creation means surrendering our minuscule, self-loathing identities to enter the infinite consciousness that elevates us all to the dignity of being in harmony, serendipity, and shared intelligence.
@@ -216,7 +243,7 @@ export default function Bio() {
 
         <motion.div
           className="mt-16 md:mt-24 pt-12 grid grid-cols-3 md:grid-cols-6 gap-8 max-w-3xl"
-          style={{ borderTop: `1px solid ${dim(0.07)}` }}
+          style={{ borderTop: `1px solid ${dim(0.06)}` }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.8 }}
@@ -231,14 +258,27 @@ export default function Bio() {
           ].map((stat) => (
             <div key={stat.label} data-testid={`stat-${stat.label.toLowerCase()}`}>
               <div
-                className="font-extralight tracking-wide lowercase"
-                style={{ fontSize: "clamp(1.1rem, 2vw, 1.8rem)", color: dim(0.70) }}
+                style={{
+                  fontFamily: GOTHIC,
+                  fontSize: "clamp(1rem, 1.8vw, 1.6rem)",
+                  color: dim(0.65),
+                  fontWeight: 400,
+                  textTransform: "lowercase",
+                  letterSpacing: "0.04em",
+                }}
               >
                 {stat.value}
               </div>
               <div
-                className="text-[8px] tracking-[0.3em] uppercase mt-1"
-                style={{ color: dim(0.20) }}
+                style={{
+                  fontFamily: GOTHIC,
+                  fontSize: "7px",
+                  letterSpacing: "0.3em",
+                  textTransform: "uppercase",
+                  color: dim(0.18),
+                  marginTop: "0.25rem",
+                  fontWeight: 400,
+                }}
               >
                 {stat.label}
               </div>
@@ -260,7 +300,7 @@ export default function Bio() {
               src={bioPortrait}
               alt="óto — ótomundi"
               className="w-full h-full object-cover"
-              style={{ filter: "brightness(0.38) contrast(1.15) saturate(0.42)" }}
+              style={{ filter: "brightness(0.32) contrast(1.2) saturate(0.35)" }}
               data-testid="img-bio-wide"
             />
             <div
@@ -272,8 +312,14 @@ export default function Bio() {
             />
             <div className="absolute bottom-8 left-8">
               <p
-                className="text-[8px] tracking-[0.4em] uppercase"
-                style={{ color: dim(0.25) }}
+                style={{
+                  fontFamily: GOTHIC,
+                  fontSize: "7px",
+                  letterSpacing: "0.4em",
+                  textTransform: "uppercase",
+                  color: dim(0.22),
+                  fontWeight: 400,
+                }}
               >
                 óto — ótomundi
               </p>
@@ -288,11 +334,13 @@ export default function Bio() {
           transition={{ delay: 0.9, duration: 0.8 }}
         >
           <p
-            className="font-extralight leading-relaxed italic"
+            className="italic"
             style={{
-              fontSize: "clamp(0.85rem, 1.3vw, 1.1rem)",
-              lineHeight: 1.75,
-              color: dim(0.25),
+              fontFamily: CORMORANT,
+              fontSize: "clamp(0.9rem, 1.3vw, 1.1rem)",
+              lineHeight: 1.8,
+              color: dim(0.22),
+              fontWeight: 300,
             }}
           >
             Amongst various creative methods, ótomundi searches for his ideas from a core practice of prolonged states of concentration and meditation — ideally under the sun, or a full moon — to welcome a world of spiritual unity, radiant fertility, and creative equilibrium.

@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { SiSpotify, SiApplemusic, SiSoundcloud, SiYoutube } from "react-icons/si";
 
+const GOTHIC = "'Cinzel', Georgia, serif";
+const CRIMSON = "#a81a2e";
 const dim = (a: number) => `rgba(245,244,242,${a})`;
 
 const platforms = [
@@ -46,21 +48,41 @@ export default function Music() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-[9px] tracking-[0.5em] uppercase mb-3" style={{ color: dim(0.22) }}>
+          <p
+            style={{
+              fontFamily: GOTHIC,
+              fontSize: "8px",
+              letterSpacing: "0.55em",
+              textTransform: "uppercase",
+              color: dim(0.20),
+              fontWeight: 400,
+              marginBottom: "0.75rem",
+            }}
+          >
             Discography
           </p>
           <h1
-            className="text-4xl font-extralight tracking-[0.08em] uppercase mb-8"
-            style={{ color: "#f5f4f2" }}
+            className="mb-8"
+            style={{
+              fontFamily: GOTHIC,
+              fontSize: "clamp(1.5rem, 3.5vw, 3rem)",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: CRIMSON,
+              fontWeight: 400,
+            }}
           >
             Music
           </h1>
           <p
-            className="font-extralight leading-relaxed max-w-lg"
+            className="italic"
             style={{
-              fontSize: "clamp(0.88rem, 1.3vw, 1.1rem)",
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: "clamp(0.95rem, 1.4vw, 1.2rem)",
               lineHeight: 1.75,
               color: dim(0.38),
+              fontWeight: 300,
+              maxWidth: "42ch",
             }}
           >
             Sound is the first language of ótomundi's practice — the carrier of ancestral frequency, instinct, and spiritual presence. Recordings move between composition and ritual, between the made and the received.
@@ -80,39 +102,48 @@ export default function Music() {
                 style={{ borderBottom: `1px solid ${dim(0.05)}` }}
                 initial={{ opacity: 0, x: -16 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.08, duration: 0.6 }}
+                transition={{ delay: i * 0.09, duration: 0.6 }}
                 data-testid={`link-platform-${platform.name.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 <div
-                  className="flex items-center justify-center w-12 h-12 rounded-full flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                  className="flex items-center justify-center w-11 h-11 rounded-full flex-shrink-0 transition-all duration-300 group-hover:scale-110"
                   style={{
-                    background: `${platform.color}18`,
-                    border: `1px solid ${platform.color}28`,
+                    background: `${platform.color}15`,
+                    border: `1px solid ${platform.color}25`,
                   }}
                 >
                   <Icon
-                    size={18}
-                    style={{ color: platform.color, opacity: 0.65 }}
+                    size={17}
+                    style={{ color: platform.color, opacity: 0.6 }}
                     className="group-hover:opacity-100 transition-opacity duration-300"
                   />
                 </div>
                 <div className="flex-1">
                   <div
-                    className="text-sm tracking-[0.12em] uppercase font-light"
-                    style={{ color: dim(0.55) }}
+                    style={{
+                      fontFamily: GOTHIC,
+                      fontSize: "11px",
+                      letterSpacing: "0.2em",
+                      textTransform: "uppercase",
+                      color: dim(0.50),
+                      fontWeight: 400,
+                    }}
                   >
                     {platform.name}
                   </div>
-                  <div className="text-xs mt-0.5 font-light" style={{ color: dim(0.22) }}>
+                  <div
+                    className="mt-0.5"
+                    style={{
+                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontSize: "0.82rem",
+                      color: dim(0.22),
+                      fontStyle: "italic",
+                    }}
+                  >
                     {platform.description}
                   </div>
                 </div>
-                <div
-                  className="text-xs tracking-widest transition-colors duration-300 group-hover:opacity-60"
-                  style={{ color: dim(0.18) }}
-                >
-                  →
-                </div>
+                <div style={{ fontSize: "11px", color: dim(0.16) }}>→</div>
               </motion.a>
             );
           })}

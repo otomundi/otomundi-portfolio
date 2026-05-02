@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 
+const GOTHIC = "'Cinzel', Georgia, serif";
+
 const navLinks = [
   { href: "/bio", label: "Bio" },
   { href: "/works", label: "Works" },
@@ -41,8 +43,13 @@ export function Navbar() {
       >
         <Link href="/" data-testid="link-home">
           <span
-            className="tracking-[0.15em] text-sm font-light lowercase cursor-pointer transition-colors duration-300"
-            style={{ color: "#f5f4f2" }}
+            className="text-sm lowercase cursor-pointer transition-colors duration-300"
+            style={{
+              fontFamily: GOTHIC,
+              color: "#f5f4f2",
+              letterSpacing: "0.1em",
+              fontWeight: 400,
+            }}
           >
             ótomundi
           </span>
@@ -52,9 +59,11 @@ export function Navbar() {
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} data-testid={`link-nav-${link.label.toLowerCase()}`}>
               <span
-                className="text-xs tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer relative group"
+                className="text-[10px] tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer relative group"
                 style={{
-                  color: location === link.href ? "#f5f4f2" : "rgba(245,244,242,0.38)",
+                  fontFamily: GOTHIC,
+                  color: location === link.href ? "#f5f4f2" : "rgba(245,244,242,0.32)",
+                  fontWeight: 400,
                 }}
               >
                 {link.label}
@@ -72,7 +81,7 @@ export function Navbar() {
 
         <button
           className="md:hidden transition-colors cursor-crosshair"
-          style={{ color: "rgba(245,244,242,0.6)" }}
+          style={{ color: "rgba(245,244,242,0.5)" }}
           onClick={() => setMenuOpen(!menuOpen)}
           data-testid="button-menu-toggle"
           aria-label="Toggle menu"
@@ -101,15 +110,21 @@ export function Navbar() {
         {menuOpen && (
           <motion.div
             className="fixed inset-0 z-40 flex flex-col items-center justify-center"
-            style={{ background: "#730623" }}
+            style={{ background: "#0e0304" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.35 }}
             data-testid="nav-mobile-menu"
           >
             <div className="grain-overlay" />
-            <nav className="flex flex-col items-center gap-10">
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: "radial-gradient(ellipse at 40% 60%, rgba(115,6,35,0.35), transparent 65%)",
+              }}
+            />
+            <nav className="flex flex-col items-center gap-10 relative z-10">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -120,8 +135,14 @@ export function Navbar() {
                 >
                   <Link href={link.href} data-testid={`link-mobile-${link.label.toLowerCase()}`}>
                     <span
-                      className="text-3xl font-light tracking-[0.15em] uppercase transition-colors duration-300 cursor-crosshair"
-                      style={{ color: "rgba(245,244,242,0.85)" }}
+                      className="uppercase transition-colors duration-300 cursor-crosshair"
+                      style={{
+                        fontFamily: GOTHIC,
+                        fontSize: "clamp(1.6rem, 6vw, 2.8rem)",
+                        color: "rgba(245,244,242,0.75)",
+                        letterSpacing: "0.18em",
+                        fontWeight: 400,
+                      }}
                     >
                       {link.label}
                     </span>

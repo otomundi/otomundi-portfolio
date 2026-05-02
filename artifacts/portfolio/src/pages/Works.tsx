@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { works } from "@/data/works";
 
+const GOTHIC = "'Cinzel', Georgia, serif";
+const CRIMSON = "#a81a2e";
 const dim = (a: number) => `rgba(245,244,242,${a})`;
 
 export default function Works() {
@@ -16,10 +18,29 @@ export default function Works() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-[9px] tracking-[0.5em] uppercase mb-3" style={{ color: dim(0.22) }}>
+          <p
+            style={{
+              fontFamily: GOTHIC,
+              fontSize: "8px",
+              letterSpacing: "0.55em",
+              textTransform: "uppercase",
+              color: dim(0.20),
+              fontWeight: 400,
+              marginBottom: "0.75rem",
+            }}
+          >
             Selected Works
           </p>
-          <h1 className="text-4xl font-extralight tracking-[0.08em] uppercase" style={{ color: "#f5f4f2" }}>
+          <h1
+            style={{
+              fontFamily: GOTHIC,
+              fontSize: "clamp(1.5rem, 3.5vw, 3rem)",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: CRIMSON,
+              fontWeight: 400,
+            }}
+          >
             Gallery
           </h1>
         </motion.div>
@@ -30,9 +51,9 @@ export default function Works() {
               key={work.id}
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.12, duration: 0.8, ease: "easeOut" }}
+              transition={{ delay: i * 0.12, duration: 0.9, ease: "easeOut" }}
               className="group"
-              style={{ borderTop: `1px solid ${dim(0.07)}` }}
+              style={{ borderTop: `1px solid ${dim(0.06)}` }}
               data-testid={`work-row-${work.id}`}
             >
               <Link href={`/works/${work.id}`} data-testid={`card-work-${work.id}`}>
@@ -41,16 +62,19 @@ export default function Works() {
                     <img
                       src={work.image}
                       alt={work.title}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-103"
-                      style={{
-                        filter: "brightness(0.6) contrast(1.05)",
-                        transform: "scale(1)",
-                      }}
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.03]"
+                      style={{ filter: "brightness(0.55) contrast(1.1) saturate(0.75)" }}
                       data-testid={`img-work-${work.id}`}
                     />
                     <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      style={{ background: "rgba(115,6,35,0.12)" }}
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-600"
+                      style={{ background: "rgba(115,6,35,0.18)" }}
+                    />
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background: "linear-gradient(to right, transparent 60%, #111111 100%)",
+                      }}
                     />
                   </div>
 
@@ -58,38 +82,59 @@ export default function Works() {
                     <div>
                       <div className="flex items-start justify-between mb-6">
                         <p
-                          className="text-[9px] tracking-[0.4em] uppercase"
-                          style={{ color: dim(0.22) }}
+                          style={{
+                            fontFamily: GOTHIC,
+                            fontSize: "8px",
+                            letterSpacing: "0.4em",
+                            color: dim(0.18),
+                            fontWeight: 400,
+                          }}
                         >
                           {String(i + 1).padStart(2, "0")}
                         </p>
                         <p
-                          className="text-[9px] tracking-[0.3em] uppercase"
-                          style={{ color: dim(0.22) }}
+                          style={{
+                            fontFamily: GOTHIC,
+                            fontSize: "8px",
+                            letterSpacing: "0.35em",
+                            color: dim(0.18),
+                            fontWeight: 400,
+                          }}
                         >
                           {work.year}
                         </p>
                       </div>
 
                       <div
-                        className="w-5 h-px mb-5 transition-all duration-500 group-hover:w-10"
-                        style={{ background: "#730623" }}
+                        className="mb-6 transition-all duration-500 group-hover:w-12"
+                        style={{ width: "20px", height: "1px", background: "#730623" }}
                       />
 
                       <h2
-                        className="font-extralight uppercase mb-3 tracking-[0.05em]"
+                        className="mb-3"
                         style={{
-                          fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
-                          color: "#f5f4f2",
+                          fontFamily: GOTHIC,
+                          fontSize: "clamp(1.6rem, 3.2vw, 3rem)",
+                          letterSpacing: "0.08em",
+                          textTransform: "uppercase",
+                          color: CRIMSON,
                           lineHeight: 0.95,
+                          fontWeight: 400,
                         }}
                         data-testid={`text-work-title-${work.id}`}
                       >
                         {work.title}
                       </h2>
                       <p
-                        className="text-[10px] tracking-[0.25em] uppercase mb-8"
-                        style={{ color: dim(0.28) }}
+                        style={{
+                          fontFamily: GOTHIC,
+                          fontSize: "8px",
+                          letterSpacing: "0.3em",
+                          textTransform: "uppercase",
+                          color: dim(0.22),
+                          marginBottom: "2rem",
+                          fontWeight: 400,
+                        }}
                       >
                         {work.medium}
                       </p>
@@ -97,18 +142,26 @@ export default function Works() {
 
                     <div>
                       <p
-                        className="font-extralight leading-relaxed mb-8 max-w-sm"
+                        className="mb-8 max-w-sm italic"
                         style={{
-                          fontSize: "clamp(0.82rem, 1.2vw, 0.95rem)",
-                          lineHeight: 1.75,
-                          color: dim(0.38),
+                          fontFamily: "'Cormorant Garamond', Georgia, serif",
+                          fontSize: "clamp(0.95rem, 1.4vw, 1.15rem)",
+                          lineHeight: 1.7,
+                          color: dim(0.40),
+                          fontWeight: 300,
                         }}
                       >
                         {work.description}
                       </p>
                       <span
-                        className="text-[9px] tracking-[0.4em] uppercase transition-colors duration-300"
-                        style={{ color: dim(0.22) }}
+                        style={{
+                          fontFamily: GOTHIC,
+                          fontSize: "8px",
+                          letterSpacing: "0.4em",
+                          textTransform: "uppercase",
+                          color: dim(0.20),
+                          fontWeight: 400,
+                        }}
                       >
                         View work →
                       </span>
@@ -118,7 +171,7 @@ export default function Works() {
               </Link>
             </motion.div>
           ))}
-          <div style={{ borderTop: `1px solid ${dim(0.07)}` }} />
+          <div style={{ borderTop: `1px solid ${dim(0.06)}` }} />
         </div>
       </div>
     </main>

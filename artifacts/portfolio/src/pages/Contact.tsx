@@ -2,6 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { SiInstagram, SiX, SiTiktok } from "react-icons/si";
 
+const GOTHIC = "'Cinzel', Georgia, serif";
+const CRIMSON = "#a81a2e";
 const dim = (a: number) => `rgba(245,244,242,${a})`;
 
 const socials = [
@@ -34,21 +36,41 @@ export default function Contact() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-[9px] tracking-[0.5em] uppercase mb-3" style={{ color: dim(0.22) }}>
+          <p
+            style={{
+              fontFamily: GOTHIC,
+              fontSize: "8px",
+              letterSpacing: "0.55em",
+              textTransform: "uppercase",
+              color: dim(0.20),
+              fontWeight: 400,
+              marginBottom: "0.75rem",
+            }}
+          >
             Get in touch
           </p>
           <h1
-            className="text-4xl font-extralight tracking-[0.08em] uppercase mb-6"
-            style={{ color: "#f5f4f2" }}
+            className="mb-6"
+            style={{
+              fontFamily: GOTHIC,
+              fontSize: "clamp(1.5rem, 3.5vw, 3rem)",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: CRIMSON,
+              fontWeight: 400,
+            }}
           >
             Contact
           </h1>
           <p
-            className="font-extralight leading-relaxed max-w-sm"
+            className="italic"
             style={{
-              fontSize: "clamp(0.85rem, 1.2vw, 1rem)",
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: "clamp(0.9rem, 1.2vw, 1.05rem)",
               lineHeight: 1.75,
               color: dim(0.32),
+              fontWeight: 300,
+              maxWidth: "38ch",
             }}
           >
             For collaborations, commissions, performance bookings, and press enquiries — reach out directly.
@@ -69,7 +91,15 @@ export default function Contact() {
                 data-testid="contact-success"
               >
                 <div className="w-6 h-px mb-6" style={{ background: "#730623" }} />
-                <p className="text-sm font-light leading-relaxed" style={{ color: dim(0.55) }}>
+                <p
+                  className="italic"
+                  style={{
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontSize: "1rem",
+                    color: dim(0.50),
+                    fontWeight: 300,
+                  }}
+                >
                   Message received. I will be in touch.
                 </p>
               </motion.div>
@@ -81,8 +111,15 @@ export default function Contact() {
                 ].map((field) => (
                   <div key={field.id}>
                     <label
-                      className="block text-[9px] tracking-[0.4em] uppercase mb-3"
-                      style={{ color: dim(0.22) }}
+                      className="block mb-3"
+                      style={{
+                        fontFamily: GOTHIC,
+                        fontSize: "8px",
+                        letterSpacing: "0.45em",
+                        textTransform: "uppercase",
+                        color: dim(0.20),
+                        fontWeight: 400,
+                      }}
                       htmlFor={field.id}
                     >
                       {field.label}
@@ -94,8 +131,14 @@ export default function Contact() {
                       required
                       value={formState[field.id as keyof typeof formState]}
                       onChange={handleChange}
-                      className="w-full bg-transparent pb-3 text-sm font-light focus:outline-none transition-colors duration-300"
-                      style={{ borderBottom: `1px solid ${dim(0.10)}`, color: dim(0.65) }}
+                      className="w-full bg-transparent pb-3 focus:outline-none transition-colors duration-300"
+                      style={{
+                        fontFamily: "'Cormorant Garamond', Georgia, serif",
+                        fontSize: "1rem",
+                        fontWeight: 300,
+                        borderBottom: `1px solid ${dim(0.09)}`,
+                        color: dim(0.60),
+                      }}
                       placeholder={field.placeholder}
                       data-testid={`input-contact-${field.id}`}
                     />
@@ -104,8 +147,15 @@ export default function Contact() {
 
                 <div>
                   <label
-                    className="block text-[9px] tracking-[0.4em] uppercase mb-3"
-                    style={{ color: dim(0.22) }}
+                    className="block mb-3"
+                    style={{
+                      fontFamily: GOTHIC,
+                      fontSize: "8px",
+                      letterSpacing: "0.45em",
+                      textTransform: "uppercase",
+                      color: dim(0.20),
+                      fontWeight: 400,
+                    }}
                     htmlFor="message"
                   >
                     Message
@@ -117,8 +167,14 @@ export default function Contact() {
                     rows={5}
                     value={formState.message}
                     onChange={handleChange}
-                    className="w-full bg-transparent pb-3 text-sm font-light focus:outline-none transition-colors duration-300 resize-none"
-                    style={{ borderBottom: `1px solid ${dim(0.10)}`, color: dim(0.65) }}
+                    className="w-full bg-transparent pb-3 focus:outline-none transition-colors duration-300 resize-none"
+                    style={{
+                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontSize: "1rem",
+                      fontWeight: 300,
+                      borderBottom: `1px solid ${dim(0.09)}`,
+                      color: dim(0.60),
+                    }}
                     placeholder="Your message..."
                     data-testid="input-contact-message"
                   />
@@ -130,8 +186,14 @@ export default function Contact() {
                   data-testid="button-contact-submit"
                 >
                   <span
-                    className="text-[10px] tracking-[0.4em] uppercase"
-                    style={{ color: dim(0.40) }}
+                    style={{
+                      fontFamily: GOTHIC,
+                      fontSize: "9px",
+                      letterSpacing: "0.45em",
+                      textTransform: "uppercase",
+                      color: dim(0.35),
+                      fontWeight: 400,
+                    }}
                   >
                     Send
                   </span>
@@ -148,13 +210,28 @@ export default function Contact() {
             className="flex flex-col gap-12 md:gap-0 md:justify-between"
           >
             <div>
-              <p className="text-[9px] tracking-[0.4em] uppercase mb-4" style={{ color: dim(0.22) }}>
+              <p
+                style={{
+                  fontFamily: GOTHIC,
+                  fontSize: "8px",
+                  letterSpacing: "0.45em",
+                  textTransform: "uppercase",
+                  color: dim(0.20),
+                  fontWeight: 400,
+                  marginBottom: "1rem",
+                }}
+              >
                 Direct
               </p>
               <a
                 href="mailto:otomundi@gmail.com"
-                className="text-sm font-light tracking-wide cursor-crosshair transition-colors duration-300"
-                style={{ color: dim(0.45) }}
+                className="cursor-crosshair transition-colors duration-300"
+                style={{
+                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontSize: "1rem",
+                  fontWeight: 400,
+                  color: dim(0.45),
+                }}
                 data-testid="link-email"
               >
                 otomundi@gmail.com
@@ -162,7 +239,17 @@ export default function Contact() {
             </div>
 
             <div>
-              <p className="text-[9px] tracking-[0.4em] uppercase mb-6" style={{ color: dim(0.22) }}>
+              <p
+                style={{
+                  fontFamily: GOTHIC,
+                  fontSize: "8px",
+                  letterSpacing: "0.45em",
+                  textTransform: "uppercase",
+                  color: dim(0.20),
+                  fontWeight: 400,
+                  marginBottom: "1.5rem",
+                }}
+              >
                 Elsewhere
               </p>
               <div className="space-y-5" data-testid="social-links">
@@ -180,10 +267,15 @@ export default function Contact() {
                       transition={{ delay: 0.5 + i * 0.08, duration: 0.6 }}
                       data-testid={`link-social-${social.name.toLowerCase()}`}
                     >
-                      <Icon size={13} style={{ color: dim(0.22) }} />
+                      <Icon size={12} style={{ color: dim(0.20) }} />
                       <span
-                        className="text-xs tracking-[0.15em] font-light"
-                        style={{ color: dim(0.30) }}
+                        style={{
+                          fontFamily: "'Cormorant Garamond', Georgia, serif",
+                          fontSize: "0.88rem",
+                          color: dim(0.28),
+                          fontWeight: 400,
+                          letterSpacing: "0.08em",
+                        }}
                       >
                         {social.label}
                       </span>
@@ -194,15 +286,27 @@ export default function Contact() {
             </div>
 
             <div>
-              <p className="text-[9px] tracking-[0.4em] uppercase mb-3" style={{ color: dim(0.22) }}>
+              <p
+                style={{
+                  fontFamily: GOTHIC,
+                  fontSize: "8px",
+                  letterSpacing: "0.45em",
+                  textTransform: "uppercase",
+                  color: dim(0.20),
+                  fontWeight: 400,
+                  marginBottom: "0.75rem",
+                }}
+              >
                 About ótomundi
               </p>
               <p
-                className="font-extralight leading-relaxed"
+                className="italic"
                 style={{
-                  fontSize: "clamp(0.82rem, 1.1vw, 0.92rem)",
-                  lineHeight: 1.75,
-                  color: dim(0.25),
+                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontSize: "clamp(0.88rem, 1.2vw, 1rem)",
+                  lineHeight: 1.8,
+                  color: dim(0.24),
+                  fontWeight: 300,
                 }}
               >
                 ótomundi is a creative world directed by óto — an Angolan/Andalusian interdisciplinary artist working in service of collective consciousness, ancestral heritage, and the unobstructed flow of creative intelligence.
