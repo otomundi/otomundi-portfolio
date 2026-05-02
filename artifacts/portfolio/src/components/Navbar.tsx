@@ -33,15 +33,18 @@ export function Navbar() {
     <>
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-5 flex items-center justify-between transition-all duration-500 ${
-          scrolled ? "bg-black/60 backdrop-blur-md border-b border-white/5" : ""
+          scrolled ? "bg-[#111111]/80 backdrop-blur-md border-b border-[#f5f4f2]/5" : ""
         }`}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <Link href="/" data-testid="link-home">
-          <span className="text-white/90 tracking-[0.25em] text-sm font-light uppercase cursor-pointer hover:text-white transition-colors duration-300">
-            Aether
+          <span
+            className="tracking-[0.15em] text-sm font-light lowercase cursor-pointer transition-colors duration-300"
+            style={{ color: "#f5f4f2" }}
+          >
+            ótomundi
           </span>
         </Link>
 
@@ -49,15 +52,18 @@ export function Navbar() {
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} data-testid={`link-nav-${link.label.toLowerCase()}`}>
               <span
-                className={`text-xs tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer relative group ${
-                  location === link.href ? "text-white" : "text-white/40 hover:text-white/80"
-                }`}
+                className="text-xs tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer relative group"
+                style={{
+                  color: location === link.href ? "#f5f4f2" : "rgba(245,244,242,0.38)",
+                }}
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-0.5 left-0 h-px bg-white transition-all duration-300 ${
-                    location === link.href ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
+                  className="absolute -bottom-0.5 left-0 h-px transition-all duration-300"
+                  style={{
+                    background: "#730623",
+                    width: location === link.href ? "100%" : "0%",
+                  }}
                 />
               </span>
             </Link>
@@ -65,7 +71,8 @@ export function Navbar() {
         </nav>
 
         <button
-          className="md:hidden text-white/60 hover:text-white transition-colors cursor-crosshair"
+          className="md:hidden transition-colors cursor-crosshair"
+          style={{ color: "rgba(245,244,242,0.6)" }}
           onClick={() => setMenuOpen(!menuOpen)}
           data-testid="button-menu-toggle"
           aria-label="Toggle menu"
@@ -93,7 +100,8 @@ export function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center"
+            style={{ background: "#730623" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -111,7 +119,10 @@ export function Navbar() {
                   transition={{ delay: i * 0.08, duration: 0.4 }}
                 >
                   <Link href={link.href} data-testid={`link-mobile-${link.label.toLowerCase()}`}>
-                    <span className="text-3xl font-light tracking-[0.15em] uppercase text-white/70 hover:text-white transition-colors duration-300 cursor-crosshair">
+                    <span
+                      className="text-3xl font-light tracking-[0.15em] uppercase transition-colors duration-300 cursor-crosshair"
+                      style={{ color: "rgba(245,244,242,0.85)" }}
+                    >
                       {link.label}
                     </span>
                   </Link>

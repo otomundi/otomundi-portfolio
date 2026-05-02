@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { SiInstagram, SiX, SiVimeo } from "react-icons/si";
 
 const socials = [
-  { name: "Instagram", icon: SiInstagram, href: "#", label: "@aether" },
-  { name: "X", icon: SiX, href: "#", label: "@aether" },
-  { name: "Vimeo", icon: SiVimeo, href: "#", label: "vimeo.com/aether" },
+  { name: "Instagram", icon: SiInstagram, href: "#", label: "@otomundi" },
+  { name: "X", icon: SiX, href: "#", label: "@otomundi" },
+  { name: "Vimeo", icon: SiVimeo, href: "#", label: "vimeo.com/otomundi" },
 ];
 
 export default function Contact() {
@@ -32,8 +32,16 @@ export default function Contact() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-[9px] tracking-[0.5em] uppercase text-white/25 mb-3">Get in touch</p>
-          <h1 className="text-4xl font-extralight tracking-[0.08em] uppercase text-white/90">
+          <p
+            className="text-[9px] tracking-[0.5em] uppercase mb-3"
+            style={{ color: "rgba(245,244,242,0.25)" }}
+          >
+            Get in touch
+          </p>
+          <h1
+            className="text-4xl font-extralight tracking-[0.08em] uppercase"
+            style={{ color: "#f5f4f2" }}
+          >
             Contact
           </h1>
         </motion.div>
@@ -51,49 +59,55 @@ export default function Contact() {
                 className="py-12"
                 data-testid="contact-success"
               >
-                <div className="w-6 h-px bg-white/30 mb-6" />
-                <p className="text-white/60 text-sm font-light leading-relaxed">
+                <div
+                  className="w-6 h-px mb-6"
+                  style={{ background: "#730623" }}
+                />
+                <p
+                  className="text-sm font-light leading-relaxed"
+                  style={{ color: "rgba(245,244,242,0.6)" }}
+                >
                   Message received. I will be in touch.
                 </p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-8" data-testid="form-contact">
-                <div>
-                  <label className="block text-[9px] tracking-[0.4em] uppercase text-white/25 mb-3" htmlFor="name">
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={formState.name}
-                    onChange={handleChange}
-                    className="w-full bg-transparent border-b border-white/12 pb-3 text-sm text-white/70 placeholder:text-white/18 focus:outline-none focus:border-white/30 transition-colors duration-300"
-                    placeholder="Your name"
-                    data-testid="input-contact-name"
-                  />
-                </div>
+                {[
+                  { id: "name", label: "Name", type: "text", placeholder: "Your name" },
+                  { id: "email", label: "Email", type: "email", placeholder: "your@email.com" },
+                ].map((field) => (
+                  <div key={field.id}>
+                    <label
+                      className="block text-[9px] tracking-[0.4em] uppercase mb-3"
+                      style={{ color: "rgba(245,244,242,0.25)" }}
+                      htmlFor={field.id}
+                    >
+                      {field.label}
+                    </label>
+                    <input
+                      id={field.id}
+                      name={field.id}
+                      type={field.type}
+                      required
+                      value={formState[field.id as keyof typeof formState]}
+                      onChange={handleChange}
+                      className="w-full bg-transparent pb-3 text-sm font-light focus:outline-none transition-colors duration-300"
+                      style={{
+                        borderBottom: "1px solid rgba(245,244,242,0.12)",
+                        color: "rgba(245,244,242,0.7)",
+                      }}
+                      placeholder={field.placeholder}
+                      data-testid={`input-contact-${field.id}`}
+                    />
+                  </div>
+                ))}
 
                 <div>
-                  <label className="block text-[9px] tracking-[0.4em] uppercase text-white/25 mb-3" htmlFor="email">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formState.email}
-                    onChange={handleChange}
-                    className="w-full bg-transparent border-b border-white/12 pb-3 text-sm text-white/70 placeholder:text-white/18 focus:outline-none focus:border-white/30 transition-colors duration-300"
-                    placeholder="your@email.com"
-                    data-testid="input-contact-email"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[9px] tracking-[0.4em] uppercase text-white/25 mb-3" htmlFor="message">
+                  <label
+                    className="block text-[9px] tracking-[0.4em] uppercase mb-3"
+                    style={{ color: "rgba(245,244,242,0.25)" }}
+                    htmlFor="message"
+                  >
                     Message
                   </label>
                   <textarea
@@ -103,7 +117,11 @@ export default function Contact() {
                     rows={5}
                     value={formState.message}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-white/12 pb-3 text-sm text-white/70 placeholder:text-white/18 focus:outline-none focus:border-white/30 transition-colors duration-300 resize-none"
+                    className="w-full bg-transparent pb-3 text-sm font-light focus:outline-none transition-colors duration-300 resize-none"
+                    style={{
+                      borderBottom: "1px solid rgba(245,244,242,0.12)",
+                      color: "rgba(245,244,242,0.7)",
+                    }}
                     placeholder="Your message..."
                     data-testid="input-contact-message"
                   />
@@ -114,11 +132,15 @@ export default function Contact() {
                   className="group flex items-center gap-3 cursor-crosshair"
                   data-testid="button-contact-submit"
                 >
-                  <span className="text-[10px] tracking-[0.4em] uppercase text-white/45 group-hover:text-white/80 transition-colors duration-300">
+                  <span
+                    className="text-[10px] tracking-[0.4em] uppercase transition-colors duration-300"
+                    style={{ color: "rgba(245,244,242,0.45)" }}
+                  >
                     Send
                   </span>
                   <span
-                    className="w-8 h-px bg-white/30 group-hover:w-14 group-hover:bg-white/60 transition-all duration-400 block"
+                    className="h-px block transition-all duration-300"
+                    style={{ width: "32px", background: "#730623" }}
                   />
                 </button>
               </form>
@@ -132,18 +154,29 @@ export default function Contact() {
             className="flex flex-col justify-between"
           >
             <div>
-              <p className="text-[9px] tracking-[0.4em] uppercase text-white/25 mb-4">Direct</p>
+              <p
+                className="text-[9px] tracking-[0.4em] uppercase mb-4"
+                style={{ color: "rgba(245,244,242,0.25)" }}
+              >
+                Direct
+              </p>
               <a
-                href="mailto:hello@aether.studio"
-                className="text-white/50 hover:text-white/80 transition-colors duration-300 text-sm font-light tracking-wide cursor-crosshair"
+                href="mailto:hello@otomundi.com"
+                className="text-sm font-light tracking-wide cursor-crosshair transition-colors duration-300"
+                style={{ color: "rgba(245,244,242,0.5)" }}
                 data-testid="link-email"
               >
-                hello@aether.studio
+                hello@otomundi.com
               </a>
             </div>
 
             <div className="mt-12 md:mt-0">
-              <p className="text-[9px] tracking-[0.4em] uppercase text-white/25 mb-6">Elsewhere</p>
+              <p
+                className="text-[9px] tracking-[0.4em] uppercase mb-6"
+                style={{ color: "rgba(245,244,242,0.25)" }}
+              >
+                Elsewhere
+              </p>
               <div className="space-y-5" data-testid="social-links">
                 {socials.map((social, i) => {
                   const Icon = social.icon;
@@ -159,8 +192,15 @@ export default function Contact() {
                       transition={{ delay: 0.5 + i * 0.08, duration: 0.6 }}
                       data-testid={`link-social-${social.name.toLowerCase()}`}
                     >
-                      <Icon size={14} className="text-white/25 group-hover:text-white/60 transition-colors duration-300" />
-                      <span className="text-xs tracking-[0.15em] text-white/35 group-hover:text-white/65 transition-colors duration-300 font-light">
+                      <Icon
+                        size={14}
+                        style={{ color: "rgba(245,244,242,0.25)" }}
+                        className="group-hover:opacity-60 transition-opacity duration-300"
+                      />
+                      <span
+                        className="text-xs tracking-[0.15em] font-light transition-colors duration-300"
+                        style={{ color: "rgba(245,244,242,0.35)" }}
+                      >
                         {social.label}
                       </span>
                     </motion.a>
@@ -170,8 +210,16 @@ export default function Contact() {
             </div>
 
             <div className="mt-12 md:mt-0">
-              <p className="text-[9px] tracking-[0.4em] uppercase text-white/25 mb-3">Bookings & Press</p>
-              <p className="text-xs text-white/30 font-light leading-relaxed">
+              <p
+                className="text-[9px] tracking-[0.4em] uppercase mb-3"
+                style={{ color: "rgba(245,244,242,0.25)" }}
+              >
+                Bookings & Press
+              </p>
+              <p
+                className="text-xs font-light leading-relaxed"
+                style={{ color: "rgba(245,244,242,0.30)" }}
+              >
                 For performance bookings, exhibition proposals, and press enquiries, please reach out via email with relevant details.
               </p>
             </div>

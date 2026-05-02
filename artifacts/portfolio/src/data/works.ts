@@ -2,7 +2,6 @@ import artwork1 from "@/assets/images/artwork-1.png";
 import artwork2 from "@/assets/images/artwork-2.png";
 import artwork3 from "@/assets/images/artwork-3.png";
 import artwork4 from "@/assets/images/artwork-4.png";
-import artwork5 from "@/assets/images/artwork-5.png";
 
 export interface WorkMedia {
   videoUrl?: string;
@@ -19,118 +18,67 @@ export interface Work {
   longDescription: string;
   image: string;
   media: WorkMedia;
-  planetColor: string;
-  planetGlowColor: string;
-  planetSize: number;
-  orbitRadius: number;
-  orbitDuration: number;
-  orbitOffset: number;
 }
 
 export const works: Work[] = [
   {
-    id: "void-signal",
-    title: "Void Signal",
-    medium: "Audiovisual Installation",
+    id: "desnudo",
+    title: "DESNUDO",
+    medium: "Audiovisual Performance",
     year: 2024,
-    description: "A transmission from the edges of perception — where signal meets silence.",
+    description: "Exposure as form. Sound stripped bare, image left without cover.",
     longDescription:
-      "Void Signal is an immersive audiovisual installation that confronts the boundary between signal and noise. Visitors move through a darkened space where radio transmissions from deep space are translated into shifting light fields and granular sound textures. The piece asks: what lives in the gap between what we send and what is received?",
+      "DESNUDO explores vulnerability as an artistic and sonic condition. Working without masks — no processing, no concealment — the work presents the unfiltered signal of body, space, and sound in close relation. Each iteration is a live act of undoing, where the materials reveal their own structure through their absence of ornamentation.",
     image: artwork1,
     media: {
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      audioUrl: "https://www.soundcloud.com/placeholder",
+      audioUrl: "",
       photos: [artwork1, artwork2, artwork3, artwork4],
     },
-    planetColor: "#8B1A2E",
-    planetGlowColor: "rgba(139,26,46,0.7)",
-    planetSize: 38,
-    orbitRadius: 110,
-    orbitDuration: 22,
-    orbitOffset: 0,
   },
   {
-    id: "chromatic-drift",
-    title: "Chromatic Drift",
-    medium: "Live A/V Performance",
-    year: 2023,
-    description: "Color as frequency. Light as rhythm. A live synthesis of image and sound.",
+    id: "tigre",
+    title: "TIGRE",
+    medium: "Immersive Installation",
+    year: 2025,
+    description: "Predator frequencies. A territory marked in sound and image.",
     longDescription:
-      "Chromatic Drift is a live audiovisual performance built around generative color synthesis. Frequencies are mapped to hue, amplitude to saturation, rhythm to form. Every performance is unique — a conversation between the artist, the algorithm, and the room. The result is a chromatic language that bypasses words entirely.",
+      "TIGRE is an immersive installation that maps territorial behavior through spatial audio and shifting light environments. Drawing from field recordings collected across six countries, the work constructs an invisible landscape of dominance, threat, and coexistence. Audiences navigate the space as both observer and observed.",
     image: artwork2,
     media: {
       videoUrl: "https://player.vimeo.com/video/148751763",
-      audioUrl: "https://www.soundcloud.com/placeholder",
-      photos: [artwork2, artwork3, artwork4, artwork5],
+      audioUrl: "",
+      photos: [artwork2, artwork3, artwork4, artwork1],
     },
-    planetColor: "#6B1520",
-    planetGlowColor: "rgba(107,21,32,0.65)",
-    planetSize: 28,
-    orbitRadius: 160,
-    orbitDuration: 35,
-    orbitOffset: 72,
   },
   {
-    id: "event-horizon",
-    title: "Event Horizon",
+    id: "sky",
+    title: "SKY",
     medium: "Film Score + Visuals",
-    year: 2023,
-    description: "A score written at the threshold of collapse — music and image in free fall.",
+    year: 2025,
+    description: "Upward pressure. The weight of open space translated into sound.",
     longDescription:
-      "Event Horizon began as a film score and became something else entirely. The original footage was processed, corrupted, and re-animated through audio-reactive algorithms. What remains is a 42-minute descent through gravitational memory — a collaboration between the original filmmaker and the physics of entropy.",
+      "SKY began as a commission for a documentary on atmospheric science and became a meditation on altitude, scale, and the irreducibility of open space. The score was composed entirely from recordings made above 3,000 metres. The visual work layers meteorological data, satellite imagery, and long-exposure photography into a moving palimpsest.",
     image: artwork3,
     media: {
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      audioUrl: "https://www.soundcloud.com/placeholder",
-      photos: [artwork3, artwork4, artwork5, artwork1],
+      audioUrl: "",
+      photos: [artwork3, artwork4, artwork1, artwork2],
     },
-    planetColor: "#A02535",
-    planetGlowColor: "rgba(160,37,53,0.7)",
-    planetSize: 44,
-    orbitRadius: 215,
-    orbitDuration: 48,
-    orbitOffset: 144,
   },
   {
-    id: "liminal-frequencies",
-    title: "Liminal Frequencies",
-    medium: "Generative Soundscape + Video",
-    year: 2022,
-    description: "Between states. Between spaces. An architecture built from thresholds.",
+    id: "euvim",
+    title: "EUVIM",
+    medium: "Live A/V Performance",
+    year: 2026,
+    description: "I saw. A first-person reckoning with presence and its aftermath.",
     longDescription:
-      "Liminal Frequencies is an ongoing generative work that produces a never-repeating audiovisual environment. Algorithms model the behavior of transition states in quantum physics — superposition, collapse, entanglement — and translate them into evolving sound and image. No two viewings are the same.",
+      "EUVIM — 'I saw' in Portuguese — is a live audiovisual performance built around the act of witness. The work investigates what it means to have been present at a moment, and how memory rewrites event into archive. Built from personal recordings, the piece moves between documentary and abstraction, language and noise, the seen and the unseen.",
     image: artwork4,
     media: {
       videoUrl: "https://player.vimeo.com/video/148751763",
-      audioUrl: "https://www.soundcloud.com/placeholder",
-      photos: [artwork4, artwork5, artwork1, artwork2],
+      audioUrl: "",
+      photos: [artwork4, artwork1, artwork2, artwork3],
     },
-    planetColor: "#7A1828",
-    planetGlowColor: "rgba(122,24,40,0.6)",
-    planetSize: 22,
-    orbitRadius: 265,
-    orbitDuration: 60,
-    orbitOffset: 216,
-  },
-  {
-    id: "dark-matter",
-    title: "Dark Matter",
-    medium: "Immersive Dome Experience",
-    year: 2021,
-    description: "What you cannot see shapes everything you can. A dome of invisible forces.",
-    longDescription:
-      "Dark Matter is a 360-degree dome experience created for fulldome projection environments. The piece draws on cosmological data from ESA and NASA to construct an immersive journey through the unseen fabric of the universe. Audiences lie beneath a dome where invisible forces become visible — a meditation on what exists beyond the range of human perception.",
-    image: artwork5,
-    media: {
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      audioUrl: "https://www.soundcloud.com/placeholder",
-      photos: [artwork5, artwork1, artwork2, artwork3],
-    },
-    planetColor: "#5C1219",
-    planetGlowColor: "rgba(92,18,25,0.65)",
-    planetSize: 32,
-    orbitRadius: 310,
-    orbitDuration: 75,
-    orbitOffset: 288,
   },
 ];

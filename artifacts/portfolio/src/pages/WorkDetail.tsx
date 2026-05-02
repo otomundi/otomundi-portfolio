@@ -23,11 +23,17 @@ function PhotoGallery({ photos }: { photos: string[] }) {
   return (
     <section className="mt-16" data-testid="photo-gallery">
       <div className="flex items-center justify-between mb-6">
-        <p className="text-[9px] tracking-[0.4em] uppercase text-white/25">Photography</p>
+        <p
+          className="text-[9px] tracking-[0.4em] uppercase"
+          style={{ color: "rgba(245,244,242,0.25)" }}
+        >
+          Photography
+        </p>
         <div className="flex items-center gap-3">
           <button
             onClick={() => scrollBy(-320)}
-            className="w-8 h-8 flex items-center justify-center border border-white/10 hover:border-white/25 text-white/40 hover:text-white/70 transition-all duration-200 cursor-crosshair"
+            className="w-8 h-8 flex items-center justify-center transition-all duration-200 cursor-crosshair"
+            style={{ border: "1px solid rgba(245,244,242,0.10)", color: "rgba(245,244,242,0.40)" }}
             data-testid="button-gallery-prev"
             aria-label="Scroll left"
           >
@@ -35,7 +41,8 @@ function PhotoGallery({ photos }: { photos: string[] }) {
           </button>
           <button
             onClick={() => scrollBy(320)}
-            className="w-8 h-8 flex items-center justify-center border border-white/10 hover:border-white/25 text-white/40 hover:text-white/70 transition-all duration-200 cursor-crosshair"
+            className="w-8 h-8 flex items-center justify-center transition-all duration-200 cursor-crosshair"
+            style={{ border: "1px solid rgba(245,244,242,0.10)", color: "rgba(245,244,242,0.40)" }}
             data-testid="button-gallery-next"
             aria-label="Scroll right"
           >
@@ -47,7 +54,7 @@ function PhotoGallery({ photos }: { photos: string[] }) {
       <div
         ref={scrollRef}
         className="flex gap-3 overflow-x-auto pb-4"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        style={{ scrollbarWidth: "none" }}
         data-testid="gallery-scroll-container"
       >
         {photos.map((photo, i) => (
@@ -64,10 +71,17 @@ function PhotoGallery({ photos }: { photos: string[] }) {
             <img
               src={photo}
               alt={`Gallery image ${i + 1}`}
-              className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-75"
+              className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+              style={{ filter: "brightness(0.75) contrast(1.05)" }}
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-              <span className="text-white/0 group-hover:text-white/60 text-xs tracking-widest uppercase transition-all duration-300">
+            <div
+              className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+              style={{ background: "rgba(17,17,17,0.3)" }}
+            >
+              <span
+                className="text-xs tracking-widest uppercase"
+                style={{ color: "rgba(245,244,242,0.7)" }}
+              >
                 View
               </span>
             </div>
@@ -78,7 +92,8 @@ function PhotoGallery({ photos }: { photos: string[] }) {
       <AnimatePresence>
         {lightboxIndex !== null && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95"
+            className="fixed inset-0 z-50 flex items-center justify-center"
+            style={{ background: "rgba(17,17,17,0.97)" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -88,7 +103,8 @@ function PhotoGallery({ photos }: { photos: string[] }) {
           >
             <div className="grain-overlay" />
             <button
-              className="absolute top-6 right-6 text-white/40 hover:text-white transition-colors cursor-crosshair z-10"
+              className="absolute top-6 right-6 transition-colors cursor-crosshair z-10"
+              style={{ color: "rgba(245,244,242,0.4)" }}
               onClick={() => setLightboxIndex(null)}
               data-testid="button-lightbox-close"
               aria-label="Close lightbox"
@@ -96,7 +112,8 @@ function PhotoGallery({ photos }: { photos: string[] }) {
               <X size={20} />
             </button>
             <button
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-white/40 hover:text-white transition-colors cursor-crosshair z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center transition-colors cursor-crosshair z-10"
+              style={{ color: "rgba(245,244,242,0.4)" }}
               onClick={(e) => { e.stopPropagation(); prevLightbox(); }}
               data-testid="button-lightbox-prev"
               aria-label="Previous image"
@@ -117,14 +134,18 @@ function PhotoGallery({ photos }: { photos: string[] }) {
               data-testid="lightbox-image"
             />
             <button
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-white/40 hover:text-white transition-colors cursor-crosshair z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center transition-colors cursor-crosshair z-10"
+              style={{ color: "rgba(245,244,242,0.4)" }}
               onClick={(e) => { e.stopPropagation(); nextLightbox(); }}
               data-testid="button-lightbox-next"
               aria-label="Next image"
             >
               <ChevronRight size={24} />
             </button>
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[9px] tracking-[0.3em] uppercase text-white/25">
+            <div
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[9px] tracking-[0.3em] uppercase"
+              style={{ color: "rgba(245,244,242,0.25)" }}
+            >
               {lightboxIndex + 1} / {photos.length}
             </div>
           </motion.div>
@@ -139,11 +160,16 @@ function VideoEmbed({ url }: { url: string }) {
 
   return (
     <section className="mt-16" data-testid="video-section">
-      <p className="text-[9px] tracking-[0.4em] uppercase text-white/25 mb-6">Video</p>
+      <p
+        className="text-[9px] tracking-[0.4em] uppercase mb-6"
+        style={{ color: "rgba(245,244,242,0.25)" }}
+      >
+        Video
+      </p>
       {!show ? (
         <motion.button
           className="relative w-full group cursor-crosshair overflow-hidden"
-          style={{ aspectRatio: "16/9", background: "#0a0a12" }}
+          style={{ aspectRatio: "16/9", background: "#0d0d0d" }}
           onClick={() => setShow(true)}
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -153,16 +179,29 @@ function VideoEmbed({ url }: { url: string }) {
         >
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
             <div
-              className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white/40 transition-all duration-300"
-              style={{ background: "rgba(255,255,255,0.04)" }}
+              className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300"
+              style={{
+                border: "1px solid rgba(245,244,242,0.15)",
+                background: "rgba(245,244,242,0.03)",
+              }}
             >
-              <Play size={18} className="text-white/50 group-hover:text-white/80 transition-colors ml-1" />
+              <Play
+                size={18}
+                className="ml-1"
+                style={{ color: "rgba(245,244,242,0.5)" }}
+              />
             </div>
-            <span className="text-[9px] tracking-[0.4em] uppercase text-white/25 group-hover:text-white/40 transition-colors">
+            <span
+              className="text-[9px] tracking-[0.4em] uppercase"
+              style={{ color: "rgba(245,244,242,0.25)" }}
+            >
               Play video
             </span>
           </div>
-          <div className="absolute inset-0 border border-white/5" />
+          <div
+            className="absolute inset-0"
+            style={{ border: "1px solid rgba(245,244,242,0.05)" }}
+          />
         </motion.button>
       ) : (
         <motion.div
@@ -192,39 +231,50 @@ function AudioEmbed() {
 
   return (
     <section className="mt-12" data-testid="audio-section">
-      <p className="text-[9px] tracking-[0.4em] uppercase text-white/25 mb-6">Audio</p>
+      <p
+        className="text-[9px] tracking-[0.4em] uppercase mb-6"
+        style={{ color: "rgba(245,244,242,0.25)" }}
+      >
+        Audio
+      </p>
       <motion.div
-        className="border border-white/8 p-6"
+        className="p-6"
+        style={{ border: "1px solid rgba(245,244,242,0.08)" }}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         <div className="flex items-center gap-5">
           <button
-            className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:border-white/30 transition-all duration-200 cursor-crosshair flex-shrink-0"
+            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 cursor-crosshair flex-shrink-0"
+            style={{ border: "1px solid rgba(245,244,242,0.15)" }}
             onClick={() => setPlaying(!playing)}
             data-testid="button-audio-play"
             aria-label={playing ? "Pause" : "Play audio"}
           >
             {playing ? (
               <div className="flex gap-0.5">
-                <span className="w-0.5 h-3 bg-white/60" />
-                <span className="w-0.5 h-3 bg-white/60" />
+                <span className="w-0.5 h-3" style={{ background: "rgba(245,244,242,0.6)" }} />
+                <span className="w-0.5 h-3" style={{ background: "rgba(245,244,242,0.6)" }} />
               </div>
             ) : (
-              <Play size={12} className="text-white/50 ml-0.5" />
+              <Play size={12} className="ml-0.5" style={{ color: "rgba(245,244,242,0.5)" }} />
             )}
           </button>
 
           <div className="flex-1">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] tracking-[0.2em] uppercase text-white/40">
+              <span
+                className="text-[10px] tracking-[0.2em] uppercase"
+                style={{ color: "rgba(245,244,242,0.40)" }}
+              >
                 Audio composition
               </span>
-              <Music size={10} className="text-white/20" />
+              <Music size={10} style={{ color: "rgba(245,244,242,0.20)" }} />
             </div>
             <div
-              className="w-full h-px bg-white/8 relative cursor-crosshair"
+              className="w-full h-px relative cursor-crosshair"
+              style={{ background: "rgba(245,244,242,0.08)" }}
               data-testid="audio-progress-bar"
               onClick={(e) => {
                 const rect = e.currentTarget.getBoundingClientRect();
@@ -232,14 +282,18 @@ function AudioEmbed() {
               }}
             >
               <motion.div
-                className="absolute left-0 top-0 h-full bg-white/40"
+                className="absolute left-0 top-0 h-full"
+                style={{ background: "#730623" }}
                 animate={playing ? { width: "100%" } : { width: `${progress * 100}%` }}
                 transition={playing ? { duration: 180, ease: "linear" } : { duration: 0 }}
               />
             </div>
           </div>
         </div>
-        <p className="mt-4 text-[9px] text-white/20 font-light">
+        <p
+          className="mt-4 text-[9px] font-light"
+          style={{ color: "rgba(245,244,242,0.18)" }}
+        >
           Replace placeholder href with your audio file or embed an external audio player
         </p>
       </motion.div>
@@ -256,9 +310,19 @@ export default function WorkDetail() {
       <main className="min-h-screen bg-void relative flex items-center justify-center">
         <div className="grain-overlay" />
         <div className="text-center relative z-10">
-          <p className="text-white/30 text-sm tracking-widest uppercase">Work not found</p>
-          <Link href="/works" className="mt-4 block text-xs text-white/20 hover:text-white/50 tracking-widest uppercase transition-colors">
-            Return to Gallery
+          <p
+            className="text-sm tracking-widest uppercase"
+            style={{ color: "rgba(245,244,242,0.30)" }}
+          >
+            Work not found
+          </p>
+          <Link href="/works" data-testid="link-back-to-gallery">
+            <span
+              className="mt-4 block text-xs tracking-widest uppercase transition-colors cursor-crosshair"
+              style={{ color: "rgba(245,244,242,0.20)" }}
+            >
+              Return to Gallery
+            </span>
           </Link>
         </div>
       </main>
@@ -285,19 +349,20 @@ export default function WorkDetail() {
             src={work.image}
             alt={work.title}
             className="w-full h-full object-cover"
-            style={{ filter: "brightness(0.5) contrast(1.1)" }}
+            style={{ filter: "brightness(0.45) contrast(1.1)" }}
             data-testid="img-work-detail"
           />
           <div
             className="absolute inset-0"
             style={{
-              background: `linear-gradient(to right, #03030a 0%, transparent 35%, transparent 65%, #03030a 100%), linear-gradient(to top, #03030a 0%, transparent 50%)`,
+              background:
+                "linear-gradient(to right, #111111 0%, transparent 35%, transparent 65%, #111111 100%), linear-gradient(to top, #111111 0%, transparent 50%)",
             }}
           />
           <div
-            className="absolute inset-0 opacity-25"
+            className="absolute inset-0 opacity-20"
             style={{
-              background: `radial-gradient(ellipse at 60% 50%, ${work.planetColor}55, transparent 55%)`,
+              background: "radial-gradient(ellipse at 60% 50%, rgba(115,6,35,0.5), transparent 55%)",
             }}
           />
         </motion.div>
@@ -309,27 +374,35 @@ export default function WorkDetail() {
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <Link href="/works" data-testid="link-back-to-gallery">
-              <span className="text-[9px] tracking-[0.4em] uppercase text-white/25 hover:text-white/50 transition-colors cursor-crosshair inline-flex items-center gap-2 mb-8 block">
+              <span
+                className="text-[9px] tracking-[0.4em] uppercase transition-colors inline-flex items-center gap-2 mb-8 block cursor-crosshair"
+                style={{ color: "rgba(245,244,242,0.25)" }}
+              >
                 ← Gallery
               </span>
             </Link>
 
-            <div
-              className="w-6 h-px mb-6"
-              style={{ background: work.planetColor }}
-            />
+            <div className="w-6 h-px mb-6" style={{ background: "#730623" }} />
             <h1
-              className="text-4xl md:text-6xl font-extralight tracking-[0.06em] uppercase text-white/90 mb-4"
+              className="text-4xl md:text-6xl font-extralight tracking-[0.06em] uppercase mb-4"
+              style={{ color: "#f5f4f2" }}
               data-testid="text-work-detail-title"
             >
               {work.title}
             </h1>
-            <p className="text-[10px] tracking-[0.3em] uppercase text-white/30 mb-10">
+            <p
+              className="text-[10px] tracking-[0.3em] uppercase mb-10"
+              style={{ color: "rgba(245,244,242,0.30)" }}
+            >
               {work.medium} — {work.year}
             </p>
 
             <div className="max-w-2xl">
-              <p className="text-white/55 text-base leading-relaxed font-light" data-testid="text-work-detail-description">
+              <p
+                className="text-base leading-relaxed font-light"
+                style={{ color: "rgba(245,244,242,0.55)" }}
+                data-testid="text-work-detail-description"
+              >
                 {work.longDescription}
               </p>
             </div>
@@ -340,13 +413,24 @@ export default function WorkDetail() {
 
             <AudioEmbed />
 
-            <div className="mt-20 pt-8 border-t border-white/8 grid grid-cols-2 gap-4">
+            <div
+              className="mt-20 pt-8 grid grid-cols-2 gap-4"
+              style={{ borderTop: "1px solid rgba(245,244,242,0.08)" }}
+            >
               <div>
                 {prevWork && (
                   <Link href={`/works/${prevWork.id}`} data-testid="link-prev-work">
                     <span className="group block cursor-crosshair">
-                      <span className="text-[9px] tracking-[0.35em] uppercase text-white/20 block mb-2">Previous</span>
-                      <span className="text-sm tracking-[0.1em] uppercase text-white/50 group-hover:text-white/80 transition-colors">
+                      <span
+                        className="text-[9px] tracking-[0.35em] uppercase block mb-2"
+                        style={{ color: "rgba(245,244,242,0.20)" }}
+                      >
+                        Previous
+                      </span>
+                      <span
+                        className="text-sm tracking-[0.1em] uppercase transition-colors"
+                        style={{ color: "rgba(245,244,242,0.50)" }}
+                      >
                         ← {prevWork.title}
                       </span>
                     </span>
@@ -357,8 +441,16 @@ export default function WorkDetail() {
                 {nextWork && (
                   <Link href={`/works/${nextWork.id}`} data-testid="link-next-work">
                     <span className="group block cursor-crosshair">
-                      <span className="text-[9px] tracking-[0.35em] uppercase text-white/20 block mb-2">Next</span>
-                      <span className="text-sm tracking-[0.1em] uppercase text-white/50 group-hover:text-white/80 transition-colors">
+                      <span
+                        className="text-[9px] tracking-[0.35em] uppercase block mb-2"
+                        style={{ color: "rgba(245,244,242,0.20)" }}
+                      >
+                        Next
+                      </span>
+                      <span
+                        className="text-sm tracking-[0.1em] uppercase transition-colors"
+                        style={{ color: "rgba(245,244,242,0.50)" }}
+                      >
                         {nextWork.title} →
                       </span>
                     </span>

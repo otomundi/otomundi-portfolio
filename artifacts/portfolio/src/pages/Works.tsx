@@ -14,13 +14,25 @@ export default function Works() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-[9px] tracking-[0.5em] uppercase text-white/25 mb-3">Selected Works</p>
-          <h1 className="text-4xl font-extralight tracking-[0.08em] uppercase text-white/90">
+          <p
+            className="text-[9px] tracking-[0.5em] uppercase mb-3"
+            style={{ color: "rgba(245,244,242,0.25)" }}
+          >
+            Selected Works
+          </p>
+          <h1
+            className="text-4xl font-extralight tracking-[0.08em] uppercase"
+            style={{ color: "#f5f4f2" }}
+          >
             Gallery
           </h1>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5" data-testid="works-grid">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 gap-px"
+          style={{ background: "rgba(245,244,242,0.05)" }}
+          data-testid="works-grid"
+        >
           {works.map((work, i) => (
             <motion.div
               key={work.id}
@@ -36,39 +48,48 @@ export default function Works() {
                   <img
                     src={work.image}
                     alt={work.title}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-90"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                    style={{ filter: "brightness(0.65) contrast(1.05)" }}
                     data-testid={`img-work-${work.id}`}
                   />
                   <div
                     className="absolute inset-0 transition-opacity duration-500"
                     style={{
-                      background: `linear-gradient(to top, #03030a 0%, rgba(3,3,10,0.6) 40%, transparent 100%)`,
+                      background: "linear-gradient(to top, #111111 0%, rgba(17,17,17,0.55) 40%, transparent 100%)",
                     }}
                   />
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      background: `radial-gradient(ellipse at 30% 70%, ${work.planetColor}18, transparent 60%)`,
-                    }}
+                    style={{ background: "rgba(115,6,35,0.15)" }}
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <div
                       className="w-4 h-px mb-4 transition-all duration-500 group-hover:w-8"
-                      style={{ background: work.planetColor }}
+                      style={{ background: "#730623" }}
                     />
-                    <h2 className="text-lg font-light tracking-[0.1em] uppercase text-white/90 mb-1" data-testid={`text-work-title-${work.id}`}>
+                    <h2
+                      className="text-lg font-light tracking-[0.1em] uppercase mb-1"
+                      style={{ color: "#f5f4f2" }}
+                      data-testid={`text-work-title-${work.id}`}
+                    >
                       {work.title}
                     </h2>
-                    <p className="text-[10px] tracking-[0.2em] uppercase text-white/35">
+                    <p
+                      className="text-[10px] tracking-[0.2em] uppercase"
+                      style={{ color: "rgba(245,244,242,0.35)" }}
+                    >
                       {work.medium} — {work.year}
                     </p>
-                    <p className="mt-3 text-xs text-white/45 font-light leading-relaxed max-w-xs opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
+                    <p
+                      className="mt-3 text-xs font-light leading-relaxed max-w-xs opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0"
+                      style={{ color: "rgba(245,244,242,0.5)" }}
+                    >
                       {work.description}
                     </p>
                   </div>
                   <div
                     className="absolute inset-0 border opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{ borderColor: `${work.planetColor}22` }}
+                    style={{ borderColor: "rgba(115,6,35,0.4)" }}
                   />
                 </div>
               </Link>
