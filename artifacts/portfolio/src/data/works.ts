@@ -26,9 +26,9 @@ export const works: Work[] = [
     title: "DESNUDO",
     medium: "Audiovisual Performance",
     year: 2024,
-    description: "Exposure as form. Sound stripped bare, image left without cover.",
+    description: "A ceremony of undoing. The body as altar — stripped of ornament and returned to its original radiance.",
     longDescription:
-      "DESNUDO explores vulnerability as an artistic and sonic condition. Working without masks — no processing, no concealment — the work presents the unfiltered signal of body, space, and sound in close relation. Each iteration is a live act of undoing, where the materials reveal their own structure through their absence of ornamentation.",
+      "DESNUDO is an audiovisual performance that investigates the act of stripping away — layers of cultural conditioning, inherited identity, material armour. Drawing from the ótomundi practice of prolonged meditation and ancestral spirituality, the work creates a ritual space where vulnerability becomes clarity. Sound and image work together to dissolve the self-loathing ego and reveal what remains beneath: a consciousness radiant, undecorated, and whole. DESNUDO is both act and offering — a surrender to the intelligence that precedes language.",
     image: artwork1,
     media: {
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -41,9 +41,9 @@ export const works: Work[] = [
     title: "TIGRE",
     medium: "Immersive Installation",
     year: 2025,
-    description: "Predator frequencies. A territory marked in sound and image.",
+    description: "Ancestral force made visible. The animal that moves through us — older than memory, faster than thought.",
     longDescription:
-      "TIGRE is an immersive installation that maps territorial behavior through spatial audio and shifting light environments. Drawing from field recordings collected across six countries, the work constructs an invisible landscape of dominance, threat, and coexistence. Audiences navigate the space as both observer and observed.",
+      "TIGRE is an immersive installation born from the ótomundi inquiry into ancestral consciousness and the primal codes embedded in human spirituality. Working across sonic field recordings, textile imagery, and spatial light, the piece invokes the symbolic weight of the tiger across African, Iberian, and Eastern ancestral traditions — not as decoration, but as living archive. To enter TIGRE is to be moved by a frequency older than language: the instinct that connects us to the Earth, to our ancestors, and to the unbroken chain of creative intelligence that flows through all living beings.",
     image: artwork2,
     media: {
       videoUrl: "https://player.vimeo.com/video/148751763",
@@ -56,9 +56,9 @@ export const works: Work[] = [
     title: "SKY",
     medium: "Film Score + Visuals",
     year: 2025,
-    description: "Upward pressure. The weight of open space translated into sound.",
+    description: "The vertical axis of consciousness. A score composed under open sky — for everything that reaches upward.",
     longDescription:
-      "SKY began as a commission for a documentary on atmospheric science and became a meditation on altitude, scale, and the irreducibility of open space. The score was composed entirely from recordings made above 3,000 metres. The visual work layers meteorological data, satellite imagery, and long-exposure photography into a moving palimpsest.",
+      "SKY emerges from the ótomundi practice of working under the sun and the full moon as a form of reception — welcoming creative intelligence through sustained presence in the open. The score was composed during extended meditative sessions in open terrain, gathering the acoustic textures of air, altitude, and silence. The visual material layers long-exposure photography with processed atmospheric data to construct a moving image of vertical consciousness: what it means to look upward and feel both infinitely small and cosmically held. SKY is a devotion to the sky as spiritual teacher.",
     image: artwork3,
     media: {
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -71,9 +71,9 @@ export const works: Work[] = [
     title: "EUVIM",
     medium: "Live A/V Performance",
     year: 2026,
-    description: "I saw. A first-person reckoning with presence and its aftermath.",
+    description: "I saw. A first-person reckoning with presence — what it means to witness, to be witnessed, to exist in full.",
     longDescription:
-      "EUVIM — 'I saw' in Portuguese — is a live audiovisual performance built around the act of witness. The work investigates what it means to have been present at a moment, and how memory rewrites event into archive. Built from personal recordings, the piece moves between documentary and abstraction, language and noise, the seen and the unseen.",
+      "EUVIM — 'I saw' in Portuguese — is a live audiovisual performance built from the act of bearing witness. Central to the ótomundi philosophy is the belief that creation is a form of spiritual projection: that to see clearly is to participate in the intelligence that sustains all life. The work moves through personal field recordings, synthesised ancestral frequencies, and audio-reactive visuals to construct a testimony — not of events, but of states. States of perception. States of instinct. States of presence. EUVIM asks: what does it mean to have been fully, devotedly here — and to offer that presence as an act of collective healing?",
     image: artwork4,
     media: {
       videoUrl: "https://player.vimeo.com/video/148751763",

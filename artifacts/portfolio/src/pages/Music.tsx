@@ -7,42 +7,14 @@ import {
   SiYoutubemusic,
 } from "react-icons/si";
 
+const dim = (a: number) => `rgba(245,244,242,${a})`;
+
 const platforms = [
-  {
-    name: "Spotify",
-    icon: SiSpotify,
-    href: "#",
-    color: "#1DB954",
-    description: "Stream on Spotify",
-  },
-  {
-    name: "Apple Music",
-    icon: SiApplemusic,
-    href: "#",
-    color: "#fc3c44",
-    description: "Listen on Apple Music",
-  },
-  {
-    name: "SoundCloud",
-    icon: SiSoundcloud,
-    href: "#",
-    color: "#ff5500",
-    description: "Play on SoundCloud",
-  },
-  {
-    name: "Bandcamp",
-    icon: SiBandcamp,
-    href: "#",
-    color: "#1da0c3",
-    description: "Buy on Bandcamp",
-  },
-  {
-    name: "YouTube Music",
-    icon: SiYoutubemusic,
-    href: "#",
-    color: "#ff0000",
-    description: "Watch on YouTube Music",
-  },
+  { name: "Spotify", icon: SiSpotify, href: "#", color: "#1DB954", description: "Stream on Spotify" },
+  { name: "Apple Music", icon: SiApplemusic, href: "#", color: "#fc3c44", description: "Listen on Apple Music" },
+  { name: "SoundCloud", icon: SiSoundcloud, href: "#", color: "#ff5500", description: "Play on SoundCloud" },
+  { name: "Bandcamp", icon: SiBandcamp, href: "#", color: "#1da0c3", description: "Buy on Bandcamp" },
+  { name: "YouTube Music", icon: SiYoutubemusic, href: "#", color: "#ff0000", description: "Watch on YouTube" },
 ];
 
 export default function Music() {
@@ -59,29 +31,29 @@ export default function Music() {
         >
           <p
             className="text-[9px] tracking-[0.5em] uppercase mb-3"
-            style={{ color: "rgba(245,244,242,0.25)" }}
+            style={{ color: dim(0.22) }}
           >
             Discography
           </p>
           <h1
-            className="text-4xl font-extralight tracking-[0.08em] uppercase mb-6"
+            className="text-4xl font-extralight tracking-[0.08em] uppercase mb-8"
             style={{ color: "#f5f4f2" }}
           >
             Music
           </h1>
           <p
-            className="text-sm font-light leading-relaxed max-w-md"
-            style={{ color: "rgba(245,244,242,0.35)" }}
+            className="font-extralight leading-relaxed max-w-lg"
+            style={{
+              fontSize: "clamp(0.88rem, 1.3vw, 1.1rem)",
+              lineHeight: 1.75,
+              color: dim(0.38),
+            }}
           >
-            Recordings, live captures, and compositions available across all major platforms.
-            Each release is an extension of the audiovisual practice into pure sound.
+            Sound is the first language of ótomundi's practice — the carrier of ancestral frequency, instinct, and spiritual presence. Recordings move between composition and ritual, between the made and the received.
           </p>
         </motion.div>
 
-        <div
-          className="space-y-px"
-          data-testid="streaming-platforms-list"
-        >
+        <div className="space-y-px" data-testid="streaming-platforms-list">
           {platforms.map((platform, i) => {
             const Icon = platform.icon;
             return (
@@ -91,7 +63,7 @@ export default function Music() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-6 py-6 cursor-crosshair"
-                style={{ borderBottom: "1px solid rgba(245,244,242,0.06)" }}
+                style={{ borderBottom: `1px solid ${dim(0.05)}` }}
                 initial={{ opacity: 0, x: -16 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.08, duration: 0.6 }}
@@ -101,34 +73,32 @@ export default function Music() {
                   className="flex items-center justify-center w-12 h-12 rounded-full flex-shrink-0 transition-all duration-300 group-hover:scale-110"
                   style={{
                     background: `${platform.color}18`,
-                    border: `1px solid ${platform.color}30`,
+                    border: `1px solid ${platform.color}28`,
                   }}
                 >
                   <Icon
-                    size={20}
-                    style={{ color: platform.color, opacity: 0.7 }}
+                    size={18}
+                    style={{ color: platform.color, opacity: 0.65 }}
                     className="group-hover:opacity-100 transition-opacity duration-300"
                   />
                 </div>
-
                 <div className="flex-1">
                   <div
-                    className="text-sm tracking-[0.12em] uppercase transition-colors duration-300"
-                    style={{ color: "rgba(245,244,242,0.6)" }}
+                    className="text-sm tracking-[0.12em] uppercase font-light transition-colors duration-300"
+                    style={{ color: dim(0.55) }}
                   >
                     {platform.name}
                   </div>
                   <div
-                    className="text-xs mt-0.5 font-light tracking-wide"
-                    style={{ color: "rgba(245,244,242,0.25)" }}
+                    className="text-xs mt-0.5 font-light"
+                    style={{ color: dim(0.22) }}
                   >
                     {platform.description}
                   </div>
                 </div>
-
                 <div
                   className="text-xs tracking-widest transition-colors duration-300"
-                  style={{ color: "rgba(245,244,242,0.15)" }}
+                  style={{ color: dim(0.14) }}
                 >
                   →
                 </div>
@@ -139,16 +109,20 @@ export default function Music() {
 
         <motion.div
           className="mt-20 pt-12"
-          style={{ borderTop: "1px solid rgba(245,244,242,0.05)" }}
+          style={{ borderTop: `1px solid ${dim(0.05)}` }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
           <p
-            className="text-[9px] tracking-[0.4em] uppercase text-center"
-            style={{ color: "rgba(245,244,242,0.20)" }}
+            className="font-extralight italic leading-relaxed"
+            style={{
+              fontSize: "clamp(0.85rem, 1.2vw, 1rem)",
+              color: dim(0.20),
+              maxWidth: "42ch",
+            }}
           >
-            Physical releases and limited editions available via direct inquiry
+            Physical releases and limited editions available via direct inquiry. Each object is conceived as an extension of the spiritual work it carries.
           </p>
         </motion.div>
       </div>
