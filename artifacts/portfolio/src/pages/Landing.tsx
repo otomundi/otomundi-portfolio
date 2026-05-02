@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { SiInstagram, SiX, SiVimeo, SiSoundcloud } from "react-icons/si";
+import { SiInstagram, SiYoutube, SiSoundcloud, SiSpotify } from "react-icons/si";
 
 const socialLinks = [
-  { icon: SiInstagram, href: "#", label: "Instagram" },
-  { icon: SiX, href: "#", label: "X" },
-  { icon: SiVimeo, href: "#", label: "Vimeo" },
-  { icon: SiSoundcloud, href: "#", label: "SoundCloud" },
+  { icon: SiInstagram, href: "https://instagram.com/otomundi", label: "Instagram" },
+  { icon: SiYoutube, href: "https://www.youtube.com/@otomundi", label: "YouTube" },
+  { icon: SiSoundcloud, href: "https://soundcloud.com/otomundi", label: "SoundCloud" },
+  { icon: SiSpotify, href: "https://open.spotify.com/artist/1Pr9r0RYuRgh971UdzxSpe", label: "Spotify" },
 ];
 
 export default function Landing() {
@@ -26,9 +26,9 @@ export default function Landing() {
           >
             <p
               className="text-[9px] tracking-[0.5em] uppercase mb-6"
-              style={{ color: "rgba(245,244,242,0.4)" }}
+              style={{ color: "rgba(245,244,242,0.38)" }}
             >
-              Creative Circle
+              Creative World
             </p>
             <h1
               className="font-extralight lowercase leading-none"
@@ -43,18 +43,17 @@ export default function Landing() {
               ótomundi
             </h1>
             <motion.p
-              className="mt-6 font-extralight max-w-md"
+              className="mt-5 font-extralight whitespace-nowrap"
               style={{
-                fontSize: "clamp(0.75rem, 1.1vw, 0.95rem)",
-                lineHeight: 1.7,
-                color: "rgba(245,244,242,0.38)",
-                letterSpacing: "0.03em",
+                fontSize: "clamp(0.72rem, 1vw, 0.9rem)",
+                letterSpacing: "0.12em",
+                color: "rgba(245,244,242,0.32)",
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 1 }}
             >
-              Music, fashion, audiovisuals, and painting — in service of the spiritual nature.
+              music, fashion, audiovisuals, and painting
             </motion.p>
           </motion.div>
         </div>
@@ -75,9 +74,9 @@ export default function Landing() {
                 rel="noopener noreferrer"
                 aria-label={label}
                 className="transition-all duration-300 cursor-crosshair"
-                style={{ color: "rgba(245,244,242,0.30)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(245,244,242,0.80)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,244,242,0.30)")}
+                style={{ color: "rgba(245,244,242,0.28)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(245,244,242,0.85)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,244,242,0.28)")}
                 data-testid={`link-social-landing-${label.toLowerCase()}`}
               >
                 <Icon size={13} />
@@ -85,19 +84,16 @@ export default function Landing() {
             ))}
           </div>
 
-          <a
-            href="/works"
-            className="flex items-center gap-3 group cursor-crosshair"
-          >
+          <a href="/works" className="flex items-center gap-3 cursor-crosshair">
             <span
-              className="text-[9px] tracking-[0.4em] uppercase transition-colors duration-300"
-              style={{ color: "rgba(245,244,242,0.30)" }}
+              className="text-[9px] tracking-[0.4em] uppercase"
+              style={{ color: "rgba(245,244,242,0.28)" }}
             >
               Works
             </span>
             <span
-              className="block h-px transition-all duration-300"
-              style={{ width: "24px", background: "rgba(245,244,242,0.25)" }}
+              className="block h-px"
+              style={{ width: "24px", background: "rgba(245,244,242,0.22)" }}
             />
           </a>
         </motion.div>

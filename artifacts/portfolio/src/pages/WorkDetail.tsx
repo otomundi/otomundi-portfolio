@@ -1,8 +1,60 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useParams } from "wouter";
-import { works } from "@/data/works";
+import { works, type WorkCredit } from "@/data/works";
 import { ChevronLeft, ChevronRight, X, Play, Music } from "lucide-react";
+
+const dim = (a: number) => `rgba(245,244,242,${a})`;
+
+function Credits({ credits }: { credits: WorkCredit[] }) {
+  return (
+    <section className="mt-14" data-testid="credits-section">
+      <p className="text-[9px] tracking-[0.4em] uppercase mb-6" style={{ color: dim(0.22) }}>
+        Credits
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {credits.map((credit, i) => (
+          <motion.div
+            key={i}
+            className="flex items-start gap-4"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.06, duration: 0.5 }}
+            data-testid={`credit-${i}`}
+          >
+            <div
+              className="w-px self-stretch mt-1 flex-shrink-0"
+              style={{ background: "#730623", minHeight: "36px" }}
+            />
+            <div>
+              <p className="text-[9px] tracking-[0.3em] uppercase mb-1" style={{ color: dim(0.22) }}>
+                {credit.role}
+              </p>
+              {credit.instagram && credit.instagram !== "#" ? (
+                <a
+                  href={credit.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-light tracking-wide cursor-crosshair transition-colors duration-200"
+                  style={{ color: dim(0.55) }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = dim(0.85))}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = dim(0.55))}
+                  data-testid={`credit-link-${i}`}
+                >
+                  {credit.name}
+                </a>
+              ) : (
+                <p className="text-sm font-light tracking-wide" style={{ color: dim(0.55) }}>
+                  {credit.name}
+                </p>
+              )}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 function PhotoGallery({ photos }: { photos: string[] }) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -406,6 +458,8 @@ export default function WorkDetail() {
                 {work.longDescription}
               </p>
             </div>
+
+            {work.credits && work.credits.length > 0 && <Credits credits={work.credits} />}
 
             {work.media.videoUrl && <VideoEmbed url={work.media.videoUrl} />}
 

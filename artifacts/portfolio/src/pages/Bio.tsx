@@ -93,7 +93,7 @@ export default function Bio() {
             }}
             data-testid="text-bio-paragraph-1"
           >
-            ótomundi (b. 2000) is a creative circle, directed by óto — an Angolan/Andalusian interdisciplinary artist who works with music, fashion, audiovisuals, and painting.
+            ótomundi (est. 2020) is a creative world, directed by óto — an Angolan/Andalusian interdisciplinary artist (b. 2000) who works with music, fashion, audiovisuals, and painting.
           </p>
         </motion.div>
 
@@ -226,8 +226,8 @@ export default function Bio() {
             { label: "Origin", value: "AO/ES" },
             { label: "Works", value: "4+" },
             { label: "Disciplines", value: "5" },
-            { label: "Since", value: "2018" },
-            { label: "Circle", value: "ótomundi" },
+            { label: "Est.", value: "2020" },
+            { label: "World", value: "ótomundi" },
           ].map((stat) => (
             <div key={stat.label} data-testid={`stat-${stat.label.toLowerCase()}`}>
               <div

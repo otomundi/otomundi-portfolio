@@ -1,20 +1,37 @@
 import { motion } from "framer-motion";
-import {
-  SiSpotify,
-  SiApplemusic,
-  SiSoundcloud,
-  SiBandcamp,
-  SiYoutubemusic,
-} from "react-icons/si";
+import { SiSpotify, SiApplemusic, SiSoundcloud, SiYoutube } from "react-icons/si";
 
 const dim = (a: number) => `rgba(245,244,242,${a})`;
 
 const platforms = [
-  { name: "Spotify", icon: SiSpotify, href: "#", color: "#1DB954", description: "Stream on Spotify" },
-  { name: "Apple Music", icon: SiApplemusic, href: "#", color: "#fc3c44", description: "Listen on Apple Music" },
-  { name: "SoundCloud", icon: SiSoundcloud, href: "#", color: "#ff5500", description: "Play on SoundCloud" },
-  { name: "Bandcamp", icon: SiBandcamp, href: "#", color: "#1da0c3", description: "Buy on Bandcamp" },
-  { name: "YouTube Music", icon: SiYoutubemusic, href: "#", color: "#ff0000", description: "Watch on YouTube" },
+  {
+    name: "YouTube",
+    icon: SiYoutube,
+    href: "https://www.youtube.com/@otomundi",
+    color: "#FF0000",
+    description: "Watch on YouTube",
+  },
+  {
+    name: "Spotify",
+    icon: SiSpotify,
+    href: "https://open.spotify.com/artist/1Pr9r0RYuRgh971UdzxSpe",
+    color: "#1DB954",
+    description: "Stream on Spotify",
+  },
+  {
+    name: "Apple Music",
+    icon: SiApplemusic,
+    href: "https://music.apple.com/es/artist/%C3%B3tomundi/1739394893",
+    color: "#fc3c44",
+    description: "Listen on Apple Music",
+  },
+  {
+    name: "SoundCloud",
+    icon: SiSoundcloud,
+    href: "https://soundcloud.com/otomundi",
+    color: "#ff5500",
+    description: "Play on SoundCloud",
+  },
 ];
 
 export default function Music() {
@@ -29,10 +46,7 @@ export default function Music() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p
-            className="text-[9px] tracking-[0.5em] uppercase mb-3"
-            style={{ color: dim(0.22) }}
-          >
+          <p className="text-[9px] tracking-[0.5em] uppercase mb-3" style={{ color: dim(0.22) }}>
             Discography
           </p>
           <h1
@@ -84,21 +98,18 @@ export default function Music() {
                 </div>
                 <div className="flex-1">
                   <div
-                    className="text-sm tracking-[0.12em] uppercase font-light transition-colors duration-300"
+                    className="text-sm tracking-[0.12em] uppercase font-light"
                     style={{ color: dim(0.55) }}
                   >
                     {platform.name}
                   </div>
-                  <div
-                    className="text-xs mt-0.5 font-light"
-                    style={{ color: dim(0.22) }}
-                  >
+                  <div className="text-xs mt-0.5 font-light" style={{ color: dim(0.22) }}>
                     {platform.description}
                   </div>
                 </div>
                 <div
-                  className="text-xs tracking-widest transition-colors duration-300"
-                  style={{ color: dim(0.14) }}
+                  className="text-xs tracking-widest transition-colors duration-300 group-hover:opacity-60"
+                  style={{ color: dim(0.18) }}
                 >
                   →
                 </div>
@@ -106,25 +117,6 @@ export default function Music() {
             );
           })}
         </div>
-
-        <motion.div
-          className="mt-20 pt-12"
-          style={{ borderTop: `1px solid ${dim(0.05)}` }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-        >
-          <p
-            className="font-extralight italic leading-relaxed"
-            style={{
-              fontSize: "clamp(0.85rem, 1.2vw, 1rem)",
-              color: dim(0.20),
-              maxWidth: "42ch",
-            }}
-          >
-            Physical releases and limited editions available via direct inquiry. Each object is conceived as an extension of the spiritual work it carries.
-          </p>
-        </motion.div>
       </div>
     </main>
   );

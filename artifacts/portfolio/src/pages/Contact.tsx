@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { SiInstagram, SiX, SiVimeo } from "react-icons/si";
+import { SiInstagram, SiX, SiTiktok } from "react-icons/si";
 
 const dim = (a: number) => `rgba(245,244,242,${a})`;
 
 const socials = [
-  { name: "Instagram", icon: SiInstagram, href: "#", label: "@otomundi" },
-  { name: "X", icon: SiX, href: "#", label: "@otomundi" },
-  { name: "Vimeo", icon: SiVimeo, href: "#", label: "vimeo.com/otomundi" },
+  { name: "Instagram", icon: SiInstagram, href: "https://instagram.com/otomundi", label: "@otomundi" },
+  { name: "X", icon: SiX, href: "https://x.com/otomundi", label: "@otomundi" },
+  { name: "TikTok", icon: SiTiktok, href: "https://tiktok.com/@otomundi", label: "@otomundi" },
 ];
 
 export default function Contact() {
@@ -34,10 +34,7 @@ export default function Contact() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p
-            className="text-[9px] tracking-[0.5em] uppercase mb-3"
-            style={{ color: dim(0.22) }}
-          >
+          <p className="text-[9px] tracking-[0.5em] uppercase mb-3" style={{ color: dim(0.22) }}>
             Get in touch
           </p>
           <h1
@@ -72,10 +69,7 @@ export default function Contact() {
                 data-testid="contact-success"
               >
                 <div className="w-6 h-px mb-6" style={{ background: "#730623" }} />
-                <p
-                  className="text-sm font-light leading-relaxed"
-                  style={{ color: dim(0.55) }}
-                >
+                <p className="text-sm font-light leading-relaxed" style={{ color: dim(0.55) }}>
                   Message received. I will be in touch.
                 </p>
               </motion.div>
@@ -101,10 +95,7 @@ export default function Contact() {
                       value={formState[field.id as keyof typeof formState]}
                       onChange={handleChange}
                       className="w-full bg-transparent pb-3 text-sm font-light focus:outline-none transition-colors duration-300"
-                      style={{
-                        borderBottom: `1px solid ${dim(0.10)}`,
-                        color: dim(0.65),
-                      }}
+                      style={{ borderBottom: `1px solid ${dim(0.10)}`, color: dim(0.65) }}
                       placeholder={field.placeholder}
                       data-testid={`input-contact-${field.id}`}
                     />
@@ -127,10 +118,7 @@ export default function Contact() {
                     value={formState.message}
                     onChange={handleChange}
                     className="w-full bg-transparent pb-3 text-sm font-light focus:outline-none transition-colors duration-300 resize-none"
-                    style={{
-                      borderBottom: `1px solid ${dim(0.10)}`,
-                      color: dim(0.65),
-                    }}
+                    style={{ borderBottom: `1px solid ${dim(0.10)}`, color: dim(0.65) }}
                     placeholder="Your message..."
                     data-testid="input-contact-message"
                   />
@@ -142,15 +130,12 @@ export default function Contact() {
                   data-testid="button-contact-submit"
                 >
                   <span
-                    className="text-[10px] tracking-[0.4em] uppercase transition-colors duration-300"
+                    className="text-[10px] tracking-[0.4em] uppercase"
                     style={{ color: dim(0.40) }}
                   >
                     Send
                   </span>
-                  <span
-                    className="h-px block transition-all duration-300"
-                    style={{ width: "32px", background: "#730623" }}
-                  />
+                  <span className="h-px block" style={{ width: "32px", background: "#730623" }} />
                 </button>
               </form>
             )}
@@ -163,27 +148,21 @@ export default function Contact() {
             className="flex flex-col gap-12 md:gap-0 md:justify-between"
           >
             <div>
-              <p
-                className="text-[9px] tracking-[0.4em] uppercase mb-4"
-                style={{ color: dim(0.22) }}
-              >
+              <p className="text-[9px] tracking-[0.4em] uppercase mb-4" style={{ color: dim(0.22) }}>
                 Direct
               </p>
               <a
-                href="mailto:hello@otomundi.com"
+                href="mailto:otomundi@gmail.com"
                 className="text-sm font-light tracking-wide cursor-crosshair transition-colors duration-300"
                 style={{ color: dim(0.45) }}
                 data-testid="link-email"
               >
-                hello@otomundi.com
+                otomundi@gmail.com
               </a>
             </div>
 
             <div>
-              <p
-                className="text-[9px] tracking-[0.4em] uppercase mb-6"
-                style={{ color: dim(0.22) }}
-              >
+              <p className="text-[9px] tracking-[0.4em] uppercase mb-6" style={{ color: dim(0.22) }}>
                 Elsewhere
               </p>
               <div className="space-y-5" data-testid="social-links">
@@ -215,10 +194,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <p
-                className="text-[9px] tracking-[0.4em] uppercase mb-3"
-                style={{ color: dim(0.22) }}
-              >
+              <p className="text-[9px] tracking-[0.4em] uppercase mb-3" style={{ color: dim(0.22) }}>
                 About ótomundi
               </p>
               <p
@@ -229,7 +205,7 @@ export default function Contact() {
                   color: dim(0.25),
                 }}
               >
-                ótomundi is a creative circle directed by óto — an Angolan/Andalusian interdisciplinary artist working in service of collective consciousness, ancestral heritage, and the unobstructed flow of creative intelligence.
+                ótomundi is a creative world directed by óto — an Angolan/Andalusian interdisciplinary artist working in service of collective consciousness, ancestral heritage, and the unobstructed flow of creative intelligence.
               </p>
             </div>
           </motion.div>

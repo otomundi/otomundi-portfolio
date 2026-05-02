@@ -1,8 +1,8 @@
-# Audiovisual Artist Portfolio — User Manual
+# ótomundi — Portfolio Manual
 
 ## Overview
 
-This website is a full portfolio for an audiovisual artist. It features a cosmic navigation interface where clickable planets represent individual artworks, a project gallery, a bio, a music page with streaming platform links, and a contact section. The design is minimal and dark, evoking the feeling of drifting through deep space.
+This is the official portfolio website for ótomundi — a creative world directed by óto, an Angolan/Andalusian interdisciplinary artist (b. 2000). The circle was founded in 2020 and works across music, fashion, audiovisuals, and painting. The site is dark, minimal, and typographically led, with a red (#730623) accent throughout.
 
 ---
 
@@ -10,144 +10,152 @@ This website is a full portfolio for an audiovisual artist. It features a cosmic
 
 ### 1. Landing Page (`/`)
 
-**Purpose:** The first impression. Full-screen immersive hero with the artist's name and the cosmic navigation.
+**Purpose:** Full-screen red immersive hero. First and only impression before the visitor enters the work.
 
 **Key Elements:**
-- **Artist Name & Tagline:** Displayed large and centered on load, with a subtle fade-in entrance animation.
-- **Cosmic Navigation (Planet System):** A birds-eye view of a planetary system. Each planet represents one audiovisual artwork:
-  - Planets orbit slowly and continuously around a central star (artist logo/name)
-  - Each planet has a unique size, color glow, and orbital radius
-  - Hovering a planet reveals its title label
-  - Clicking a planet navigates to the full artwork detail view
-  - On mobile, this falls back to a clean vertical list of works
+- Label: "Creative World" in small spaced caps
+- Artist name: "ótomundi" in large extralight lowercase type
+- Tagline beneath: *music, fashion, audiovisuals, and painting* (single line)
+- Social links footer bar: Instagram, YouTube, SoundCloud, Spotify — all linked to real @otomundi accounts
+- "Works →" link bottom-right
 
-**How to interact:**
-- Move your cursor over the planets to see artwork titles appear
-- Click any planet to open its detail page
-- The orbital animation plays on loop automatically — no interaction needed
+**Social link targets:**
+| Platform | URL |
+|----------|-----|
+| Instagram | https://instagram.com/otomundi |
+| YouTube | https://www.youtube.com/@otomundi |
+| SoundCloud | https://soundcloud.com/otomundi |
+| Spotify | https://open.spotify.com/artist/1Pr9r0RYuRgh971UdzxSpe |
 
 ---
 
 ### 2. Bio (`/bio`)
 
-**Purpose:** An intimate space for the artist's written identity and portrait.
+**Purpose:** Full biographical document of ótomundi's practice and philosophy.
 
-**Key Elements:**
-- Artist portrait image (cinematic / atmospheric)
-- Artist name and short title/discipline
-- 2–4 paragraphs of biographical text
-- Minimal layout with generous spacing
+**Key content:**
+- ótomundi (est. 2020) is a creative world, directed by óto (b. 2000)
+- Origin: Angolan/Andalusian
+- Practice: music, fashion, audiovisuals, painting
+- Core themes: ancestral spirituality, neo-Gnosticism, universal creativity, cross-cultural surrealism
+- Method: prolonged meditation under sun and full moon as creative reception
+- Stats: Born 2000, Origin AO/ES, 5 disciplines, ótomundi since 2020
 
-**How to customize:**
-- Replace the placeholder portrait image with your own photo in the project files
-- Edit the text content in `src/pages/Bio.tsx`
+**How to update:**
+- Edit `artifacts/portfolio/src/pages/Bio.tsx`
 
 ---
 
-### 3. Project Gallery (`/works`)
+### 3. Works Gallery (`/works`)
 
-**Purpose:** A curated showcase of 5 audiovisual artworks.
+**Purpose:** Single-thread chronological showcase of artworks, most recent first.
 
-**Key Elements:**
-- Grid of artwork cards (responsive: 2 columns on desktop, 1 column on mobile)
-- Each card shows: thumbnail image, artwork title, year, medium, and short description
-- Clicking a card expands into a full detail view with larger image and extended description
+**Layout:** Full-width horizontal rows — each work occupies the full viewport width with image left, text right. One work at a time as you scroll, in reverse chronological order.
 
-**Artworks included (placeholder data):**
+**Current works (most recent first):**
 | # | Title | Medium | Year |
 |---|-------|--------|------|
-| 1 | Void Signal | Audiovisual Installation | 2024 |
-| 2 | Chromatic Drift | Live A/V Performance | 2023 |
-| 3 | Event Horizon | Film Score + Visuals | 2023 |
-| 4 | Liminal Frequencies | Generative Soundscape + Video | 2022 |
-| 5 | Dark Matter | Immersive Dome Experience | 2021 |
+| 1 | EUVIM | Live A/V Performance | 2026 |
+| 2 | TIGRE | Immersive Installation | 2025 |
+| 3 | SKY | Film Score + Visuals | 2025 |
+| 4 | DESNUDO | Audiovisual Performance | 2024 |
 
-**How to customize:**
-- Edit the works data array in `src/data/works.ts` (or equivalent data file)
-- Replace thumbnail images with your own artwork stills
+**Credits section:** Each artwork detail page now includes a Credits section listing all collaborators with their roles and Instagram profile links.
 
----
-
-### 4. Music (`/music`)
-
-**Purpose:** Direct visitors to your music across all major streaming platforms.
-
-**Key Elements:**
-- Artist name and music tagline
-- Streaming platform buttons/badges — each links to the artist's profile on that platform
-- Platforms included: Spotify, Apple Music, SoundCloud, Bandcamp, YouTube Music
-- Platform logos displayed using official icons
-
-**How to customize:**
-- Replace the `#` placeholder hrefs in `src/pages/Music.tsx` with your actual streaming profile URLs:
-  - Spotify: `https://open.spotify.com/artist/YOUR_ARTIST_ID`
-  - Apple Music: `https://music.apple.com/artist/YOUR_ARTIST_ID`
-  - SoundCloud: `https://soundcloud.com/YOUR_USERNAME`
-  - Bandcamp: `https://YOUR_USERNAME.bandcamp.com`
-  - YouTube Music: `https://music.youtube.com/channel/YOUR_CHANNEL_ID`
+**How to add/update works:**
+1. Edit `artifacts/portfolio/src/data/works.ts`
+2. Each work entry supports: `id`, `title`, `medium`, `year`, `description`, `longDescription`, `image`, `credits[]`, `media`
+3. The `credits` array takes objects with `{ role, name, instagram }` — set `instagram` to `"#"` for placeholder entries
 
 ---
 
-### 5. Contact (`/contact`)
+### 4. Work Detail (`/works/:id`)
 
-**Purpose:** Allow visitors to reach out directly via a form and social media.
+**Purpose:** Full expanded view of a single artwork.
 
-**Key Elements:**
-- Contact form with fields: Name, Email, Message
-- Submit button
-- Social media links: Instagram, X (Twitter), Vimeo
+**Key sections:**
+- Full-bleed hero image with gradient
+- Long description
+- **Credits** — collaborator names, roles, Instagram links (red vertical bar accent)
+- Video embed (click-to-play)
+- Photo gallery (horizontal scroll with lightbox)
+- Previous / Next work navigation
 
-**How the contact form works:**
-- The form collects Name, Email, and Message
-- Currently it is a frontend-only form (no backend submission). To activate email delivery, connect a backend service such as Resend, Formspree, or EmailJS, and wire it up in the form submit handler in `src/pages/Contact.tsx`
+---
 
-**How to customize social links:**
-- Update the social URLs in `src/pages/Contact.tsx`:
-  - Instagram: `https://instagram.com/YOUR_HANDLE`
-  - X/Twitter: `https://x.com/YOUR_HANDLE`
-  - Vimeo: `https://vimeo.com/YOUR_USERNAME`
+### 5. Music (`/music`)
+
+**Purpose:** Drive visitors to listen to ótomundi on their preferred music service.
+
+**Streaming platforms linked:**
+| Platform | URL |
+|----------|-----|
+| YouTube | https://www.youtube.com/@otomundi |
+| Spotify | https://open.spotify.com/artist/1Pr9r0RYuRgh971UdzxSpe |
+| Apple Music | https://music.apple.com/es/artist/ótomundi/1739394893 |
+| SoundCloud | https://soundcloud.com/otomundi |
+
+**How to update links:**
+- Edit the `platforms` array in `artifacts/portfolio/src/pages/Music.tsx`
+
+---
+
+### 6. Contact (`/contact`)
+
+**Purpose:** Direct line for collaborations, commissions, bookings, and press.
+
+**Contact email:** otomundi@gmail.com
+
+**Social links on contact page:**
+| Platform | Handle | URL |
+|----------|--------|-----|
+| Instagram | @otomundi | https://instagram.com/otomundi |
+| X | @otomundi | https://x.com/otomundi |
+| TikTok | @otomundi | https://tiktok.com/@otomundi |
+
+**Contact form:** Frontend-only (no backend). To enable real email delivery, connect a service such as Resend, Formspree, or EmailJS to the form submit handler in `src/pages/Contact.tsx`.
 
 ---
 
 ## Navigation
 
 ### Desktop
-- **Top navigation bar:** Artist name on the left, page links on the right (Bio, Works, Music, Contact)
-- **Cosmic nav:** Visible on the landing page as the primary artwork navigation
-- All links use smooth scrolling and animated page transitions
+- Top bar: ótomundi logo left / BIO · WORKS · MUSIC · CONTACT right
+- Active page is highlighted
 
 ### Mobile
-- Top navigation collapses to a hamburger menu icon
-- Tapping the hamburger opens a full-screen dark overlay menu with all page links
-- The cosmic planetary nav gracefully falls back to a vertical list of artworks
+- Hamburger menu opens full-screen dark overlay (red background)
+- All page links displayed
 
 ---
 
 ## Design System
 
 ### Color Palette
-- **Background:** Near-black (not pure gray) — deep space feel
-- **Primary accent:** Electric blue or deep violet (used sparingly)
-- **Text:** Off-white and pale gray
-- **Planet colors:** Each planet has a unique nebula-inspired glow: blue, red, amber, violet, pale green
+| Role | Value |
+|------|-------|
+| Background | `#111111` |
+| Text | `#f5f4f2` |
+| Red accent | `#730623` |
+| Landing background | `#730623` |
 
 ### Typography
-- Editorial typeface: widely spaced, elegant, designed for dark backgrounds
-- Headings: large and sparse
-- Body: small, airy, generous line-height
+- Font: System extralight sans-serif (no custom font loaded)
+- Headings: large, extralight weight, wide/negative tracking depending on context
+- Labels: 9px, spaced caps, low opacity
+- Body: extralight, generous line-height
 
 ### Animations
-| Element | Animation |
+| Element | Behaviour |
 |---------|-----------|
-| Planet system | Continuous slow orbital rotation (loop) |
-| Page entrance | Fade + slight upward drift on scroll |
-| Cards | Staggered entrance on load |
-| Hover states | Subtle glow intensification on planets; scale on cards |
-| Navigation links | Smooth underline reveal on hover |
-| Page transitions | Crossfade between routes |
+| Page entrance | Fade + upward drift |
+| Works rows | Staggered entrance on load |
+| Image hover | Subtle scale + red tint overlay |
+| Social links | Opacity transition on hover |
+| Credits | Staggered entrance per collaborator |
 
 ### Texture
-- Subtle grain/noise overlay applied to the background throughout the site for depth and warmth
+- Grain overlay applied site-wide via `.grain-overlay` in `index.css`
 
 ---
 
@@ -157,50 +165,43 @@ This website is a full portfolio for an audiovisual artist. It features a cosmic
 artifacts/portfolio/
   src/
     pages/
-      Landing.tsx      — Landing page with hero + cosmic nav
-      Bio.tsx          — Artist bio page
-      Works.tsx        — Project gallery
-      WorkDetail.tsx   — Individual artwork detail view
-      Music.tsx        — Music + streaming links
+      Landing.tsx      — Landing hero (red full-screen)
+      Bio.tsx          — Artist biography
+      Works.tsx        — Single-thread works gallery
+      WorkDetail.tsx   — Individual artwork view with credits
+      Music.tsx        — Streaming platform links
       Contact.tsx      — Contact form + social links
-    components/
-      PlanetNav.tsx    — Cosmic planet navigation component
-      Navbar.tsx       — Top navigation bar
-      WorkCard.tsx     — Artwork card component
     data/
-      works.ts         — Artwork data (title, description, year, medium, image)
-    index.css          — Global styles, dark theme variables
-    App.tsx            — Router setup
+      works.ts         — Artwork data including credits[]
+    assets/images/     — Placeholder images (replace with real photos)
+    index.css          — Global styles, grain overlay, dark theme
+    App.tsx            — Router setup (Wouter)
 ```
 
 ---
 
 ## Customization Guide
 
-### Changing the Artist Name
-Search for the artist name placeholder across `src/` files and replace with your own.
+### Replacing placeholder images
+Drop real artwork photos into `src/assets/images/` and update the import paths in `works.ts` and `Bio.tsx`.
 
-### Adding a New Artwork
-1. Add a new entry to the works data array in `src/data/works.ts`
-2. Add a new planet entry to the `PlanetNav` component with a chosen size, color, and orbital radius
-3. Add a thumbnail image to `public/images/` or use a hosted URL
+### Adding collaborator credits
+In `works.ts`, update each work's `credits` array:
+```ts
+credits: [
+  { role: "Direction", name: "óto", instagram: "https://instagram.com/otomundi" },
+  { role: "Cinematography", name: "Real Name", instagram: "https://instagram.com/handle" },
+]
+```
+Names with a real Instagram URL will render as clickable links; `"#"` placeholders render as plain text.
 
-### Removing the Grain Texture
-The grain texture is applied via a CSS overlay in `index.css`. To disable it, remove or comment out the `.grain-overlay` class and its usage.
+### Adding a new work
+1. Add entry to `works` array in `src/data/works.ts` (prepend to keep most-recent-first order)
+2. Import and reference the artwork image
+3. Fill in `credits[]` with all collaborators
 
-### Changing the Accent Color
-Update the `--accent` CSS custom property in `src/index.css` under `:root`.
-
----
-
-## Mobile Responsiveness
-
-The site is fully responsive:
-- **Landing:** Cosmic nav collapses to a vertical list; hero text scales down
-- **Bio:** Portrait and text stack vertically on small screens
-- **Gallery:** 2-column grid on desktop, 1-column on mobile
-- **Music:** Platform links stack vertically on mobile
-- **Contact:** Form is full-width on mobile
+### Removing the grain texture
+Remove the `.grain-overlay` div from each page component, or delete the class from `index.css`.
 
 ---
 
@@ -212,18 +213,17 @@ The site is fully responsive:
 | Styling | Tailwind CSS v4 |
 | Routing | Wouter |
 | Animations | Framer Motion |
-| Icons | Lucide React, React Icons (SI) |
-| Build | Vite + esbuild |
+| Icons | React Icons (Simple Icons) |
 | Language | TypeScript |
 
 ---
 
-## Known Limitations & Next Steps
+## Known Limitations
 
-- The contact form does not yet send emails — a backend service needs to be connected
-- Artwork media (video/audio) is not embedded — only still images are shown; add `<video>` or iframe embeds per artwork detail view for full A/V experience
-- The artist name, bio text, and streaming URLs are placeholders — all need to be replaced with real content
+- Contact form does not send emails — needs backend integration (Resend / Formspree)
+- Video and audio embeds use placeholder URLs — replace with real Vimeo/YouTube links per artwork in `works.ts`
+- Artwork images are placeholder assets — replace with real photography
 
 ---
 
-*Manual last updated: May 2026*
+*Manual last reviewed: May 2026*
