@@ -395,13 +395,13 @@ export default function WorkDetail() {
           style={{ height: "55vh", minHeight: 320 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.2 }}
         >
           <img
             src={work.image}
             alt={work.title}
             className="w-full h-full object-cover"
-            style={{ filter: "brightness(0.45) contrast(1.1)" }}
+            style={{ filter: "brightness(0.42) contrast(1.12) saturate(0.7)" }}
             data-testid="img-work-detail"
           />
           <div
@@ -411,11 +411,21 @@ export default function WorkDetail() {
                 "linear-gradient(to right, #111111 0%, transparent 35%, transparent 65%, #111111 100%), linear-gradient(to top, #111111 0%, transparent 50%)",
             }}
           />
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              background: "radial-gradient(ellipse at 60% 50%, rgba(115,6,35,0.5), transparent 55%)",
+          {/* Slow crimson pulse — like a wound breathing */}
+          <motion.div
+            className="absolute inset-0"
+            animate={{ opacity: [0.12, 0.42, 0.12] }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              repeatType: "mirror",
             }}
+            style={{
+              background:
+                "radial-gradient(ellipse at 55% 50%, rgba(115,6,35,0.90) 0%, rgba(80,2,20,0.40) 45%, transparent 70%)",
+            }}
+            data-testid="vignette-pulse"
           />
         </motion.div>
 
