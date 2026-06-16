@@ -57,57 +57,43 @@ export default function Landing() {
               Latest Work
             </p>
 
-            <div className="relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
-              <img
-                src={latestWork.image}
-                alt={latestWork.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                style={{ filter: "brightness(0.50) contrast(1.15) saturate(0.60)" }}
-                data-testid="img-latest-work"
-              />
+            <img
+              src={latestWork.image}
+              alt={latestWork.title}
+              className="w-full transition-transform duration-700 group-hover:scale-[1.02]"
+              data-testid="img-latest-work"
+            />
+            <div className="mt-3">
               <div
-                className="absolute inset-0"
+                className="mb-2 transition-all duration-500 group-hover:w-8"
+                style={{ width: "16px", height: "1px", background: "rgba(245,244,242,0.30)" }}
+              />
+              <p
                 style={{
-                  background:
-                    "linear-gradient(to top, rgba(10,2,4,0.85) 0%, transparent 50%), linear-gradient(to bottom, rgba(10,2,4,0.3) 0%, transparent 30%)",
+                  fontFamily: GOTHIC,
+                  fontSize: "clamp(0.9rem, 1.4vw, 1.3rem)",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "rgba(245,244,242,0.82)",
+                  fontWeight: 400,
+                  lineHeight: 1,
                 }}
-              />
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: "rgba(115,6,35,0.22)" }}
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <div
-                  className="mb-2 transition-all duration-500 group-hover:w-8"
-                  style={{ width: "16px", height: "1px", background: "rgba(245,244,242,0.30)" }}
-                />
-                <p
-                  style={{
-                    fontFamily: GOTHIC,
-                    fontSize: "clamp(0.9rem, 1.4vw, 1.3rem)",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    color: "rgba(245,244,242,0.82)",
-                    fontWeight: 400,
-                    lineHeight: 1,
-                  }}
-                >
-                  {latestWork.title}
-                </p>
-                <p
-                  className="mt-1"
-                  style={{
-                    fontFamily: GOTHIC,
-                    fontSize: "7px",
-                    letterSpacing: "0.3em",
-                    textTransform: "uppercase",
-                    color: "rgba(245,244,242,0.32)",
-                    fontWeight: 400,
-                  }}
-                >
-                  {latestWork.releaseDate}
-                </p>
-              </div>
+              >
+                {latestWork.title}
+              </p>
+              <p
+                className="mt-1"
+                style={{
+                  fontFamily: GOTHIC,
+                  fontSize: "7px",
+                  letterSpacing: "0.3em",
+                  textTransform: "uppercase",
+                  color: "rgba(245,244,242,0.32)",
+                  fontWeight: 400,
+                }}
+              >
+                {latestWork.releaseDate}
+              </p>
             </div>
 
             <p

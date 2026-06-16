@@ -87,21 +87,12 @@ export default function Bio() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.35, duration: 1 }}
           >
-            <div className="relative" style={{ aspectRatio: "3/4" }}>
-              <img
-                src={bio1}
-                alt="óto"
-                className="w-full h-full object-cover"
-                style={{ filter: "brightness(0.60) contrast(1.15) saturate(0.30)" }}
-                data-testid="img-bio-portrait-1"
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: "linear-gradient(to top, rgba(115,6,35,0.60) 0%, transparent 55%)",
-                }}
-              />
-            </div>
+            <img
+              src={bio1}
+              alt="óto"
+              className="w-full"
+              data-testid="img-bio-portrait-1"
+            />
           </motion.div>
         </div>
 
@@ -155,24 +146,13 @@ export default function Bio() {
             className="md:w-5/12 flex-shrink-0"
             style={{ y: imgFloat2Y }}
           >
-            <div
-              className="relative overflow-hidden"
-              style={{ width: "clamp(200px, 26vw, 380px)", aspectRatio: "3/4" }}
-            >
-              <img
-                src={bio2}
-                alt="óto"
-                className="w-full h-full object-cover"
-                style={{ filter: "brightness(0.55) contrast(1.15) saturate(0.25)" }}
-                data-testid="img-bio-portrait-2"
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: "linear-gradient(to top, rgba(115,6,35,0.65) 0%, transparent 55%)",
-                }}
-              />
-            </div>
+            <img
+              src={bio2}
+              alt="óto"
+              className="w-full"
+              style={{ maxWidth: "clamp(200px, 26vw, 380px)" }}
+              data-testid="img-bio-portrait-2"
+            />
           </motion.div>
 
           <motion.div
@@ -199,30 +179,17 @@ export default function Bio() {
 
         {/* Bio portrait 3 — closing image, full bleed */}
         <motion.div
-          className="mt-20 md:mt-28 relative overflow-hidden"
+          className="mt-20 md:mt-28"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 1 }}
         >
-          <div
-            className="w-full relative"
-            style={{ aspectRatio: "3/2", maxHeight: "72vh" }}
-          >
-            <img
-              src={bio3}
-              alt="óto — ótomundi"
-              className="w-full h-full object-cover"
-              style={{ filter: "brightness(0.48) contrast(1.18) saturate(0.20)" }}
-              data-testid="img-bio-portrait-3"
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to right, rgba(115,6,35,0.45) 0%, transparent 30%, transparent 70%, rgba(115,6,35,0.45) 100%), linear-gradient(to top, rgba(115,6,35,0.70) 0%, transparent 40%)",
-              }}
-            />
-          </div>
+          <img
+            src={bio3}
+            alt="óto — ótomundi"
+            className="w-full"
+            data-testid="img-bio-portrait-3"
+          />
         </motion.div>
 
       </div>

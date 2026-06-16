@@ -58,23 +58,12 @@ export default function Works() {
             >
               <Link href={`/works/${work.id}`} data-testid={`card-work-${work.id}`}>
                 <div className="flex flex-col md:flex-row gap-0 cursor-crosshair py-12 md:py-16">
-                  <div className="md:w-2/5 flex-shrink-0 relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                  <div className="md:w-2/5 flex-shrink-0">
                     <img
                       src={work.image}
                       alt={work.title}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.03]"
-                      style={{ filter: "brightness(0.55) contrast(1.1) saturate(0.75)" }}
+                      className="w-full transition-transform duration-700 group-hover:scale-[1.02]"
                       data-testid={`img-work-${work.id}`}
-                    />
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-600"
-                      style={{ background: "rgba(115,6,35,0.18)" }}
-                    />
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background: "linear-gradient(to right, transparent 60%, #111111 100%)",
-                      }}
                     />
                   </div>
 

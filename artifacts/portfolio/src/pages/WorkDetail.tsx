@@ -391,8 +391,7 @@ export default function WorkDetail() {
 
       <div className="relative z-10">
         <motion.div
-          className="relative w-full overflow-hidden"
-          style={{ height: "55vh", minHeight: 320 }}
+          className="w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
@@ -400,36 +399,12 @@ export default function WorkDetail() {
           <img
             src={work.image}
             alt={work.title}
-            className="w-full h-full object-cover"
-            style={{ filter: "brightness(0.42) contrast(1.12) saturate(0.7)" }}
+            className="w-full"
             data-testid="img-work-detail"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(to right, #111111 0%, transparent 35%, transparent 65%, #111111 100%), linear-gradient(to top, #111111 0%, transparent 50%)",
-            }}
-          />
-          {/* Slow crimson pulse — like a wound breathing */}
-          <motion.div
-            className="absolute inset-0"
-            animate={{ opacity: [0.12, 0.42, 0.12] }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              repeatType: "mirror",
-            }}
-            style={{
-              background:
-                "radial-gradient(ellipse at 55% 50%, rgba(115,6,35,0.90) 0%, rgba(80,2,20,0.40) 45%, transparent 70%)",
-            }}
-            data-testid="vignette-pulse"
           />
         </motion.div>
 
-        <div className="max-w-4xl mx-auto px-6 -mt-20 relative">
+        <div className="max-w-4xl mx-auto px-6 mt-10 relative">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
