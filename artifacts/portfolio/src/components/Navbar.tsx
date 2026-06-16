@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
+import logoWhite from "@/assets/images/otomundi-logo-white.png";
 
 const GOTHIC = "'Cinzel', Georgia, serif";
 
@@ -42,17 +43,13 @@ export function Navbar() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <Link href="/" data-testid="link-home">
-          <span
-            className="text-sm lowercase cursor-pointer transition-colors duration-300"
-            style={{
-              fontFamily: GOTHIC,
-              color: "#f5f4f2",
-              letterSpacing: "0.1em",
-              fontWeight: 400,
-            }}
-          >
-            ótomundi
-          </span>
+          <img
+            src={logoWhite}
+            alt="ótomundi"
+            className="cursor-pointer"
+            style={{ height: "28px", width: "auto", opacity: 0.88 }}
+            data-testid="img-logo"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-10" data-testid="nav-desktop">

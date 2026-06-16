@@ -11,28 +11,28 @@ const platforms = [
     icon: SiYoutube,
     href: "https://www.youtube.com/@otomundi",
     color: "#FF0000",
-    description: "Watch on YouTube",
+    label: "Watch",
   },
   {
     name: "Spotify",
     icon: SiSpotify,
     href: "https://open.spotify.com/artist/1Pr9r0RYuRgh971UdzxSpe",
     color: "#1DB954",
-    description: "Stream on Spotify",
+    label: "Stream",
   },
   {
     name: "Apple Music",
     icon: SiApplemusic,
     href: "https://music.apple.com/es/artist/%C3%B3tomundi/1739394893",
     color: "#fc3c44",
-    description: "Listen on Apple Music",
+    label: "Listen",
   },
   {
     name: "SoundCloud",
     icon: SiSoundcloud,
     href: "https://soundcloud.com/otomundi",
     color: "#ff5500",
-    description: "Play on SoundCloud",
+    label: "Play",
   },
 ];
 
@@ -62,7 +62,6 @@ export default function Music() {
             Discography
           </p>
           <h1
-            className="mb-8"
             style={{
               fontFamily: GOTHIC,
               fontSize: "clamp(1.5rem, 3.5vw, 3rem)",
@@ -74,22 +73,9 @@ export default function Music() {
           >
             Music
           </h1>
-          <p
-            className="italic"
-            style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize: "clamp(0.95rem, 1.4vw, 1.2rem)",
-              lineHeight: 1.75,
-              color: dim(0.38),
-              fontWeight: 300,
-              maxWidth: "42ch",
-            }}
-          >
-            Sound is the first language of ótomundi's practice — the carrier of ancestral frequency, instinct, and spiritual presence. Recordings move between composition and ritual, between the made and the received.
-          </p>
         </motion.div>
 
-        <div className="space-y-px" data-testid="streaming-platforms-list">
+        <div className="space-y-3" data-testid="streaming-platforms-list">
           {platforms.map((platform, i) => {
             const Icon = platform.icon;
             return (
@@ -98,52 +84,70 @@ export default function Music() {
                 href={platform.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-6 py-6 cursor-crosshair"
-                style={{ borderBottom: `1px solid ${dim(0.05)}` }}
-                initial={{ opacity: 0, x: -16 }}
-                animate={{ opacity: 1, x: 0 }}
+                className="group flex items-center gap-6 px-6 py-5 cursor-crosshair transition-all duration-300"
+                style={{
+                  border: `1px solid ${dim(0.08)}`,
+                  background: "rgba(245,244,242,0.02)",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = `${platform.color}10`;
+                  (e.currentTarget as HTMLElement).style.borderColor = `${platform.color}35`;
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "rgba(245,244,242,0.02)";
+                  (e.currentTarget as HTMLElement).style.borderColor = dim(0.08);
+                }}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.09, duration: 0.6 }}
                 data-testid={`link-platform-${platform.name.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 <div
-                  className="flex items-center justify-center w-11 h-11 rounded-full flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                  className="flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
                   style={{
-                    background: `${platform.color}15`,
-                    border: `1px solid ${platform.color}25`,
+                    width: "52px",
+                    height: "52px",
+                    borderRadius: "50%",
+                    background: `${platform.color}18`,
+                    border: `1px solid ${platform.color}30`,
                   }}
                 >
                   <Icon
-                    size={17}
-                    style={{ color: platform.color, opacity: 0.6 }}
+                    size={22}
+                    style={{ color: platform.color, opacity: 0.75 }}
                     className="group-hover:opacity-100 transition-opacity duration-300"
                   />
                 </div>
+
                 <div className="flex-1">
                   <div
                     style={{
                       fontFamily: GOTHIC,
-                      fontSize: "11px",
-                      letterSpacing: "0.2em",
+                      fontSize: "13px",
+                      letterSpacing: "0.18em",
                       textTransform: "uppercase",
-                      color: dim(0.50),
+                      color: dim(0.70),
                       fontWeight: 400,
                     }}
+                    className="group-hover:text-[#f5f4f2] transition-colors duration-300"
                   >
                     {platform.name}
                   </div>
-                  <div
-                    className="mt-0.5"
-                    style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
-                      fontSize: "0.82rem",
-                      color: dim(0.22),
-                      fontStyle: "italic",
-                    }}
-                  >
-                    {platform.description}
-                  </div>
                 </div>
-                <div style={{ fontSize: "11px", color: dim(0.16) }}>→</div>
+
+                <div
+                  style={{
+                    fontFamily: GOTHIC,
+                    fontSize: "8px",
+                    letterSpacing: "0.4em",
+                    textTransform: "uppercase",
+                    color: dim(0.22),
+                    fontWeight: 400,
+                  }}
+                  className="group-hover:opacity-60 transition-opacity duration-300"
+                >
+                  {platform.label} →
+                </div>
               </motion.a>
             );
           })}

@@ -36,21 +36,7 @@ export default function Contact() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p
-            style={{
-              fontFamily: GOTHIC,
-              fontSize: "8px",
-              letterSpacing: "0.55em",
-              textTransform: "uppercase",
-              color: dim(0.20),
-              fontWeight: 400,
-              marginBottom: "0.75rem",
-            }}
-          >
-            Get in touch
-          </p>
           <h1
-            className="mb-6"
             style={{
               fontFamily: GOTHIC,
               fontSize: "clamp(1.5rem, 3.5vw, 3rem)",
@@ -62,19 +48,6 @@ export default function Contact() {
           >
             Contact
           </h1>
-          <p
-            className="italic"
-            style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize: "clamp(0.9rem, 1.2vw, 1.05rem)",
-              lineHeight: 1.75,
-              color: dim(0.32),
-              fontWeight: 300,
-              maxWidth: "38ch",
-            }}
-          >
-            For collaborations, commissions, performance bookings, and press enquiries — reach out directly.
-          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
@@ -309,7 +282,7 @@ export default function Contact() {
                   fontWeight: 300,
                 }}
               >
-                ótomundi is a creative world directed by óto — an Angolan/Andalusian interdisciplinary artist working in service of collective consciousness, ancestral heritage, and the unobstructed flow of creative intelligence.
+                ótomundi (b. 2000) is an Angolan/Andalusian interdisciplinary artist and creative director, working across music, audiovisual art, and painting.
               </p>
             </div>
           </motion.div>

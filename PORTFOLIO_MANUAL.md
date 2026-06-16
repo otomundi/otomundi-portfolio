@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is the official portfolio website for ótomundi — a creative world directed by óto, an Angolan/Andalusian interdisciplinary artist (b. 2000). The circle was founded in 2020 and works across music, fashion, audiovisuals, and painting. The site is dark, minimal, and typographically led, with a red (#730623) accent throughout.
+Portfolio website for ótomundi — an Angolan/Andalusian interdisciplinary artist and creative director (b. 2000, est. 2020), working across music, audiovisual art, and painting. The site is dark, minimal, and typographically led. Palette: #730623 red accent, #f5f4f2 cream text, #111111 dark void background. Typography: Cinzel (display/headings) + Cormorant Garamond (body/italic).
 
 ---
 
@@ -10,13 +10,14 @@ This is the official portfolio website for ótomundi — a creative world direct
 
 ### 1. Landing Page (`/`)
 
-**Purpose:** Full-screen red immersive hero. First and only impression before the visitor enters the work.
+**Purpose:** Full-screen red immersive hero. First impression before the visitor enters the work.
 
 **Key Elements:**
-- Label: "Creative World" in small spaced caps
-- Artist name: "ótomundi" in large extralight lowercase type
-- Tagline beneath: *music, fashion, audiovisuals, and painting* (single line)
-- Social links footer bar: Instagram, YouTube, SoundCloud, Spotify — all linked to real @otomundi accounts
+- Logo: hand-drawn ótomundi symbol (PNG) — top-left in navbar
+- Artist name: "ótomundi" in large Cinzel lowercase type (cream on red)
+- Tagline: *creative director, audiovisual artist, and music producer* (Cormorant italic)
+- Latest Work CTA panel: floats upper-right on desktop, inline below tagline on mobile — auto-pulls from `works[0]` (always most recent)
+- Social links footer bar: Instagram, YouTube, SoundCloud, Spotify
 - "Works →" link bottom-right
 
 **Social link targets:**
@@ -29,65 +30,73 @@ This is the official portfolio website for ótomundi — a creative world direct
 
 ---
 
-### 2. Bio (`/bio`)
+### 2. Bio Page (`/bio`)
 
-**Purpose:** Full biographical document of ótomundi's practice and philosophy.
+**Purpose:** Artist biography. Red background matching the landing page — continuous visual identity.
 
-**Key content:**
-- ótomundi (est. 2020) is a creative world, directed by óto (b. 2000)
-- Origin: Angolan/Andalusian
-- Practice: music, fashion, audiovisuals, painting
-- Core themes: ancestral spirituality, neo-Gnosticism, universal creativity, cross-cultural surrealism
-- Method: prolonged meditation under sun and full moon as creative reception
-- Stats: Born 2000, Origin AO/ES, 5 disciplines, ótomundi since 2020
+**Layout:**
+1. "Biography" label
+2. "ÓTOMUNDI" — large Cinzel heading (cream on red)
+3. bio-1.jpg — portrait floating upper-right (desktop)
+4. Paragraph 1 (large Cormorant): "ótomundi (b. 2000) is an Angolan/Andalusian interdisciplinary artist and creative director, working across music, audiovisual art, and painting."
+5. Paragraph 2 (italic Cormorant): intercultural practice / ancestral spirituality / surrealism
+6. bio-2.jpg — secondary portrait with body text alongside
+7. Paragraph 3 (italic Cormorant): devotion to creative act as spiritual projection
+8. bio-3.jpg — closing full-width image, page ends here
 
-**How to update:**
-- Edit `artifacts/portfolio/src/pages/Bio.tsx`
+**Images:** `src/assets/images/bio-1.jpg`, `bio-2.jpg`, `bio-3.jpg`
 
----
-
-### 3. Works Gallery (`/works`)
-
-**Purpose:** Single-thread chronological showcase of artworks, most recent first.
-
-**Layout:** Full-width horizontal rows — each work occupies the full viewport width with image left, text right. One work at a time as you scroll, in reverse chronological order.
-
-**Current works (most recent first):**
-| # | Title | Medium | Year |
-|---|-------|--------|------|
-| 1 | EUVIM | Live A/V Performance | 2026 |
-| 2 | TIGRE | Immersive Installation | 2025 |
-| 3 | SKY | Film Score + Visuals | 2025 |
-| 4 | DESNUDO | Audiovisual Performance | 2024 |
-
-**Credits section:** Each artwork detail page now includes a Credits section listing all collaborators with their roles and Instagram profile links.
-
-**How to add/update works:**
-1. Edit `artifacts/portfolio/src/data/works.ts`
-2. Each work entry supports: `id`, `title`, `medium`, `year`, `description`, `longDescription`, `image`, `credits[]`, `media`
-3. The `credits` array takes objects with `{ role, name, instagram }` — set `instagram` to `"#"` for placeholder entries
+**No stats grid. No trailing paragraphs. Page ends with bio-3 image.**
 
 ---
 
-### 4. Work Detail (`/works/:id`)
+### 3. Works / Audiovisual Page (`/works`)
 
-**Purpose:** Full expanded view of a single artwork.
+**Purpose:** Chronological gallery of published audiovisual artworks, most recent first.
 
-**Key sections:**
-- Full-bleed hero image with gradient
-- Long description
-- **Credits** — collaborator names, roles, Instagram links (red vertical bar accent)
-- Video embed (click-to-play)
-- Photo gallery (horizontal scroll with lightbox)
-- Previous / Next work navigation
+**Header:** "PUBLISHED WORKS" label · "AUDIOVISUAL" h1
+
+**Works (in order):**
+
+| # | Title | Medium | Release Date | Image |
+|---|-------|--------|--------------|-------|
+| 01 | EUVIM | Live A/V Performance | May 11, 2026 | EUVIM_ARTWORK.jpg |
+| 02 | SKY | Film Score + Visuals | July 16, 2025 | SKY_ARTWORK.png |
+| 03 | TIGRE | Immersive Installation | March 9, 2025 | TIGRE_ARTWORK.JPG |
+| 04 | DESNUDO | Audiovisual Performance | April 8, 2024 | DESNUDO_ARTWORK.jpg |
+
+**Descriptions:**
+- **EUVIM:** I came, she felt the whole world through me, and we became witnesses to the obsessive games of love.
+- **SKY:** A love letter from the gothic underworld, sent to a mythical lover that resides above the realm of mortals.
+- **TIGRE:** To run away from desire, while realizing that one is the predator who can't live without it.
+- **DESNUDO:** An emotional confession, from a youth who learned to see the world from eyes beyond his ego.
+
+To add a new work: prepend it to the `works` array in `src/data/works.ts`. The landing page CTA auto-updates.
 
 ---
 
-### 5. Music (`/music`)
+### 4. Work Detail Page (`/works/:id`)
 
-**Purpose:** Drive visitors to listen to ótomundi on their preferred music service.
+Each work has its own detail page with:
+- Full-width hero image with slow-breathing crimson pulse animation (5s, Framer Motion)
+- Title in large Cinzel crimson
+- Long description in Cormorant Garamond
+- Credits section (role / name / Instagram)
+- Embedded video (Vimeo or YouTube)
+- Photo grid
+- Next work navigation
 
-**Streaming platforms linked:**
+**To update credits:** edit the `credits` array in the relevant work object in `src/data/works.ts`.
+
+---
+
+### 5. Music Page (`/music`)
+
+**Purpose:** Streaming platform links.
+
+**Header:** "DISCOGRAPHY" label · "MUSIC" h1 (no description below)
+
+**Platforms (bordered button rows, color-coded icons):**
 | Platform | URL |
 |----------|-----|
 | YouTube | https://www.youtube.com/@otomundi |
@@ -95,135 +104,81 @@ This is the official portfolio website for ótomundi — a creative world direct
 | Apple Music | https://music.apple.com/es/artist/ótomundi/1739394893 |
 | SoundCloud | https://soundcloud.com/otomundi |
 
-**How to update links:**
-- Edit the `platforms` array in `artifacts/portfolio/src/pages/Music.tsx`
-
 ---
 
-### 6. Contact (`/contact`)
+### 6. Contact Page (`/contact`)
 
-**Purpose:** Direct line for collaborations, commissions, bookings, and press.
+**Purpose:** Minimal contact form + direct info.
 
-**Contact email:** otomundi@gmail.com
+**Header:** "CONTACT" h1 only — no label, no description
 
-**Social links on contact page:**
-| Platform | Handle | URL |
-|----------|--------|-----|
-| Instagram | @otomundi | https://instagram.com/otomundi |
-| X | @otomundi | https://x.com/otomundi |
-| TikTok | @otomundi | https://tiktok.com/@otomundi |
+**Left column:** Contact form (Name, Email, Message, Send)
 
-**Contact form:** Frontend-only (no backend). To enable real email delivery, connect a service such as Resend, Formspree, or EmailJS to the form submit handler in `src/pages/Contact.tsx`.
-
----
-
-## Navigation
-
-### Desktop
-- Top bar: ótomundi logo left / BIO · WORKS · MUSIC · CONTACT right
-- Active page is highlighted
-
-### Mobile
-- Hamburger menu opens full-screen dark overlay (red background)
-- All page links displayed
+**Right column:**
+- Direct email: otomundi@gmail.com
+- Elsewhere: Instagram, X, TikTok — all @otomundi
+- About ótomundi: "ótomundi (b. 2000) is an Angolan/Andalusian interdisciplinary artist and creative director, working across music, audiovisual art, and painting."
 
 ---
 
 ## Design System
 
-### Color Palette
-| Role | Value |
-|------|-------|
-| Background | `#111111` |
-| Text | `#f5f4f2` |
-| Red accent | `#730623` |
-| Landing background | `#730623` |
+### Palette
+| Token | Value | Usage |
+|-------|-------|-------|
+| Red accent | `#730623` | Landing/Bio background, decorative lines, hover bleeds |
+| Crimson display | `#a81a2e` | All headings on dark pages (Works, Music, Contact, WorkDetail) |
+| Cream | `#f5f4f2` | All text; various opacities |
+| Void | `#111111` | Background for Works, Music, Contact, WorkDetail |
 
 ### Typography
-- Font: System extralight sans-serif (no custom font loaded)
-- Headings: large, extralight weight, wide/negative tracking depending on context
-- Labels: 9px, spaced caps, low opacity
-- Body: extralight, generous line-height
+| Font | Usage |
+|------|-------|
+| Cinzel | Headings, nav, labels, titles, all-caps elements |
+| Cormorant Garamond | Body copy, descriptions, italic quotes |
 
-### Animations
-| Element | Behaviour |
-|---------|-----------|
-| Page entrance | Fade + upward drift |
-| Works rows | Staggered entrance on load |
-| Image hover | Subtle scale + red tint overlay |
-| Social links | Opacity transition on hover |
-| Credits | Staggered entrance per collaborator |
+### Logo
+`src/assets/images/otomundi-logo-white.png` — hand-drawn ótomundi symbol, white on transparent. Used in Navbar at height 28px.
 
-### Texture
-- Grain overlay applied site-wide via `.grain-overlay` in `index.css`
+### Assets
+All artwork and bio images live in `src/assets/images/`. Import via `@/assets/images/filename`.
 
 ---
 
-## File Structure
+## Customisation
 
+### Adding a new artwork
+1. Add image to `src/assets/images/`
+2. Add entry at the **top** of the `works` array in `src/data/works.ts`
+3. The landing page CTA and works list update automatically
+
+### Updating artwork images
+Replace `image:` field in the relevant work object in `src/data/works.ts`.
+
+### Updating credits
+Edit the `credits` array inside each work object in `src/data/works.ts`.
+
+### Updating bio text
+Edit `src/pages/Bio.tsx` — three paragraph blocks clearly marked with `data-testid="text-bio-paragraph-1/2/3"`.
+
+### Updating social links
+- Landing socials: `socialLinks` array in `src/pages/Landing.tsx`
+- Contact socials: `socials` array in `src/pages/Contact.tsx`
+- Music platforms: `platforms` array in `src/pages/Music.tsx`
+
+---
+
+## Tech Stack
+
+- **React + Vite** — frontend framework
+- **Tailwind CSS v4** — utility styling
+- **Framer Motion** — all animations and transitions
+- **Wouter** — lightweight client-side routing
+- **react-icons/si** — social/platform icons
+
+## Key Commands
+
+```bash
+pnpm --filter @workspace/portfolio run dev    # start dev server
+pnpm --filter @workspace/portfolio run build  # production build
 ```
-artifacts/portfolio/
-  src/
-    pages/
-      Landing.tsx      — Landing hero (red full-screen)
-      Bio.tsx          — Artist biography
-      Works.tsx        — Single-thread works gallery
-      WorkDetail.tsx   — Individual artwork view with credits
-      Music.tsx        — Streaming platform links
-      Contact.tsx      — Contact form + social links
-    data/
-      works.ts         — Artwork data including credits[]
-    assets/images/     — Placeholder images (replace with real photos)
-    index.css          — Global styles, grain overlay, dark theme
-    App.tsx            — Router setup (Wouter)
-```
-
----
-
-## Customization Guide
-
-### Replacing placeholder images
-Drop real artwork photos into `src/assets/images/` and update the import paths in `works.ts` and `Bio.tsx`.
-
-### Adding collaborator credits
-In `works.ts`, update each work's `credits` array:
-```ts
-credits: [
-  { role: "Direction", name: "óto", instagram: "https://instagram.com/otomundi" },
-  { role: "Cinematography", name: "Real Name", instagram: "https://instagram.com/handle" },
-]
-```
-Names with a real Instagram URL will render as clickable links; `"#"` placeholders render as plain text.
-
-### Adding a new work
-1. Add entry to `works` array in `src/data/works.ts` (prepend to keep most-recent-first order)
-2. Import and reference the artwork image
-3. Fill in `credits[]` with all collaborators
-
-### Removing the grain texture
-Remove the `.grain-overlay` div from each page component, or delete the class from `index.css`.
-
----
-
-## Technical Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Framework | React 18 + Vite |
-| Styling | Tailwind CSS v4 |
-| Routing | Wouter |
-| Animations | Framer Motion |
-| Icons | React Icons (Simple Icons) |
-| Language | TypeScript |
-
----
-
-## Known Limitations
-
-- Contact form does not send emails — needs backend integration (Resend / Formspree)
-- Video and audio embeds use placeholder URLs — replace with real Vimeo/YouTube links per artwork in `works.ts`
-- Artwork images are placeholder assets — replace with real photography
-
----
-
-*Manual last reviewed: May 2026*

@@ -72,7 +72,6 @@ export default function Landing() {
                     "linear-gradient(to top, rgba(10,2,4,0.85) 0%, transparent 50%), linear-gradient(to bottom, rgba(10,2,4,0.3) 0%, transparent 30%)",
                 }}
               />
-              {/* Red bleed on hover */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ background: "rgba(115,6,35,0.22)" }}
@@ -106,7 +105,7 @@ export default function Landing() {
                     fontWeight: 400,
                   }}
                 >
-                  {latestWork.year}
+                  {latestWork.releaseDate}
                 </p>
               </div>
             </div>
@@ -135,20 +134,6 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
           >
-            <p
-              className="mb-7"
-              style={{
-                fontFamily: GOTHIC,
-                fontSize: "8px",
-                letterSpacing: "0.55em",
-                textTransform: "uppercase",
-                color: "rgba(245,244,242,0.32)",
-                fontWeight: 400,
-              }}
-            >
-              Creative World
-            </p>
-
             <h1
               style={{
                 fontFamily: GOTHIC,
@@ -177,7 +162,7 @@ export default function Landing() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 1.2 }}
             >
-              music, fashion, audiovisuals, and painting
+              creative director, audiovisual artist, and music producer
             </motion.p>
 
             {/* Latest work — mobile inline block */}
@@ -243,7 +228,7 @@ export default function Landing() {
                         fontWeight: 400,
                       }}
                     >
-                      {latestWork.year} →
+                      {latestWork.releaseDate} →
                     </p>
                   </div>
                 </div>

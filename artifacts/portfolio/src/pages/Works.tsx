@@ -29,7 +29,7 @@ export default function Works() {
               marginBottom: "0.75rem",
             }}
           >
-            Selected Works
+            Published Works
           </p>
           <h1
             style={{
@@ -41,7 +41,7 @@ export default function Works() {
               fontWeight: 400,
             }}
           >
-            Gallery
+            Audiovisual
           </h1>
         </motion.div>
 
@@ -101,7 +101,7 @@ export default function Works() {
                             fontWeight: 400,
                           }}
                         >
-                          {work.year}
+                          {work.releaseDate}
                         </p>
                       </div>
 
