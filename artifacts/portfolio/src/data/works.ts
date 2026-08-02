@@ -3,6 +3,18 @@ import skyArtwork from "@/assets/images/SKY_ARTWORK.png";
 import tigreArtwork from "@/assets/images/TIGRE_ARTWORK.JPG";
 import desnudoArtwork from "@/assets/images/DESNUDO_ARTWORK.jpg";
 
+import euvimGallery1 from "@/assets/images/EUVIM_GALLERY_1.jpg";
+import euvimGallery2 from "@/assets/images/EUVIM_GALLERY_2.jpg";
+import euvimGallery3 from "@/assets/images/EUVIM_GALLERY_3.jpg";
+import euvimGallery4 from "@/assets/images/EUVIM_GALLERY_4.jpg";
+import euvimGallery5 from "@/assets/images/EUVIM_GALLERY_5.jpg";
+import euvimGallery6 from "@/assets/images/EUVIM_GALLERY_6.jpg";
+import euvimGallery7 from "@/assets/images/EUVIM_GALLERY_7.jpg";
+import euvimGallery8 from "@/assets/images/EUVIM_GALLERY_8.jpg";
+import euvimGallery9 from "@/assets/images/EUVIM_GALLERY_9.jpg";
+import euvimGallery10 from "@/assets/images/EUVIM_GALLERY_10.jpg";
+import euvimGallery11 from "@/assets/images/EUVIM_GALLERY_11.jpg";
+
 export interface WorkCredit {
   role: string;
   name: string;
@@ -18,8 +30,14 @@ export interface WorkMedia {
 export interface Work {
   id: string;
   title: string;
+  artist: string;
   medium: string;
+  format: string;
+  duration: string;
   year: number;
+  location: string;
+  language: string;
+  genre: string;
   releaseDate: string;
   description: string;
   longDescription: string;
@@ -32,85 +50,130 @@ export const works: Work[] = [
   {
     id: "euvim",
     title: "EUVIM",
-    medium: "Live A/V Performance",
+    artist: "ótomundi",
+    medium: "music, audiovisual film, photographic series",
+    format: "music, audiovisual film, photographic series",
+    duration: "4'15 song, film, 11 photographs",
     year: 2026,
+    location: "Barcelona",
+    language: "portuguese",
+    genre: "industrial funk",
     releaseDate: "May 11, 2026",
     description: "I came, she felt the whole world through me, and we became witnesses to the obsessive games of love.",
-    longDescription:
-      "EUVIM — 'I saw' in Portuguese — is a live audiovisual performance built from the act of bearing witness. Central to the ótomundi philosophy is the belief that creation is a form of spiritual projection: that to see clearly is to participate in the intelligence that sustains all life. The work moves through personal field recordings, synthesised ancestral frequencies, and audio-reactive visuals to construct a testimony — not of events, but of states. States of perception. States of instinct. States of presence. EUVIM asks: what does it mean to have been fully, devotedly here — and to offer that presence as an act of collective healing?",
+    longDescription: "",
     image: euvimArtwork,
     credits: [
-      { role: "Direction & Music", name: "óto", instagram: "https://instagram.com/otomundi" },
-      { role: "Visuals", name: "Collaborator", instagram: "#" },
-      { role: "Performance", name: "Collaborator", instagram: "#" },
+      { role: "creative director & artist", name: "ótomundi", instagram: "https://instagram.com/otomundi" },
+      { role: "cinematographer", name: "Fuad Koosta", instagram: "#" },
+      { role: "director & editor", name: "Pili Mariño", instagram: "#" },
+      { role: "photographer", name: "Jan Waffle", instagram: "#" },
+      { role: "sound engineer", name: "Alberto Perez", instagram: "#" },
+      { role: "trombonist", name: "Kaleb Summers", instagram: "#" },
+      { role: "1st AC", name: "Kwame Carlos", instagram: "#" },
+      { role: "gaffer", name: "David Arosa", instagram: "#" },
+      { role: "spark", name: "Llorenç Florensa", instagram: "#" },
+      { role: "AD", name: "Andoni Fernandez", instagram: "#" },
+      { role: "set designers", name: "Anna Bociai, Luna Josso", instagram: "#" },
+      { role: "costume designer", name: "Viktra Studio", instagram: "#" },
+      { role: "hair & make-up artist", name: "Brissa Fernandez", instagram: "#" },
+      { role: "cast", name: "Piel Mixta, Vanessa Ries, India Gavroy, Olaia Aguilar", instagram: "#" },
     ],
     media: {
-      videoUrl: "https://player.vimeo.com/video/148751763",
+      videoUrl: "https://www.youtube.com/embed/METIanuhyA8",
       audioUrl: "",
-      photos: [euvimArtwork, skyArtwork, tigreArtwork, desnudoArtwork],
+      photos: [
+        euvimGallery1, euvimGallery2, euvimGallery3, euvimGallery4,
+        euvimGallery5, euvimGallery6, euvimGallery7, euvimGallery8,
+        euvimGallery9, euvimGallery10, euvimGallery11,
+      ],
     },
   },
   {
     id: "sky",
     title: "SKY",
-    medium: "Film Score + Visuals",
+    artist: "ótomundi, Ilya Havok",
+    medium: "music, photographic series",
+    format: "music, photographic series",
+    duration: "4'04 song, 11 photographs",
     year: 2025,
+    location: "Luanda, Barcelona",
+    language: "portuguese",
+    genre: "experimental rap",
     releaseDate: "July 16, 2025",
     description: "A love letter from the gothic underworld, sent to a mythical lover that resides above the realm of mortals.",
-    longDescription:
-      "SKY emerges from the ótomundi practice of working under the sun and the full moon as a form of reception — welcoming creative intelligence through sustained presence in the open. The score was composed during extended meditative sessions in open terrain, gathering the acoustic textures of air, altitude, and silence. The visual material layers long-exposure photography with processed atmospheric data to construct a moving image of vertical consciousness: what it means to look upward and feel both infinitely small and cosmically held. SKY is a devotion to the sky as spiritual teacher.",
+    longDescription: "",
     image: skyArtwork,
     credits: [
-      { role: "Direction & Composition", name: "óto", instagram: "https://instagram.com/otomundi" },
-      { role: "Cinematography", name: "Collaborator", instagram: "#" },
-      { role: "Photography", name: "Collaborator", instagram: "#" },
+      { role: "creative director & artist", name: "ótomundi", instagram: "https://instagram.com/otomundi" },
+      { role: "photographer", name: "David Ayllón", instagram: "#" },
+      { role: "songwriter", name: "Ilya Havok", instagram: "#" },
+      { role: "sound engineer", name: "Marcos Reolid", instagram: "#" },
+      { role: "special appearance", name: "Jodie Chin", instagram: "#" },
     ],
     media: {
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      videoUrl: "https://www.youtube.com/embed/HZM56dheEHs",
       audioUrl: "",
-      photos: [skyArtwork, euvimArtwork, tigreArtwork, desnudoArtwork],
+      photos: [],
     },
   },
   {
     id: "tigre",
     title: "TIGRE",
-    medium: "Immersive Installation",
+    artist: "ótomundi",
+    medium: "music EP, audiovisual film",
+    format: "music EP, audiovisual film",
+    duration: "3 songs, 3'25 film",
     year: 2025,
+    location: "Berguedà, Barcelona",
+    language: "portuguese, english",
+    genre: "experimental rap",
     releaseDate: "March 9, 2025",
     description: "To run away from desire, while realizing that one is the predator who can't live without it.",
-    longDescription:
-      "TIGRE is an immersive installation born from the ótomundi inquiry into ancestral consciousness and the primal codes embedded in human spirituality. Working across sonic field recordings, textile imagery, and spatial light, the piece invokes the symbolic weight of the tiger across African, Iberian, and Eastern ancestral traditions — not as decoration, but as living archive. To enter TIGRE is to be moved by a frequency older than language: the instinct that connects us to the Earth, to our ancestors, and to the unbroken chain of creative intelligence that flows through all living beings.",
+    longDescription: "",
     image: tigreArtwork,
     credits: [
-      { role: "Direction & Music", name: "óto", instagram: "https://instagram.com/otomundi" },
-      { role: "Sound Design", name: "Collaborator", instagram: "#" },
-      { role: "Set Design", name: "Collaborator", instagram: "#" },
+      { role: "artist, producer & creative director", name: "ótomundi", instagram: "https://instagram.com/otomundi" },
+      { role: "direction", name: "STICK", instagram: "#" },
+      { role: "cinematographer", name: "Fuad Kosta", instagram: "#" },
+      { role: "art direction", name: "Amaia Ajuria", instagram: "#" },
+      { role: "editor", name: "Ruben Arbide", instagram: "#" },
+      { role: "assistant editor", name: "Kaiser", instagram: "#" },
+      { role: "hair & make-up artist", name: "Laia Grau", instagram: "#" },
+      { role: "sound engineer", name: "Marcos Reolid", instagram: "#" },
+      { role: "graphic artist", name: "María Abadía", instagram: "#" },
+      { role: "cast", name: "Ela Duas, Noa Najas, Aloïs Pesquer, Edward Long", instagram: "#" },
     ],
     media: {
-      videoUrl: "https://player.vimeo.com/video/148751763",
+      videoUrl: "https://www.youtube.com/embed/euLedOnGzwo",
       audioUrl: "",
-      photos: [tigreArtwork, skyArtwork, euvimArtwork, desnudoArtwork],
+      photos: [],
     },
   },
   {
     id: "desnudo",
     title: "DESNUDO",
-    medium: "Audiovisual Performance",
+    artist: "ótomundi, DJ Troublesome",
+    medium: "music EP, photographic series",
+    format: "music EP, photographic series",
+    duration: "3 songs, 4 photos",
     year: 2024,
+    location: "Barcelona",
+    language: "portuguese, english",
+    genre: "industrial soul, electronic",
     releaseDate: "April 8, 2024",
     description: "An emotional confession, from a youth who learned to see the world from eyes beyond his ego.",
-    longDescription:
-      "DESNUDO is an audiovisual performance that investigates the act of stripping away — layers of cultural conditioning, inherited identity, material armour. Drawing from the ótomundi practice of prolonged meditation and ancestral spirituality, the work creates a ritual space where vulnerability becomes clarity. Sound and image work together to dissolve the self-loathing ego and reveal what remains beneath: a consciousness radiant, undecorated, and whole. DESNUDO is both act and offering — a surrender to the intelligence that precedes language.",
+    longDescription: "",
     image: desnudoArtwork,
     credits: [
-      { role: "Direction & Music", name: "óto", instagram: "https://instagram.com/otomundi" },
-      { role: "Visuals & Editing", name: "Collaborator", instagram: "#" },
-      { role: "Performance", name: "Collaborator", instagram: "#" },
+      { role: "artist, creative director", name: "ótomundi", instagram: "https://instagram.com/otomundi" },
+      { role: "photographer", name: "Pablo De Pastors", instagram: "#" },
+      { role: "mixing engineer & composer", name: "DJ Troublesome", instagram: "#" },
+      { role: "mastering engineer", name: "Marcos Reolid", instagram: "#" },
     ],
     media: {
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      videoUrl: "https://www.youtube.com/embed/videoseries?list=PLzyNg9S9XibS3smyQCnJdV2mmGPcJrFOr",
       audioUrl: "",
-      photos: [desnudoArtwork, tigreArtwork, skyArtwork, euvimArtwork],
+      photos: [],
     },
   },
 ];

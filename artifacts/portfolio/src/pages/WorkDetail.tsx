@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useParams } from "wouter";
 import { works, type WorkCredit } from "@/data/works";
-import { ChevronLeft, ChevronRight, X, Play, Music } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Play } from "lucide-react";
 
 const dim = (a: number) => `rgba(245,244,242,${a})`;
 
@@ -210,6 +210,9 @@ function PhotoGallery({ photos }: { photos: string[] }) {
 function VideoEmbed({ url }: { url: string }) {
   const [show, setShow] = useState(false);
 
+  // Handle URLs that already have query params (e.g. playlist URLs)
+  const embedUrl = url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+
   return (
     <section className="mt-16" data-testid="video-section">
       <p
@@ -265,7 +268,7 @@ function VideoEmbed({ url }: { url: string }) {
           data-testid="video-iframe-container"
         >
           <iframe
-            src={url + "?autoplay=1"}
+            src={embedUrl}
             className="absolute inset-0 w-full h-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -277,81 +280,6 @@ function VideoEmbed({ url }: { url: string }) {
   );
 }
 
-function AudioEmbed() {
-  const [playing, setPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-
-  return (
-    <section className="mt-12" data-testid="audio-section">
-      <p
-        className="text-[9px] tracking-[0.4em] uppercase mb-6"
-        style={{ color: "rgba(245,244,242,0.25)" }}
-      >
-        Audio
-      </p>
-      <motion.div
-        className="p-6"
-        style={{ border: "1px solid rgba(245,244,242,0.08)" }}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="flex items-center gap-5">
-          <button
-            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 cursor-crosshair flex-shrink-0"
-            style={{ border: "1px solid rgba(245,244,242,0.15)" }}
-            onClick={() => setPlaying(!playing)}
-            data-testid="button-audio-play"
-            aria-label={playing ? "Pause" : "Play audio"}
-          >
-            {playing ? (
-              <div className="flex gap-0.5">
-                <span className="w-0.5 h-3" style={{ background: "rgba(245,244,242,0.6)" }} />
-                <span className="w-0.5 h-3" style={{ background: "rgba(245,244,242,0.6)" }} />
-              </div>
-            ) : (
-              <Play size={12} className="ml-0.5" style={{ color: "rgba(245,244,242,0.5)" }} />
-            )}
-          </button>
-
-          <div className="flex-1">
-            <div className="flex items-center justify-between mb-2">
-              <span
-                className="text-[10px] tracking-[0.2em] uppercase"
-                style={{ color: "rgba(245,244,242,0.40)" }}
-              >
-                Audio composition
-              </span>
-              <Music size={10} style={{ color: "rgba(245,244,242,0.20)" }} />
-            </div>
-            <div
-              className="w-full h-px relative cursor-crosshair"
-              style={{ background: "rgba(245,244,242,0.08)" }}
-              data-testid="audio-progress-bar"
-              onClick={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                setProgress((e.clientX - rect.left) / rect.width);
-              }}
-            >
-              <motion.div
-                className="absolute left-0 top-0 h-full"
-                style={{ background: "#730623" }}
-                animate={playing ? { width: "100%" } : { width: `${progress * 100}%` }}
-                transition={playing ? { duration: 180, ease: "linear" } : { duration: 0 }}
-              />
-            </div>
-          </div>
-        </div>
-        <p
-          className="mt-4 text-[9px] font-light"
-          style={{ color: "rgba(245,244,242,0.18)" }}
-        >
-          Replace placeholder href with your audio file or embed an external audio player
-        </p>
-      </motion.div>
-    </section>
-  );
-}
 
 export default function WorkDetail() {
   const { id } = useParams<{ id: string }>();
@@ -434,7 +362,7 @@ export default function WorkDetail() {
                 fontSize: "clamp(2.2rem, 6vw, 5.5rem)",
                 letterSpacing: "0.08em",
                 textTransform: "uppercase",
-                color: "#a81a2e",
+                color: "#f5f4f2",
                 fontWeight: 400,
                 lineHeight: 0.92,
               }}
@@ -442,34 +370,41 @@ export default function WorkDetail() {
             >
               {work.title}
             </h1>
-            <p
-              className="mb-10"
-              style={{
-                fontFamily: "'Cinzel', Georgia, serif",
-                fontSize: "8px",
-                letterSpacing: "0.35em",
-                textTransform: "uppercase",
-                color: "rgba(245,244,242,0.25)",
-                fontWeight: 400,
-              }}
-            >
-              {work.medium} — {work.year}
-            </p>
 
-            <div className="max-w-2xl">
-              <p
-                className="italic"
-                style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
-                  fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
-                  lineHeight: 1.78,
-                  fontWeight: 300,
-                  color: "rgba(245,244,242,0.52)",
-                }}
-                data-testid="text-work-detail-description"
-              >
-                {work.longDescription}
-              </p>
+            {/* Metadata grid */}
+            <div
+              className="mt-8 mb-10 grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-5"
+              data-testid="work-metadata"
+            >
+              {[
+                { label: "artist", value: work.artist },
+                { label: "format", value: work.format },
+                { label: "duration", value: work.duration },
+                { label: "year", value: String(work.year) },
+                { label: "location", value: work.location },
+                { label: "language", value: work.language },
+                { label: "genre", value: work.genre },
+              ].map(({ label, value }) => value ? (
+                <div key={label}>
+                  <p
+                    className="text-[8px] tracking-[0.4em] uppercase mb-1"
+                    style={{ color: "rgba(245,244,242,0.20)", fontFamily: "'Cinzel', Georgia, serif" }}
+                  >
+                    {label}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontSize: "clamp(0.82rem, 1.1vw, 0.95rem)",
+                      color: "rgba(245,244,242,0.52)",
+                      fontWeight: 300,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {value}
+                  </p>
+                </div>
+              ) : null)}
             </div>
 
             {work.credits && work.credits.length > 0 && <Credits credits={work.credits} />}
@@ -477,8 +412,6 @@ export default function WorkDetail() {
             {work.media.videoUrl && <VideoEmbed url={work.media.videoUrl} />}
 
             {work.media.photos.length > 0 && <PhotoGallery photos={work.media.photos} />}
-
-            <AudioEmbed />
 
             <div
               className="mt-20 pt-8 grid grid-cols-2 gap-4"

@@ -258,33 +258,6 @@ export default function Contact() {
               </div>
             </div>
 
-            <div>
-              <p
-                style={{
-                  fontFamily: GOTHIC,
-                  fontSize: "8px",
-                  letterSpacing: "0.45em",
-                  textTransform: "uppercase",
-                  color: dim(0.20),
-                  fontWeight: 400,
-                  marginBottom: "0.75rem",
-                }}
-              >
-                About ótomundi
-              </p>
-              <p
-                className="italic"
-                style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
-                  fontSize: "clamp(0.88rem, 1.2vw, 1rem)",
-                  lineHeight: 1.8,
-                  color: dim(0.24),
-                  fontWeight: 300,
-                }}
-              >
-                ótomundi (b. 2000) is an Angolan/Andalusian interdisciplinary artist and creative director, working across music, audiovisual art, and painting.
-              </p>
-            </div>
           </motion.div>
         </div>
       </div>

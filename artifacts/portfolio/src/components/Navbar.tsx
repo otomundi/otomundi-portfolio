@@ -36,8 +36,13 @@ export function Navbar() {
     <>
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-5 flex items-center justify-between transition-all duration-500 ${
-          scrolled ? "bg-[#111111]/80 backdrop-blur-md border-b border-[#f5f4f2]/5" : ""
+          scrolled
+            ? location === "/bio"
+              ? "backdrop-blur-md border-b border-[#f5f4f2]/5"
+              : "bg-[#111111]/80 backdrop-blur-md border-b border-[#f5f4f2]/5"
+            : ""
         }`}
+        style={scrolled && location === "/bio" ? { background: "rgba(115,6,35,0.82)" } : undefined}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}

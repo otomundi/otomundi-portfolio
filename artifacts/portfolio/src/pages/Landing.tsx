@@ -162,45 +162,24 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
           >
-            {/* Portrait — above the name */}
-            <motion.div
-              className="relative mb-8"
-              style={{ width: "clamp(220px, 28vw, 420px)" }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 1.6, ease: "easeOut" }}
-            >
-              <img
-                src={landingPortrait}
-                alt="ótomundi"
-                style={{ width: "100%", display: "block" }}
-                data-testid="img-landing-portrait"
-              />
-              {/* Bottom fade — blends into the crimson field */}
-              <div
-                className="absolute bottom-0 left-0 right-0 pointer-events-none"
-                style={{
-                  height: "45%",
-                  background:
-                    "linear-gradient(to top, #730623 0%, rgba(115,6,35,0.7) 35%, transparent 100%)",
-                }}
-              />
-              {/* Side fades — soften the edges into the field */}
-              <div
-                className="absolute inset-y-0 left-0 pointer-events-none"
-                style={{
-                  width: "18%",
-                  background: "linear-gradient(to right, #730623 0%, transparent 100%)",
-                }}
-              />
-              <div
-                className="absolute inset-y-0 right-0 pointer-events-none"
-                style={{
-                  width: "18%",
-                  background: "linear-gradient(to left, #730623 0%, transparent 100%)",
-                }}
-              />
-            </motion.div>
+            {/* Portrait — above the name, links to Bio */}
+            <Link href="/bio">
+              <motion.div
+                className="relative mb-8 cursor-crosshair"
+                style={{ width: "clamp(220px, 28vw, 420px)" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 1.6, ease: "easeOut" }}
+                whileHover={{ scale: 1.04 }}
+              >
+                <img
+                  src={landingPortrait}
+                  alt="ótomundi"
+                  style={{ width: "100%", display: "block" }}
+                  data-testid="img-landing-portrait"
+                />
+              </motion.div>
+            </Link>
 
             <h1
               style={{

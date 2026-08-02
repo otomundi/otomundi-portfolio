@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "wouter";
 import bio1 from "@/assets/images/bio-1.jpg";
 import bio2 from "@/assets/images/bio-2.jpg";
 import bio3 from "@/assets/images/bio-3.jpg";
@@ -7,6 +8,13 @@ import bio3 from "@/assets/images/bio-3.jpg";
 const GOTHIC = "'Cinzel', Georgia, serif";
 const CORMORANT = "'Cormorant Garamond', Georgia, serif";
 const dim = (a: number) => `rgba(245,244,242,${a})`;
+
+const socialLinks = [
+  { label: "Instagram", href: "https://instagram.com/otomundi" },
+  { label: "YouTube", href: "https://www.youtube.com/@otomundi" },
+  { label: "SoundCloud", href: "https://soundcloud.com/otomundi" },
+  { label: "Spotify", href: "https://open.spotify.com/artist/1Pr9r0RYuRgh971UdzxSpe" },
+];
 
 export default function Bio() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -26,7 +34,7 @@ export default function Bio() {
     >
       <div className="grain-overlay" />
 
-      {/* Deep shadow overlays — same treatment as landing */}
+      {/* Deep shadow overlays */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -96,7 +104,7 @@ export default function Bio() {
           </motion.div>
         </div>
 
-        {/* Paragraph 1 */}
+        {/* Visual poem — stanza 1 */}
         <motion.div
           className="mt-14 md:mt-16 max-w-2xl"
           initial={{ opacity: 0, y: 20 }}
@@ -107,41 +115,18 @@ export default function Bio() {
             style={{
               fontFamily: CORMORANT,
               fontSize: "clamp(1.1rem, 2vw, 1.8rem)",
-              lineHeight: 1.55,
-              color: dim(0.70),
+              lineHeight: 1.6,
+              color: dim(0.72),
               fontWeight: 300,
             }}
             data-testid="text-bio-paragraph-1"
           >
-            ótomundi (b. 2000) is an Angolan/Andalusian interdisciplinary artist and creative director, working across music, audiovisual art, and painting.
+            ótomundi (b. 2000) is an interdisciplinary artist, creative director, and crosscultural designer of Angolan and Andalusian ascendance. His works crossover worldwide music, experimental fashion, and audiovisual art.
           </p>
         </motion.div>
 
-        {/* Paragraph 2 */}
-        <motion.div
-          className="mt-10 md:mt-12 max-w-xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25, duration: 0.9 }}
-        >
-          <p
-            className="italic"
-            style={{
-              fontFamily: CORMORANT,
-              fontSize: "clamp(0.95rem, 1.45vw, 1.2rem)",
-              lineHeight: 1.75,
-              color: dim(0.42),
-              fontWeight: 300,
-            }}
-            data-testid="text-bio-paragraph-2"
-          >
-            His practice is rooted in an intercultural perspective — expanding into ancestral spirituality, surrealism, and the cultivation of universal creativity.
-            He moves through sound, image, and form as one continuous language.
-          </p>
-        </motion.div>
-
-        {/* Bio portrait 2 + paragraph 3 */}
-        <div className="mt-20 md:mt-28 flex flex-col md:flex-row gap-12 md:gap-0 items-start">
+        {/* Stanza 2 + portrait 2 */}
+        <div className="mt-16 md:mt-24 flex flex-col md:flex-row gap-12 md:gap-0 items-start">
           <motion.div
             className="md:w-5/12 flex-shrink-0"
             style={{ y: imgFloat2Y }}
@@ -156,43 +141,122 @@ export default function Bio() {
           </motion.div>
 
           <motion.div
-            className="md:w-7/12 flex flex-col gap-8 md:pl-14 md:py-4"
+            className="md:w-7/12 flex flex-col gap-10 md:pl-14 md:py-4"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.9 }}
+            transition={{ delay: 0.25, duration: 0.9 }}
           >
+            <p
+              style={{
+                fontFamily: CORMORANT,
+                fontSize: "clamp(0.95rem, 1.45vw, 1.2rem)",
+                lineHeight: 1.82,
+                color: dim(0.50),
+                fontWeight: 300,
+              }}
+              data-testid="text-bio-paragraph-2"
+            >
+              ótomundi carries a practice of intercultural semotic design, of sonic cinematic productions, and focuses on expanding conciousness through giving light to the gnosis and rituals of our ancestral heritage.
+            </p>
+
+            {/* Stanza 3 */}
             <p
               className="italic"
               style={{
                 fontFamily: CORMORANT,
-                fontSize: "clamp(0.95rem, 1.45vw, 1.2rem)",
-                lineHeight: 1.78,
-                color: dim(0.40),
+                fontSize: "clamp(0.9rem, 1.35vw, 1.1rem)",
+                lineHeight: 1.92,
+                color: dim(0.32),
                 fontWeight: 300,
+                letterSpacing: "0.02em",
               }}
               data-testid="text-bio-paragraph-3"
             >
-              He sees artistic expression as a form of spiritual projection — a devotion to the ancestral codes embedded in human experience, and to the magic of the unobstructed creative flow.
+              ótomundi brings us the light. the recognition of a power greater than all eyes can see.{" "}
+              ótomundi give your life to the enchantment of our eternal souls. long live ótomundi.
             </p>
           </motion.div>
         </div>
 
-        {/* Bio portrait 3 — closing image, full bleed */}
-        <motion.div
-          className="mt-20 md:mt-28"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 1 }}
-        >
-          <img
-            src={bio3}
-            alt="óto — ótomundi"
-            className="w-full"
-            data-testid="img-bio-portrait-3"
-          />
-        </motion.div>
-
       </div>
+
+      {/* Closing image — full screen width, outside padding */}
+      <motion.div
+        className="mt-20 md:mt-28 w-full overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6, duration: 1 }}
+      >
+        <img
+          src={bio3}
+          alt="ótomundi"
+          className="w-full block"
+          style={{ objectFit: "cover", objectPosition: "center top" }}
+          data-testid="img-bio-portrait-3"
+        />
+      </motion.div>
+
+      {/* Footer bar — social + contact */}
+      <motion.div
+        className="flex items-center justify-between px-6 md:px-12 py-5"
+        style={{ borderTop: "1px solid rgba(245,244,242,0.09)" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.9 }}
+      >
+        <div className="flex items-center" style={{ gap: "22px" }}>
+          {socialLinks.map(({ label, href }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="cursor-crosshair transition-all duration-300"
+              style={{ color: "rgba(245,244,242,0.28)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(245,244,242,0.70)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,244,242,0.28)")}
+            >
+              <span
+                style={{
+                  fontFamily: GOTHIC,
+                  fontSize: "7px",
+                  letterSpacing: "0.40em",
+                  textTransform: "uppercase",
+                  fontWeight: 400,
+                }}
+              >
+                {label}
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <Link href="/contact">
+          <span
+            className="flex items-center cursor-crosshair"
+            style={{ gap: "10px" }}
+          >
+            <span
+              style={{
+                fontFamily: GOTHIC,
+                fontSize: "7px",
+                letterSpacing: "0.45em",
+                textTransform: "uppercase",
+                color: "rgba(245,244,242,0.28)",
+                fontWeight: 400,
+              }}
+            >
+              Contact
+            </span>
+            <span
+              className="block h-px"
+              style={{ width: "28px", background: "rgba(245,244,242,0.20)" }}
+            />
+          </span>
+        </Link>
+      </motion.div>
+
     </main>
   );
 }
