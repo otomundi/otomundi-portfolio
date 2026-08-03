@@ -3,6 +3,18 @@ import skyArtwork from "@/assets/images/SKY_ARTWORK.png";
 import tigreArtwork from "@/assets/images/TIGRE_ARTWORK.JPG";
 import desnudoArtwork from "@/assets/images/DESNUDO_ARTWORK.jpg";
 
+import skyGallery1 from "@/assets/images/SKY_GALLERY_1.jpg";
+import skyGallery2 from "@/assets/images/SKY_GALLERY_2.jpg";
+import skyGallery3 from "@/assets/images/SKY_GALLERY_3.jpg";
+import skyGallery4 from "@/assets/images/SKY_GALLERY_4.jpg";
+import skyGallery5 from "@/assets/images/SKY_GALLERY_5.jpg";
+import skyGallery6 from "@/assets/images/SKY_GALLERY_6.jpg";
+import skyGallery7 from "@/assets/images/SKY_GALLERY_7.jpg";
+import skyGallery8 from "@/assets/images/SKY_GALLERY_8.jpg";
+import skyGallery9 from "@/assets/images/SKY_GALLERY_9.jpg";
+import skyGallery10 from "@/assets/images/SKY_GALLERY_10.jpg";
+import skyGallery11 from "@/assets/images/SKY_GALLERY_11.jpg";
+
 import euvimGallery1 from "@/assets/images/EUVIM_GALLERY_1.jpg";
 import euvimGallery2 from "@/assets/images/EUVIM_GALLERY_2.jpg";
 import euvimGallery3 from "@/assets/images/EUVIM_GALLERY_3.jpg";
@@ -23,6 +35,9 @@ export interface WorkCredit {
 
 export interface WorkMedia {
   videoUrl?: string;
+  videoThumbnail?: string;
+  soundcloudUrl?: string;
+  soundcloudHeight?: number;
   audioUrl?: string;
   photos: string[];
 }
@@ -80,6 +95,9 @@ export const works: Work[] = [
     ],
     media: {
       videoUrl: "https://www.youtube.com/embed/METIanuhyA8",
+      videoThumbnail: "https://img.youtube.com/vi/METIanuhyA8/maxresdefault.jpg",
+      soundcloudUrl: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2307680825&color=%23730623&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+      soundcloudHeight: 166,
       audioUrl: "",
       photos: [
         euvimGallery1, euvimGallery2, euvimGallery3, euvimGallery4,
@@ -112,8 +130,15 @@ export const works: Work[] = [
     ],
     media: {
       videoUrl: "https://www.youtube.com/embed/HZM56dheEHs",
+      videoThumbnail: "https://img.youtube.com/vi/HZM56dheEHs/maxresdefault.jpg",
+      soundcloudUrl: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2130611829&color=%23730623&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+      soundcloudHeight: 166,
       audioUrl: "",
-      photos: [],
+      photos: [
+        skyGallery1, skyGallery2, skyGallery3, skyGallery4,
+        skyGallery5, skyGallery6, skyGallery7, skyGallery8,
+        skyGallery9, skyGallery10, skyGallery11,
+      ],
     },
   },
   {
@@ -145,6 +170,9 @@ export const works: Work[] = [
     ],
     media: {
       videoUrl: "https://www.youtube.com/embed/euLedOnGzwo",
+      videoThumbnail: "https://img.youtube.com/vi/euLedOnGzwo/maxresdefault.jpg",
+      soundcloudUrl: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A1968217032&color=%23730623&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+      soundcloudHeight: 300,
       audioUrl: "",
       photos: [],
     },
@@ -172,6 +200,8 @@ export const works: Work[] = [
     ],
     media: {
       videoUrl: "https://www.youtube.com/embed/videoseries?list=PLzyNg9S9XibS3smyQCnJdV2mmGPcJrFOr",
+      soundcloudUrl: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A1801497958&color=%23730623&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+      soundcloudHeight: 300,
       audioUrl: "",
       photos: [],
     },

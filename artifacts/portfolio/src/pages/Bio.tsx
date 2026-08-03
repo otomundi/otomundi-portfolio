@@ -180,22 +180,6 @@ export default function Bio() {
 
       </div>
 
-      {/* Closing image — full screen width, outside padding */}
-      <motion.div
-        className="mt-20 md:mt-28 w-full overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 1 }}
-      >
-        <img
-          src={bio3}
-          alt="ótomundi"
-          className="w-full block"
-          style={{ objectFit: "cover", objectPosition: "center top" }}
-          data-testid="img-bio-portrait-3"
-        />
-      </motion.div>
-
       {/* Footer bar — social + contact */}
       <motion.div
         className="flex items-center justify-between px-6 md:px-12 py-5"

@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { works } from "@/data/works";
 
 const GOTHIC = "'Cinzel', Georgia, serif";
+const CORMORANT = "'Cormorant Garamond', Georgia, serif";
 const dim = (a: number) => `rgba(245,244,242,${a})`;
 
 export default function Works() {
@@ -26,7 +27,7 @@ export default function Works() {
               fontSize: "8px",
               letterSpacing: "0.55em",
               textTransform: "uppercase",
-              color: dim(0.20),
+              color: dim(0.32),
               fontWeight: 400,
               marginBottom: "0.75rem",
             }}
@@ -59,7 +60,7 @@ export default function Works() {
                 className="group"
                 style={{
                   borderTop: `1px solid ${dim(0.06)}`,
-                  opacity: isBlurred ? 0.22 : 1,
+                  opacity: isBlurred ? 0.18 : 1,
                   filter: isBlurred ? "blur(1.5px)" : "none",
                   transition: "opacity 0.4s ease, filter 0.4s ease",
                 }}
@@ -86,7 +87,7 @@ export default function Works() {
                               fontFamily: GOTHIC,
                               fontSize: "8px",
                               letterSpacing: "0.4em",
-                              color: dim(0.18),
+                              color: dim(0.30),
                               fontWeight: 400,
                             }}
                           >
@@ -97,7 +98,7 @@ export default function Works() {
                               fontFamily: GOTHIC,
                               fontSize: "8px",
                               letterSpacing: "0.35em",
-                              color: dim(0.18),
+                              color: dim(0.30),
                               fontWeight: 400,
                             }}
                           >
@@ -111,7 +112,7 @@ export default function Works() {
                         />
 
                         <h2
-                          className="mb-3"
+                          className="mb-2"
                           style={{
                             fontFamily: GOTHIC,
                             fontSize: "clamp(1.6rem, 3.2vw, 3rem)",
@@ -125,19 +126,59 @@ export default function Works() {
                         >
                           {work.title}
                         </h2>
+
+                        {/* Artist */}
                         <p
+                          className="mb-5"
                           style={{
-                            fontFamily: GOTHIC,
-                            fontSize: "8px",
-                            letterSpacing: "0.3em",
-                            textTransform: "uppercase",
-                            color: dim(0.22),
-                            marginBottom: "2rem",
-                            fontWeight: 400,
+                            fontFamily: CORMORANT,
+                            fontSize: "clamp(0.82rem, 1.1vw, 0.95rem)",
+                            fontStyle: "italic",
+                            color: dim(0.42),
+                            fontWeight: 300,
                           }}
                         >
-                          {work.medium}
+                          {work.artist}
                         </p>
+
+                        {/* Metadata rows */}
+                        <div className="flex flex-col gap-1.5 mb-6">
+                          {[
+                            { label: "format", value: work.format },
+                            { label: "duration", value: work.duration },
+                            { label: "location", value: work.location },
+                            { label: "language", value: work.language },
+                            { label: "genre", value: work.genre },
+                          ].map(({ label, value }) => (
+                            <div key={label} className="flex items-baseline gap-3">
+                              <span
+                                style={{
+                                  fontFamily: GOTHIC,
+                                  fontSize: "7px",
+                                  letterSpacing: "0.38em",
+                                  textTransform: "uppercase",
+                                  color: dim(0.28),
+                                  fontWeight: 400,
+                                  flexShrink: 0,
+                                  width: "58px",
+                                }}
+                              >
+                                {label}
+                              </span>
+                              <span
+                                style={{
+                                  fontFamily: CORMORANT,
+                                  fontSize: "clamp(0.78rem, 1vw, 0.88rem)",
+                                  color: dim(0.48),
+                                  fontWeight: 300,
+                                  lineHeight: 1.4,
+                                }}
+                              >
+                                {value}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
 
                       <div>
@@ -147,7 +188,7 @@ export default function Works() {
                             fontSize: "8px",
                             letterSpacing: "0.4em",
                             textTransform: "uppercase",
-                            color: dim(0.20),
+                            color: dim(0.35),
                             fontWeight: 400,
                           }}
                         >

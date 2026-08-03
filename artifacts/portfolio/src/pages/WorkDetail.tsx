@@ -207,7 +207,7 @@ function PhotoGallery({ photos }: { photos: string[] }) {
   );
 }
 
-function VideoEmbed({ url }: { url: string }) {
+function VideoEmbed({ url, thumbnail }: { url: string; thumbnail?: string }) {
   const [show, setShow] = useState(false);
 
   // Handle URLs that already have query params (e.g. playlist URLs)
@@ -232,31 +232,32 @@ function VideoEmbed({ url }: { url: string }) {
           data-testid="button-video-play"
           whileHover={{ scale: 1.005 }}
         >
+          {/* YouTube thumbnail as background */}
+          {thumbnail && (
+            <img
+              src={thumbnail}
+              alt="Video thumbnail"
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ filter: "brightness(0.55)" }}
+            />
+          )}
+          {/* Play button overlay */}
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
             <div
-              className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300"
+              className="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
               style={{
-                border: "1px solid rgba(245,244,242,0.15)",
-                background: "rgba(245,244,242,0.03)",
+                border: "1px solid rgba(245,244,242,0.55)",
+                background: "rgba(0,0,0,0.45)",
+                backdropFilter: "blur(4px)",
               }}
             >
               <Play
-                size={18}
+                size={20}
                 className="ml-1"
-                style={{ color: "rgba(245,244,242,0.5)" }}
+                style={{ color: "rgba(245,244,242,0.90)" }}
               />
             </div>
-            <span
-              className="text-[9px] tracking-[0.4em] uppercase"
-              style={{ color: "rgba(245,244,242,0.25)" }}
-            >
-              Play video
-            </span>
           </div>
-          <div
-            className="absolute inset-0"
-            style={{ border: "1px solid rgba(245,244,242,0.05)" }}
-          />
         </motion.button>
       ) : (
         <motion.div
@@ -276,6 +277,29 @@ function VideoEmbed({ url }: { url: string }) {
           />
         </motion.div>
       )}
+    </section>
+  );
+}
+
+function SoundCloudEmbed({ url, height }: { url: string; height: number }) {
+  return (
+    <section className="mt-16" data-testid="soundcloud-section">
+      <p
+        className="text-[9px] tracking-[0.4em] uppercase mb-6"
+        style={{ color: "rgba(245,244,242,0.25)" }}
+      >
+        Audio
+      </p>
+      <iframe
+        width="100%"
+        height={height}
+        scrolling="no"
+        frameBorder="no"
+        allow="autoplay; encrypted-media"
+        src={url}
+        className="block"
+        title="SoundCloud player"
+      />
     </section>
   );
 }
@@ -407,9 +431,15 @@ export default function WorkDetail() {
               ) : null)}
             </div>
 
+            {work.media.soundcloudUrl && (
+              <SoundCloudEmbed url={work.media.soundcloudUrl} height={work.media.soundcloudHeight ?? 166} />
+            )}
+
             {work.credits && work.credits.length > 0 && <Credits credits={work.credits} />}
 
-            {work.media.videoUrl && <VideoEmbed url={work.media.videoUrl} />}
+            {work.media.videoUrl && (
+              <VideoEmbed url={work.media.videoUrl} thumbnail={work.media.videoThumbnail} />
+            )}
 
             {work.media.photos.length > 0 && <PhotoGallery photos={work.media.photos} />}
 
