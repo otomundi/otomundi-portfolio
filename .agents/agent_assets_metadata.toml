@@ -1,38 +1,3 @@
 uploads = []
+generated = []
 outputs = []
-
-[[generated]]
-id = "hf-YQqhnAK5KC1o5DnPhU"
-uri = "file://artifacts/portfolio/src/assets/images/bio-portrait.png"
-type = "image"
-title = "Cinematic artist silhouette"
-
-[[generated]]
-id = "E-IyAaXodF_lcsubjTTV3"
-uri = "file://artifacts/portfolio/src/assets/images/artwork-1.png"
-type = "image"
-title = "Void Signal abstract art"
-
-[[generated]]
-id = "Wxhb0uVkavdAzpmAxLqTP"
-uri = "file://artifacts/portfolio/src/assets/images/artwork-2.png"
-type = "image"
-title = "Chromatic Drift abstract art"
-
-[[generated]]
-id = "cQwqcfQ4fYDkLDvUwzhCB"
-uri = "file://artifacts/portfolio/src/assets/images/artwork-3.png"
-type = "image"
-title = "Event Horizon abstract art"
-
-[[generated]]
-id = "t6AaA7LfglbpnykB_Qk0V"
-uri = "file://artifacts/portfolio/src/assets/images/artwork-4.png"
-type = "image"
-title = "Liminal Frequencies art"
-
-[[generated]]
-id = "IR5EjlHroOEk1NXUMpi4b"
-uri = "file://artifacts/portfolio/src/assets/images/artwork-5.png"
-type = "image"
-title = "Dark Matter abstract art"
