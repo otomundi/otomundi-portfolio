@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Link } from "wouter";
 import bio1 from "@/assets/images/bio-1.jpg";
 import bio2 from "@/assets/images/bio-2.jpg";
