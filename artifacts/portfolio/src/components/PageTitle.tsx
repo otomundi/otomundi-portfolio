@@ -1,19 +1,20 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect } from "react";
 
 interface PageTitleProps {
-  title: string;
+  title?: string;
 }
 
-const PageTitle = ({ title }: PageTitleProps) => {
-  const location = useLocation();
+export default function PageTitle({ title = "ótomundi" }: PageTitleProps) {
 
   useEffect(() => {
-    // Sets the title to "Page Name | ótomundi"
-    document.title = `${title} | ótomundi`;
-  }, [location, title]);
 
-  return null; // Renders nothing visible
-};
+    document.title =
+      title === "ótomundi"
+        ? "ótomundi"
+        : `${title} | ótomundi`;
 
-export default PageTitle;   
+  }, [title]);
+
+  return null;
+
+}

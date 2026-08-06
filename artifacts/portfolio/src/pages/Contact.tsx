@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { SiInstagram, SiX, SiTiktok } from "react-icons/si";
-
 const GOTHIC = "'Cinzel', Georgia, serif";
 const CRIMSON = "#a81a2e";
 const dim = (a: number) => `rgba(245,244,242,${a})`;
