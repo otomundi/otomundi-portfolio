@@ -3,7 +3,6 @@ import { useRef, useEffect } from "react";
 import { Link } from "wouter";
 import bio1 from "@/assets/images/bio-1.jpg";
 import bio2 from "@/assets/images/bio-2.jpg";
-import bio3 from "@/assets/images/bio-3.jpg";
 
 const GOTHIC = "'Cinzel', Georgia, serif";
 const CORMORANT = "'Cormorant Garamond', Georgia, serif";

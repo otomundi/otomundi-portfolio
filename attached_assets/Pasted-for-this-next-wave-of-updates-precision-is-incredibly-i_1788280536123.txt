@@ -1,0 +1,146 @@
+for this next wave of updates, precision is incredibly important and enforced, we need to take full-scale actions in ensuring the security, stability, and management systems of the ótomundi web app. please complete the following list of instructions, while guaranteeing absolute flawless functionality and scalability.
+- add more space on the landing page display on phones, allow extra room for scrolling
+- for some reason the individual pages for all works is loading incorrectly. the page loads with a degree of scrolling on the page, equivalent to the scrolling on the main works page. so currently when I open the project SKY or TIGRE, the page doesn’t load at the top of the content
+- populate the galleries for both works, DESNUDO and TIGRE
+- move all project image files to src/assets/images/projects/ and create an individual folder for each project to store the images accordingly. from now on, use this structure to store all project images
+- move all other image files to src/assets/images/pages and create an individual folder for each page to store the images accordingly. from now on, use this structure to store all page images
+- create a SEO.tsx component, with the following contents:
+import { useEffect } from "react";
+
+interface SEOProps {
+  title: string;
+  description: string;
+  image?: string;
+  url?: string;
+}
+
+export default function SEO({
+  title,
+  description,
+  image = "/og-image.jpg",
+  url = "",
+}: SEOProps) {
+
+  useEffect(() => {
+
+    const fullTitle =
+      title === "ótomundi"
+        ? "ótomundi"
+        : `${title} | ótomundi`;
+
+    document.title = fullTitle;
+
+    // Description
+    let metaDescription = document.querySelector(
+      'meta[name="description"]'
+    );
+
+    if (!metaDescription) {
+      metaDescription = document.createElement("meta");
+      metaDescription.setAttribute("name", "description");
+      document.head.appendChild(metaDescription);
+    }
+
+    metaDescription.setAttribute("content", description);
+
+    // Open Graph Title
+    let ogTitle = document.querySelector(
+      'meta[property="og:title"]'
+    );
+
+    if (!ogTitle) {
+      ogTitle = document.createElement("meta");
+      ogTitle.setAttribute("property", "og:title");
+      document.head.appendChild(ogTitle);
+    }
+
+    ogTitle.setAttribute("content", fullTitle);
+
+    // Open Graph Description
+    let ogDescription = document.querySelector(
+      'meta[property="og:description"]'
+    );
+
+    if (!ogDescription) {
+      ogDescription = document.createElement("meta");
+      ogDescription.setAttribute("property", "og:description");
+      document.head.appendChild(ogDescription);
+    }
+
+    ogDescription.setAttribute("content", description);
+
+    // Open Graph Image
+    let ogImage = document.querySelector(
+      'meta[property="og:image"]'
+    );
+
+    if (!ogImage) {
+      ogImage = document.createElement("meta");
+      ogImage.setAttribute("property", "og:image");
+      document.head.appendChild(ogImage);
+    }
+
+    ogImage.setAttribute("content", image);
+
+    // Canonical URL
+    let canonical = document.querySelector(
+      'link[rel="canonical"]'
+    );
+
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+
+    canonical.setAttribute(
+      "href",
+      `https://www.otomundi.com${url}`
+    );
+
+  }, [title, description, image, url]);
+
+  return null;
+
+}
+- make sure every page is linked to this SEO component, with the following lines:
+import SEO from “src/components/SEO/SEO”;
+- Inside each page component, before the visible page contents, add the following code, according to this example on the bio page:
+<>
+  <SEO
+    title="Bio"
+    description="Learn more about ótomundi's artistic practice."
+    url="/bio"
+  />
+
+  {/* existing page content */}
+</>
+
+- implement the following page management and SEO architecture, moving the files and folders accordingly:
+
+src/
+
+components/
+
+SEO/
+
+PageTitle.tsx
+SEO.tsx
+
+pages/
+
+Home.tsx
+Bio.tsx
+Contact.tsx
+Projects/
+
+DESNUDO.tsx
+TIGRE.tsx
+SKY.tsx
+EUVIM.tsx
+
+- retire the PageTitle.tsx file and make SEO.tsx handle the browser titles as well, this is meant to remove duplicate responsibility, keep metadata in a single component, and create one place to manage all page-level SEO going forward
+- refer and ensure the the site.ts file works as the metadata library
+- from now on,  inside src/data create a projects.ts file and include there the metadata structure for each project in the works page. make sure this is linked, so that every page automatically reads from this object
+- scale the full size header image displaying the cover art for each project, into a tarot card size, displaying the full image floating at the center of the page, in similar styles to the images floating on the bio page
+- change the layout for the gallery of photos in each project, displaying in the similar tarot card size, and change the format from a carousel, to a continuous scroll, with grids of 3 cards at a time on PC. the cards can be displayed horizontally or vertically, depending on the image layout
