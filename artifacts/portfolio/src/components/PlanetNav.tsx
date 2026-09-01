@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { works, type Work } from "@/data/works";
+import { projects as works, type Work } from "@/data/projects";
 
 interface PlanetProps {
   work: Work;
@@ -9,8 +9,10 @@ interface PlanetProps {
 }
 
 function Planet({ work, scale, onClick }: PlanetProps) {
-  const r = work.orbitRadius * scale;
-  const size = work.planetSize * scale;
+  const r = (work.orbitRadius ?? 120) * scale;
+  const size = (work.planetSize ?? 24) * scale;
+  const planetColor = work.planetColor ?? "#730623";
+  const planetGlowColor = work.planetGlowColor ?? "rgba(115,6,35,0.35)";
 
   return (
     <motion.div
@@ -28,11 +30,11 @@ function Planet({ work, scale, onClick }: PlanetProps) {
       }}
       animate={{ rotate: 360 }}
       transition={{
-        duration: work.orbitDuration,
+        duration: work.orbitDuration ?? 30,
         ease: "linear",
         repeat: Infinity,
       }}
-      initial={{ rotate: work.orbitOffset }}
+              initial={{ rotate: work.orbitOffset ?? 0 }}
     >
       <motion.button
         className="absolute cursor-crosshair group"
@@ -44,8 +46,8 @@ function Planet({ work, scale, onClick }: PlanetProps) {
           marginLeft: -size / 2,
           marginTop: -size / 2,
           borderRadius: "50%",
-          background: `radial-gradient(circle at 35% 35%, ${work.planetColor}ff, ${work.planetColor}88)`,
-          boxShadow: `0 0 ${size * 1.2}px ${work.planetGlowColor}, 0 0 ${size * 0.4}px ${work.planetColor}99`,
+          background: `radial-gradient(circle at 35% 35%, ${planetColor}ff, ${planetColor}88)`,
+          boxShadow: `0 0 ${size * 1.2}px ${planetGlowColor}, 0 0 ${size * 0.4}px ${planetColor}99`,
           pointerEvents: "auto",
         }}
         whileHover={{ scale: 1.35 }}
@@ -66,7 +68,7 @@ function Planet({ work, scale, onClick }: PlanetProps) {
               fontSize: Math.max(9, 10 * scale),
               color: "#e8a0a8",
               background: "rgba(0,0,0,0.9)",
-              border: `1px solid ${work.planetColor}55`,
+              border: `1px solid ${planetColor}55`,
             }}
           >
             {work.title}
@@ -145,7 +147,7 @@ function SunCenter({ scale }: { scale: number }) {
 
 export function PlanetNav() {
   const [scale, setScale] = useState(1);
-  const maxOrbit = Math.max(...works.map((w) => w.orbitRadius));
+  const maxOrbit = Math.max(...works.map((w) => w.orbitRadius ?? 120));
   const naturalSize = (maxOrbit + 40) * 2;
 
   useEffect(() => {
@@ -210,8 +212,8 @@ export function PlanetNavMobile() {
               style={{
                 width: 10,
                 height: 10,
-                background: work.planetColor,
-                boxShadow: `0 0 8px ${work.planetGlowColor}`,
+                background: work.planetColor ?? "#730623",
+                boxShadow: `0 0 8px ${work.planetGlowColor ?? "rgba(115,6,35,0.35)"}`,
               }}
             />
             <div className="flex-1 min-w-0">

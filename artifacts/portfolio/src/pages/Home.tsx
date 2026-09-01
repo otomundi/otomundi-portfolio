@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { works } from "@/data/works";
-import landingPortrait from "@/assets/images/landing-portrait.jpg";
+import { projects as works } from "@/data/projects";
+import landingPortrait from "@/assets/images/pages/home/landing-portrait.jpg";
+import SEO from "@/components/SEO/SEO";
 
 const GOTHIC = "'Cinzel', Georgia, serif";
 const CORMORANT = "'Cormorant Garamond', Georgia, serif";
@@ -15,13 +16,15 @@ const socialLinks = [
 
 const latestWork = works[0];
 
-export default function Landing() {
+export default function Home() {
   return (
-    <main
-      className="relative flex flex-col"
-      style={{ minHeight: "100svh", background: "#730623" }}
-      data-testid="page-landing"
-    >
+    <>
+      <SEO title="ótomundi" description="Interdisciplinary artist, creative director, and music producer." url="/" />
+      <main
+        className="landing-page relative flex flex-col"
+        style={{ background: "#730623" }}
+        data-testid="page-landing"
+      >
       <div className="grain-overlay" />
 
       {/* Depth gradient — three layers for more dimensional field */}
@@ -155,7 +158,7 @@ export default function Landing() {
         </Link>
       </motion.div>
 
-      <div className="relative z-10 flex flex-col flex-1" style={{ minHeight: "100svh" }}>
+      <div className="landing-page-inner relative z-10 flex flex-col flex-1">
         <div className="flex-1 flex flex-col items-start justify-end px-6 md:px-12 pb-10 md:pb-14">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
@@ -343,6 +346,7 @@ export default function Landing() {
           </a>
         </motion.div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

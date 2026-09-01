@@ -1,8 +1,9 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useParams } from "wouter";
-import { works, type WorkCredit } from "@/data/works";
+import { projects, type WorkCredit } from "@/data/projects";
 import { ChevronLeft, ChevronRight, X, Play } from "lucide-react";
+import SEO from "@/components/SEO/SEO";
 
 const dim = (a: number) => `rgba(245,244,242,${a})`;
 
@@ -58,11 +59,6 @@ function Credits({ credits }: { credits: WorkCredit[] }) {
 
 function PhotoGallery({ photos }: { photos: string[] }) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  function scrollBy(amount: number) {
-    scrollRef.current?.scrollBy({ left: amount, behavior: "smooth" });
-  }
 
   function prevLightbox() {
     setLightboxIndex((i) => (i !== null ? (i - 1 + photos.length) % photos.length : null));
@@ -81,63 +77,19 @@ function PhotoGallery({ photos }: { photos: string[] }) {
         >
           Photography
         </p>
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => scrollBy(-320)}
-            className="w-8 h-8 flex items-center justify-center transition-all duration-200 cursor-crosshair"
-            style={{ border: "1px solid rgba(245,244,242,0.10)", color: "rgba(245,244,242,0.40)" }}
-            data-testid="button-gallery-prev"
-            aria-label="Scroll left"
-          >
-            <ChevronLeft size={14} />
-          </button>
-          <button
-            onClick={() => scrollBy(320)}
-            className="w-8 h-8 flex items-center justify-center transition-all duration-200 cursor-crosshair"
-            style={{ border: "1px solid rgba(245,244,242,0.10)", color: "rgba(245,244,242,0.40)" }}
-            data-testid="button-gallery-next"
-            aria-label="Scroll right"
-          >
-            <ChevronRight size={14} />
-          </button>
-        </div>
       </div>
 
       <div
-        ref={scrollRef}
-        className="flex gap-3 overflow-x-auto pb-4"
-        style={{ scrollbarWidth: "none" }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
         data-testid="gallery-scroll-container"
       >
         {photos.map((photo, i) => (
-          <motion.button
+          <PhotoCard
             key={i}
-            className="flex-shrink-0 relative overflow-hidden cursor-crosshair group"
-            style={{ width: 280, height: 200 }}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.07, duration: 0.5 }}
+            photo={photo}
+            index={i}
             onClick={() => setLightboxIndex(i)}
-            data-testid={`gallery-photo-${i}`}
-          >
-            <img
-              src={photo}
-              alt={`Gallery image ${i + 1}`}
-              className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
-              style={{ filter: "brightness(0.75) contrast(1.05)" }}
-            />
-            <div
-              className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
-              style={{ background: "rgba(17,17,17,0.3)" }}
-            >
-              <span
-                className="text-xs tracking-widest uppercase"
-                style={{ color: "rgba(245,244,242,0.7)" }}
-              >
-                View
-              </span>
-            </div>
-          </motion.button>
+          />
         ))}
       </div>
 
@@ -204,6 +156,48 @@ function PhotoGallery({ photos }: { photos: string[] }) {
         )}
       </AnimatePresence>
     </section>
+  );
+}
+
+function PhotoCard({
+  photo,
+  index,
+  onClick,
+}: {
+  photo: string;
+  index: number;
+  onClick: () => void;
+}) {
+  const [isLandscape, setIsLandscape] = useState(false);
+
+  return (
+    <motion.button
+      className="relative w-full overflow-hidden cursor-crosshair group"
+      style={{ aspectRatio: isLandscape ? "4 / 3" : "2 / 3", background: "#0d0d0d" }}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.07, duration: 0.5 }}
+      onClick={onClick}
+      data-testid={`gallery-photo-${index}`}
+    >
+      <img
+        src={photo}
+        alt={`Gallery image ${index + 1}`}
+        className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+        style={{ filter: "brightness(0.78) contrast(1.05)" }}
+        onLoad={(event) => {
+          setIsLandscape(event.currentTarget.naturalWidth > event.currentTarget.naturalHeight);
+        }}
+      />
+      <div
+        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+        style={{ background: "rgba(17,17,17,0.3)" }}
+      >
+        <span className="text-xs tracking-widest uppercase" style={{ color: "rgba(245,244,242,0.7)" }}>
+          View
+        </span>
+      </div>
+    </motion.button>
   );
 }
 
@@ -305,13 +299,16 @@ function SoundCloudEmbed({ url, height }: { url: string; height: number }) {
 }
 
 
-export default function WorkDetail() {
+export default function ProjectDetail({ projectId }: { projectId?: string } = {}) {
   const { id } = useParams<{ id: string }>();
-  const work = works.find((w) => w.id === id);
+  const activeId = projectId ?? id;
+  const work = projects.find((w) => w.id === activeId);
 
   if (!work) {
     return (
-      <main className="min-h-screen bg-void relative flex items-center justify-center">
+      <>
+        <SEO title="Work not found" description="The requested ótomundi project could not be found." />
+        <main className="min-h-screen bg-void relative flex items-center justify-center">
         <div className="grain-overlay" />
         <div className="text-center relative z-10">
           <p
@@ -329,21 +326,24 @@ export default function WorkDetail() {
             </span>
           </Link>
         </div>
-      </main>
+        </main>
+      </>
     );
   }
 
-  const currentIndex = works.findIndex((w) => w.id === id);
-  const prevWork = currentIndex > 0 ? works[currentIndex - 1] : null;
-  const nextWork = currentIndex < works.length - 1 ? works[currentIndex + 1] : null;
+  const currentIndex = projects.findIndex((w) => w.id === activeId);
+  const prevWork = currentIndex > 0 ? projects[currentIndex - 1] : null;
+  const nextWork = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
 
   return (
-    <main className="min-h-screen bg-void relative pt-24 pb-24" data-testid="page-work-detail">
+    <>
+      <SEO title={work.title} description={work.description} image={work.image} url={`/works/${work.id}`} />
+      <main className="min-h-screen bg-void relative pt-24 pb-24" data-testid="page-work-detail">
       <div className="grain-overlay" />
 
       <div className="relative z-10">
         <motion.div
-          className="w-full"
+          className="flex justify-center px-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
@@ -351,7 +351,13 @@ export default function WorkDetail() {
           <img
             src={work.image}
             alt={work.title}
-            className="w-full"
+            className="w-full max-w-[420px] object-contain"
+            style={{
+              aspectRatio: "2 / 3",
+              background: "#0d0d0d",
+              border: "1px solid rgba(245,244,242,0.08)",
+              boxShadow: "0 24px 80px rgba(0,0,0,0.35)",
+            }}
             data-testid="img-work-detail"
           />
         </motion.div>
@@ -517,6 +523,7 @@ export default function WorkDetail() {
           </motion.div>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

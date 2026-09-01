@@ -1,8 +1,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Link } from "wouter";
-import bio1 from "@/assets/images/bio-1.jpg";
-import bio2 from "@/assets/images/bio-2.jpg";
+import bio1 from "@/assets/images/pages/bio/bio-1.jpg";
+import bio2 from "@/assets/images/pages/bio/bio-2.jpg";
+import SEO from "@/components/SEO/SEO";
 
 const GOTHIC = "'Cinzel', Georgia, serif";
 const CORMORANT = "'Cormorant Garamond', Georgia, serif";
@@ -25,12 +26,14 @@ export default function Bio() {
   const imgFloat2Y = useTransform(scrollYProgress, [0, 1], [30, -40]);
 
   return (
-    <main
-      ref={containerRef}
-      className="relative"
-      style={{ background: "#730623" }}
-      data-testid="page-bio"
-    >
+    <>
+      <SEO title="Bio" description="Learn more about ótomundi's artistic practice." url="/bio" />
+      <main
+        ref={containerRef}
+        className="relative"
+        style={{ background: "#730623" }}
+        data-testid="page-bio"
+      >
       <div className="grain-overlay" />
 
       {/* Deep shadow overlays */}
@@ -240,6 +243,7 @@ export default function Bio() {
         </Link>
       </motion.div>
 
-    </main>
+      </main>
+    </>
   );
 }

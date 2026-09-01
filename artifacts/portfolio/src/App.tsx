@@ -1,13 +1,17 @@
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { AnimatePresence, motion } from "framer-motion";
+import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/Navbar";
-import Landing from "@/pages/Landing";
+import Home from "@/pages/Home";
 import Bio from "@/pages/Bio";
 import Works from "@/pages/Works";
-import WorkDetail from "@/pages/WorkDetail";
+import EUVIM from "@/pages/Projects/EUVIM";
+import SKY from "@/pages/Projects/SKY";
+import TIGRE from "@/pages/Projects/TIGRE";
+import DESNUDO from "@/pages/Projects/DESNUDO";
 import Music from "@/pages/Music";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/not-found";
@@ -30,11 +34,19 @@ function PageTransition({ children }: { children: React.ReactNode }) {
 
 function Router() {
   const [location] = useLocation();
+
+  useEffect(() => {
+    const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    document.documentElement.style.scrollBehavior = previousScrollBehavior;
+  }, [location]);
+
   return (
     <AnimatePresence mode="wait">
       <Switch key={location} location={location}>
         <Route path="/">
-          <PageTransition><Landing /></PageTransition>
+          <PageTransition><Home /></PageTransition>
         </Route>
         <Route path="/bio">
           <PageTransition><Bio /></PageTransition>
@@ -42,8 +54,20 @@ function Router() {
         <Route path="/works">
           <PageTransition><Works /></PageTransition>
         </Route>
+        <Route path="/works/euvim">
+          <PageTransition><EUVIM /></PageTransition>
+        </Route>
+        <Route path="/works/sky">
+          <PageTransition><SKY /></PageTransition>
+        </Route>
+        <Route path="/works/tigre">
+          <PageTransition><TIGRE /></PageTransition>
+        </Route>
+        <Route path="/works/desnudo">
+          <PageTransition><DESNUDO /></PageTransition>
+        </Route>
         <Route path="/works/:id">
-          <PageTransition><WorkDetail /></PageTransition>
+          <PageTransition><NotFound /></PageTransition>
         </Route>
         <Route path="/music">
           <PageTransition><Music /></PageTransition>

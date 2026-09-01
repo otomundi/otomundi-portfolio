@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import logoWhite from "@/assets/images/otomundi-logo-white.png";
+import logoWhite from "@/assets/images/pages/home/otomundi-logo-white.png";
 
 const GOTHIC = "'Cinzel', Georgia, serif";
 

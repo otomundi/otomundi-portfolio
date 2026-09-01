@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { SiInstagram, SiX, SiTiktok } from "react-icons/si";
+import SEO from "@/components/SEO/SEO";
 const GOTHIC = "'Cinzel', Georgia, serif";
 const CRIMSON = "#a81a2e";
 const dim = (a: number) => `rgba(245,244,242,${a})`;
@@ -25,7 +26,9 @@ export default function Contact() {
   }
 
   return (
-    <main className="min-h-screen bg-void relative pt-28 pb-20 px-6" data-testid="page-contact">
+    <>
+      <SEO title="Contact" description="Get in touch with ótomundi for creative collaborations and inquiries." url="/contact" />
+      <main className="min-h-screen bg-void relative pt-28 pb-20 px-6" data-testid="page-contact">
       <div className="grain-overlay" />
 
       <div className="max-w-4xl mx-auto relative z-10">
@@ -260,6 +263,7 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

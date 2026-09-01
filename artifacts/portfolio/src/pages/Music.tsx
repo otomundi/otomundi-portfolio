@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { SiSpotify, SiApplemusic, SiSoundcloud, SiYoutube } from "react-icons/si";
+import SEO from "@/components/SEO/SEO";
 
 const GOTHIC = "'Cinzel', Georgia, serif";
 const CRIMSON = "#a81a2e";
@@ -38,7 +39,9 @@ const platforms = [
 
 export default function Music() {
   return (
-    <main className="min-h-screen bg-void relative pt-28 pb-20 px-6" data-testid="page-music">
+    <>
+      <SEO title="Music" description="Listen to music by ótomundi across streaming platforms." url="/music" />
+      <main className="min-h-screen bg-void relative pt-28 pb-20 px-6" data-testid="page-music">
       <div className="grain-overlay" />
 
       <div className="max-w-3xl mx-auto relative z-10">
@@ -153,6 +156,7 @@ export default function Music() {
           })}
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

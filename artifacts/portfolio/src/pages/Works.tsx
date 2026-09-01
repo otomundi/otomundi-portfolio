@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { works } from "@/data/works";
+import { projects as works } from "@/data/projects";
+import SEO from "@/components/SEO/SEO";
 
 const GOTHIC = "'Cinzel', Georgia, serif";
 const CORMORANT = "'Cormorant Garamond', Georgia, serif";
@@ -11,7 +12,9 @@ export default function Works() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <main className="min-h-screen bg-void relative pt-28 pb-24" data-testid="page-works">
+    <>
+      <SEO title="Works" description="Published audiovisual works by ótomundi." url="/works" />
+      <main className="min-h-screen bg-void relative pt-28 pb-24" data-testid="page-works">
       <div className="grain-overlay" />
 
       <div className="max-w-5xl mx-auto px-6 relative z-10">
@@ -204,6 +207,7 @@ export default function Works() {
           <div style={{ borderTop: `1px solid ${dim(0.06)}` }} />
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }
