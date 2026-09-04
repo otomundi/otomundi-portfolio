@@ -405,7 +405,7 @@ export default function ProjectDetail({ projectId }: { projectId?: string } = {}
             alt={work.title}
             className="w-full max-w-[420px] object-contain"
             style={{
-              aspectRatio: "2 / 3",
+              aspectRatio: "1 / 1",
               background: "#0d0d0d",
               border: "1px solid rgba(245,244,242,0.08)",
               boxShadow: "0 24px 80px rgba(0,0,0,0.35)",
