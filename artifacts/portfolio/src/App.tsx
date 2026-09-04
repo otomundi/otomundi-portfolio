@@ -12,6 +12,7 @@ import EUVIM from "@/pages/Projects/EUVIM";
 import SKY from "@/pages/Projects/SKY";
 import TIGRE from "@/pages/Projects/TIGRE";
 import DESNUDO from "@/pages/Projects/DESNUDO";
+import PIENSAENMI from "@/pages/Projects/PIENSAENMI";
 import Music from "@/pages/Music";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/not-found";
@@ -56,6 +57,9 @@ function Router() {
         </Route>
         <Route path="/works/euvim">
           <PageTransition><EUVIM /></PageTransition>
+        </Route>
+        <Route path="/works/piensaenmi">
+          <PageTransition><PIENSAENMI /></PageTransition>
         </Route>
         <Route path="/works/sky">
           <PageTransition><SKY /></PageTransition>

@@ -7,12 +7,19 @@ import SEO from "@/components/SEO/SEO";
 
 const dim = (a: number) => `rgba(245,244,242,${a})`;
 
-function Credits({ credits }: { credits: WorkCredit[] }) {
+function Credits({ credits, date }: { credits: WorkCredit[]; date?: string }) {
   return (
     <section className="mt-14" data-testid="credits-section">
-      <p className="text-[9px] tracking-[0.4em] uppercase mb-6" style={{ color: dim(0.22) }}>
-        Credits
-      </p>
+      <div className="flex items-baseline gap-4 mb-6">
+        <p className="text-[9px] tracking-[0.4em] uppercase" style={{ color: dim(0.22) }}>
+          Credits
+        </p>
+        {date && (
+          <span className="text-[8px] tracking-[0.25em] uppercase" style={{ color: dim(0.18) }}>
+            {date}
+          </span>
+        )}
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {credits.map((credit, i) => (
           <motion.div
@@ -51,6 +58,51 @@ function Credits({ credits }: { credits: WorkCredit[] }) {
               )}
             </div>
           </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function StreamingLinks({
+  youtube,
+  soundcloud,
+  spotify,
+  appleMusic,
+}: {
+  youtube?: string;
+  soundcloud?: string;
+  spotify?: string;
+  appleMusic?: string;
+}) {
+  const links = [
+    { label: "YouTube", href: youtube },
+    { label: "SoundCloud", href: soundcloud },
+    { label: "Spotify", href: spotify },
+    { label: "Apple Music", href: appleMusic },
+  ].filter((link): link is { label: string; href: string } => Boolean(link.href));
+
+  if (links.length === 0) return null;
+
+  return (
+    <section className="mt-10" data-testid="streaming-links-section">
+      <p className="text-[9px] tracking-[0.4em] uppercase mb-5" style={{ color: dim(0.22) }}>
+        Listen / watch
+      </p>
+      <div className="flex flex-wrap gap-x-6 gap-y-3">
+        {links.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[9px] tracking-[0.28em] uppercase transition-colors duration-200"
+            style={{ color: dim(0.48) }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = dim(0.9))}
+            onMouseLeave={(e) => (e.currentTarget.style.color = dim(0.48))}
+          >
+            {link.label} ↗
+          </a>
         ))}
       </div>
     </section>
@@ -441,7 +493,16 @@ export default function ProjectDetail({ projectId }: { projectId?: string } = {}
               <SoundCloudEmbed url={work.media.soundcloudUrl} height={work.media.soundcloudHeight ?? 166} />
             )}
 
-            {work.credits && work.credits.length > 0 && <Credits credits={work.credits} />}
+            <StreamingLinks
+              youtube={work.media.videoLink ?? work.media.videoUrl}
+              soundcloud={work.media.soundcloudLink ?? work.media.soundcloudUrl}
+              spotify={work.media.spotifyUrl}
+              appleMusic={work.media.appleMusicUrl}
+            />
+
+            {work.credits && work.credits.length > 0 && (
+              <Credits credits={work.credits} date={work.creditsDate} />
+            )}
 
             {work.media.videoUrl && (
               <VideoEmbed url={work.media.videoUrl} thumbnail={work.media.videoThumbnail} />

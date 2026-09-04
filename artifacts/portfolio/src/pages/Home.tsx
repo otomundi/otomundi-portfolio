@@ -14,7 +14,7 @@ const socialLinks = [
   { label: "Spotify", href: "https://open.spotify.com/artist/1Pr9r0RYuRgh971UdzxSpe" },
 ];
 
-const latestWork = works[0];
+const latestWork = works.find((work) => work.id === "piensaenmi") ?? works[0];
 
 export default function Home() {
   return (
@@ -112,20 +112,22 @@ export default function Home() {
               >
                 {latestWork.title}
               </p>
-              <p
-                className="mt-1"
-                style={{
-                  fontFamily: GOTHIC,
-                  fontSize: "7px",
-                  letterSpacing: "0.30em",
-                  textTransform: "uppercase",
-                  color: "rgba(245,244,242,0.32)",
-                  fontWeight: 400,
-                  margin: "5px 0 0",
-                }}
-              >
-                {latestWork.releaseDate}
-              </p>
+              {latestWork.releaseDate && (
+                <p
+                  className="mt-1"
+                  style={{
+                    fontFamily: GOTHIC,
+                    fontSize: "7px",
+                    letterSpacing: "0.30em",
+                    textTransform: "uppercase",
+                    color: "rgba(245,244,242,0.32)",
+                    fontWeight: 400,
+                    margin: "5px 0 0",
+                  }}
+                >
+                  {latestWork.releaseDate}
+                </p>
+              )}
 
               {/* View work — rule + label */}
               <div className="flex items-center mt-3" style={{ gap: "8px" }}>
@@ -263,19 +265,21 @@ export default function Home() {
                     >
                       {latestWork.title}
                     </p>
-                    <p
-                      className="mt-1"
-                      style={{
-                        fontFamily: GOTHIC,
-                        fontSize: "7px",
-                        letterSpacing: "0.35em",
-                        textTransform: "uppercase",
-                        color: "rgba(245,244,242,0.28)",
-                        fontWeight: 400,
-                      }}
-                    >
-                      {latestWork.releaseDate}
-                    </p>
+                    {latestWork.releaseDate && (
+                      <p
+                        className="mt-1"
+                        style={{
+                          fontFamily: GOTHIC,
+                          fontSize: "7px",
+                          letterSpacing: "0.35em",
+                          textTransform: "uppercase",
+                          color: "rgba(245,244,242,0.28)",
+                          fontWeight: 400,
+                        }}
+                      >
+                        {latestWork.releaseDate}
+                      </p>
+                    )}
                   </div>
                 </div>
               </Link>

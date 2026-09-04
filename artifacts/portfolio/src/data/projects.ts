@@ -2,6 +2,7 @@ import euvimArtwork from "@/assets/images/projects/euvim/cover.jpg";
 import skyArtwork from "@/assets/images/projects/sky/cover.png";
 import tigreArtwork from "@/assets/images/projects/tigre/cover.jpg";
 import desnudoArtwork from "@/assets/images/projects/desnudo/cover.jpg";
+import piensaenmiArtwork from "@/assets/images/projects/piensaenmi/cover.jpg";
 
 import skyGallery1 from "@/assets/images/projects/sky/SKY_GALLERY_1.jpg";
 import skyGallery2 from "@/assets/images/projects/sky/SKY_GALLERY_2.jpg";
@@ -25,7 +26,16 @@ import euvimGallery7 from "@/assets/images/projects/euvim/EUVIM_GALLERY_7.jpg";
 import euvimGallery8 from "@/assets/images/projects/euvim/EUVIM_GALLERY_8.jpg";
 import euvimGallery9 from "@/assets/images/projects/euvim/EUVIM_GALLERY_9.jpg";
 import euvimGallery10 from "@/assets/images/projects/euvim/EUVIM_GALLERY_10.jpg";
-import euvimGallery11 from "@/assets/images/projects/euvim/EUVIM_GALLERY_11.jpg";
+
+import piensaenmiGallery1 from "@/assets/images/projects/piensaenmi/PIENSAENMI_GALLERY_1.jpg";
+import piensaenmiGallery2 from "@/assets/images/projects/piensaenmi/PIENSAENMI_GALLERY_2.jpg";
+import piensaenmiGallery3 from "@/assets/images/projects/piensaenmi/PIENSAENMI_GALLERY_3.jpg";
+import piensaenmiGallery4 from "@/assets/images/projects/piensaenmi/PIENSAENMI_GALLERY_4.jpg";
+import piensaenmiGallery5 from "@/assets/images/projects/piensaenmi/PIENSAENMI_GALLERY_5.jpg";
+import piensaenmiGallery6 from "@/assets/images/projects/piensaenmi/PIENSAENMI_GALLERY_6.jpg";
+import piensaenmiGallery7 from "@/assets/images/projects/piensaenmi/PIENSAENMI_GALLERY_7.jpg";
+import piensaenmiGallery8 from "@/assets/images/projects/piensaenmi/PIENSAENMI_GALLERY_8.jpg";
+import piensaenmiGallery9 from "@/assets/images/projects/piensaenmi/PIENSAENMI_GALLERY_9.jpg";
 
 export interface WorkCredit {
   role: string;
@@ -35,9 +45,13 @@ export interface WorkCredit {
 
 export interface WorkMedia {
   videoUrl?: string;
+  videoLink?: string;
   videoThumbnail?: string;
   soundcloudUrl?: string;
+  soundcloudLink?: string;
   soundcloudHeight?: number;
+  spotifyUrl?: string;
+  appleMusicUrl?: string;
   audioUrl?: string;
   photos: string[];
 }
@@ -54,6 +68,7 @@ export interface Work {
   language: string;
   genre: string;
   releaseDate: string;
+  creditsDate?: string;
   description: string;
   longDescription: string;
   image: string;
@@ -108,7 +123,45 @@ export const projects: Work[] = [
       photos: [
         euvimGallery1, euvimGallery2, euvimGallery3, euvimGallery4,
         euvimGallery5, euvimGallery6, euvimGallery7, euvimGallery8,
-        euvimGallery9, euvimGallery10, euvimGallery11,
+        euvimGallery9, euvimGallery10,
+      ],
+    },
+  },
+  {
+    id: "piensaenmi",
+    title: "PIENSAENMÍ",
+    artist: "ótomundi",
+    medium: "music, audiovisual film, photographic series",
+    format: "music, audiovisual film, photographic series",
+    duration: "3'18",
+    year: 2026,
+    location: "Barcelona",
+    language: "english",
+    genre: "post-rock",
+    releaseDate: "",
+    creditsDate: "14/08/2026",
+    description: "PIENSAENMÍ is a post-rock audiovisual work and photographic series by ótomundi.",
+    longDescription: "",
+    image: piensaenmiArtwork,
+    credits: [
+      { role: "creative director & artist", name: "ótomundi", instagram: "https://instagram.com/otomundi" },
+      { role: "visual artist & photographer", name: "Sofia Masiello", instagram: "#" },
+      { role: "sound engineer", name: "Alberto Perez", instagram: "#" },
+    ],
+    media: {
+      videoUrl: "https://www.youtube.com/embed/u1Hbn4EodtQ",
+      videoLink: "https://youtu.be/u1Hbn4EodtQ",
+      videoThumbnail: "https://img.youtube.com/vi/u1Hbn4EodtQ/maxresdefault.jpg",
+      soundcloudUrl: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/otomundi/piensaenmi&color=%23730623&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+      soundcloudLink: "https://on.soundcloud.com/EKvBdMfPbbPfyH0L13",
+      soundcloudHeight: 166,
+      spotifyUrl: "https://open.spotify.com/track/2hnq2HCzt5zqCRWfpYvIVT",
+      appleMusicUrl: "https://music.apple.com/us/song/piensaenm%C3%AD/6799448938",
+      audioUrl: "",
+      photos: [
+        piensaenmiGallery1, piensaenmiGallery2, piensaenmiGallery3,
+        piensaenmiGallery4, piensaenmiGallery5, piensaenmiGallery6,
+        piensaenmiGallery7, piensaenmiGallery8, piensaenmiGallery9,
       ],
     },
   },
